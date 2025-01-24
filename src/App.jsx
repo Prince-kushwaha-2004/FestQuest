@@ -1,19 +1,18 @@
-import { RouterProvider } from "react-router-dom";
-import router from "./router/routing";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router}
-
-        future={{
-          v7_startTransition: true,
-        }}
-
-      />
-
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

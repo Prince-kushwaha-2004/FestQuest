@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Register = () => {
-    return (
-        <div className='w-full'>
+  return <div className="w-full"></div>;
+};
 
-        </div>
-    )
-}
-
-export default Register
+export default Register;
