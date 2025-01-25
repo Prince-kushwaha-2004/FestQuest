@@ -8,6 +8,7 @@ import HandleChange from '../utils/Function';
 
 
 const Register = () => {
+
   const [registerForm, setRegisterForm] = useState({
     name: "",
     email: "",
