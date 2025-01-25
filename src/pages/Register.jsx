@@ -1,7 +1,11 @@
-import { Button, ConfigProvider, Input } from 'antd';
+import { Button, ConfigProvider, Input, Steps } from 'antd';
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import logo from "../assets/festLogo.png";
+import Axios from '../axios/Axios';
+import { ApiEndpoints } from '../utlis/Constants';
 import HandleChange from '../utlis/Function';
+
 
 
 const Register = () => {
@@ -13,19 +17,35 @@ const Register = () => {
         confirmPassword: ''
     })
 
-    const inputBoxStyle = {
-        fontSize: "1.2rem",
-        padding: '0.5rem 2rem',
-        width: '50%'
 
+
+    const getOTP = () => {
+        const request = {
+            apiName: ApiEndpoints.REGISTER,
+            method: "POST",
+            dataObject: registerForm
+
+        }
+        Axios(request).then((res) => {
+            console.log(res)
+        })
     }
-    const buttonStyle = {
-        width: "20%",
-        fontSize: "1rem",
-        padding: "1.4rem 2rem",
-        borderRadius: "1.3rem",
-        fontWeight: "bold"
-    }
+
+    const [current, setCurrent] = useState(0);
+    const onChange = (value) => {
+        console.log('onChange:', value);
+        setCurrent(value);
+    };
+
+
+    useEffect(() => {
+
+
+
+    }, [])
+    const description = 'This is a description.';
+
+
 
 
     return <>
@@ -34,12 +54,22 @@ const Register = () => {
                 components: {
                     Input: {
                         colorPrimary: '#1677ff',
-                        inputFontSizeLG: 24
+                        inputFontSizeLG: 24,
+                        size: 'middle',
+                        paddingBlock: 7,
+                        inputFontSize: 18,
+                        activeBorderColor: '#1677ff',
+                        paddingInline: 16
+                    },
+                    Button: {
+                        paddingInline: 29,
+                        paddingBlock: 36,
+                        primaryColor: '#fff'
                     }
                 },
             }}
         >
-            <div className="w-full justify-center h-screen flex items-center  bg-background p-16 ">
+            <div className="w-full justify-center h-screen flex items-center  bg-background p-18 ">
 
                 <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-white h-[90%] w-[93%] flex justify-end  ">
 
@@ -49,23 +79,17 @@ const Register = () => {
                             <Button color="primary" variant="filled">Sign in</Button>
                         </div>
 
-                        <div className='flex justify-center text-3xl font-bold mt-[5rem] '>
+                        <div className='flex justify-center text-4xl font-bold mt-11'>
                             Create your free account
                         </div>
 
-                        <div className='flex gap-4 mt-[4rem] flex-col items-center  justify-center'>
-                            <Input name='name' value={registerForm.name} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: inputBoxStyle.width, padding: inputBoxStyle.padding, fontSize: inputBoxStyle.fontSize }} placeholder="Name" />
-                            <Input name='email' value={registerForm.email} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: inputBoxStyle.width, padding: inputBoxStyle.padding, fontSize: inputBoxStyle.fontSize }} placeholder="Email" />
-                            <Input name='bio' value={registerForm.bio} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: inputBoxStyle.width, padding: inputBoxStyle.padding, fontSize: inputBoxStyle.fontSize }} placeholder="Bio" />
-                            <Input name='password' value={registerForm.password} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: inputBoxStyle.width, padding: inputBoxStyle.padding, fontSize: inputBoxStyle.fontSize }} placeholder="Password" />
-                            <Input name='confirmPassword' value={registerForm.confirmPassword} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: inputBoxStyle.width, padding: inputBoxStyle.padding, fontSize: inputBoxStyle.fontSize }} placeholder="Confirm password" />
-                            <Button color="primary" variant="filled" style={{
-                                width: buttonStyle.width,
-                                fontSize: buttonStyle.fontSize,
-                                padding: buttonStyle.padding,
-                                borderRadius: buttonStyle.borderRadius,
-                                fontWeight: buttonStyle.fontWeight
-                            }} onClick={(e) => console.log(registerForm)} >SignUp</Button>
+                        <div className='flex gap-4 mt-25 flex-col items-center  justify-center'>
+                            <Input name='name' value={registerForm.name} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: '50%' }} placeholder="Name" />
+                            <Input name='email' value={registerForm.email} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: '50%' }} placeholder="Email" />
+                            {/* <Input name='bio' value={registerForm.bio} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: '50%' }} placeholder="Bio" /> */}
+                            {/* <Input name='password' value={registerForm.password} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: '50%' }} placeholder="Password" />
+                            <Input name='confirmPassword' value={registerForm.confirmPassword} onChange={e => HandleChange(e, setRegisterForm)} style={{ width: '50%' }} placeholder="Confirm password" /> */}
+                            <Button color="primary" variant="solid" style={{}} onClick={(e) => console.log(registerForm)} >next</Button>
 
 
                         </div>
@@ -74,7 +98,44 @@ const Register = () => {
 
 
                 </div>
-                <div className="absolute inset-y-0 left-0 backdrop-sepia-50 opacity-40 z-10 bg-blue-800 h-full w-1/3  ">
+                <div className="absolute flex flex-col inset-y-0 left-0 opacity-70 justify-center items-end z-10 bg-themeColor h-full w-1/3  ">
+
+                    <div className='w-1/3'></div>
+
+                    <div className=' w-2/3 pr-14 '>
+
+
+                        <div className='  '> <img src={logo} alt="" /> </div>
+
+                        <div className=''>
+                            <Steps
+                                current={current}
+                                onChange={onChange}
+
+                                direction="vertical"
+                                items={[
+                                    {
+                                        title: 'Step 1',
+                                        description,
+                                    },
+                                    {
+                                        title: 'Step 2',
+                                        description,
+                                    },
+                                    {
+                                        title: 'Step 3',
+                                        description,
+                                    },
+                                ]}
+                            />
+
+                        </div>
+
+
+                    </div>
+
+
+
 
                 </div>
 
