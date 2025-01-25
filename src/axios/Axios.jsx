@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { Constant } from "../utlis/Constants";
+import { Constant } from "../utils/Constants";
 
 
 
