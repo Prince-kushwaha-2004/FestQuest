@@ -3,7 +3,6 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 function App() {
-
   return (
     <>
       <Routes>
@@ -12,7 +11,7 @@ function App() {
         <Route path="register" element={<Register />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
