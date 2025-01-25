@@ -1,14 +1,8 @@
-import { Button, Input, ConfigProvider } from "antd";
+import { ConfigProvider, Input } from "antd";
 import React from "react";
 import bg1 from "../assets/bg10.jpeg";
 import logo from "../assets/festLogo.png";
 const Login = () => {
-  const buttonStyle = {
-    width: "100%",
-    fontSize: "1.5rem",
-    padding: "1.5rem 2rem",
-    borderRadius: "1.7rem",
-  };
   return (
     <ConfigProvider
       theme={{
@@ -21,11 +15,7 @@ const Login = () => {
             paddingInline: 16,
             activeBorderColor: "#00637C",
             hoverBorderColor: "#FFBF61",
-          },
-          Button: {
-            defaultBg: "#00637C",
-            defaultHoverBg: "35B5AC",
-          },
+          }
         },
       }}
     >
@@ -39,23 +29,15 @@ const Login = () => {
               <img src={logo} alt="" />
               <Input placeholder="Email" tyle="email" size="large" />
               <Input.Password size="large" placeholder="Password" />
-              <div>
-                <Button
-                  size="large"
-                  type="submit"
-                  variant="solid"
-                  color="primary"
-                  style={buttonStyle}
-                >
-                  Login
-                </Button>
-                <div>
+              <div className="w-full">
+                <button className="w-full bg-primary text-3xl text-white font-bold py-2 rounded-3xl hover:bg-primary2">Login</button>
+                <div className="mt-4" >
                   <p className="text-md mt-2 text-neutral-600 text-center">
                     Don't have an account yet?{" "}
                   </p>
                   <p className="text-md  text-neutral-600 text-center">
-                    Sign up as <span className="text-orange-300"> user</span> /{" "}
-                    <span className="text-orange-300">organisation</span>{" "}
+                    Sign up as <span className="text-secondary hover:text-primary"> user</span> /{" "}
+                    <span className="text-secondary hover:text-primary">organisation</span>{" "}
                   </p>
                 </div>
               </div>
