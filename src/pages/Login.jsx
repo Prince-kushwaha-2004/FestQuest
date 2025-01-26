@@ -30,8 +30,8 @@ const Login = () => {
               <Input placeholder="Email" tyle="email" size="large" />
               <Input.Password size="large" placeholder="Password" />
               <div className="w-full">
-                <button className="w-full bg-primary text-2xl font-semibold text-white py-2 rounded-xl hover:bg-primary2">
-                  LOGIN
+                <button className="w-full transition-all hover:scale-103 bg-primary text-2xl font-medium text-white py-2 rounded-xl hover:bg-primary2">
+                  Login
                 </button>
                 <div className="mt-3">
                   <p className="text-md mt-2 text-gray-500 text-center">

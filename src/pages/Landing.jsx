@@ -167,13 +167,13 @@ const LandingPage = () => {
     <div className="min-h-screen flex flex-col">
       <nav className="bg-white/80 backdrop-blur-sm">
         <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-          <div className="flex items-center">
+          <div className="flex items-center transition-all hover:scale-103">
             <img src="src/assets/festLogo.png" className="h-12" alt="Logo" />
           </div>
           <div className="flex items-center space-x-4">
             <Link
               to="login"
-              className="px-6 py-2 text-lg bg-[#00637C] text-white rounded-full hover:bg-[#00637cc0] "
+              className="px-6 py-2 text-lg transition-all hover:scale-103 bg-[#00637C] text-white rounded-full hover:bg-[#00637cc0] "
             >
               Login
             </Link>
@@ -213,7 +213,7 @@ const LandingPage = () => {
           intuitive event planning platform.
         </p>
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="border-1 border-amber-400 bg-yellow-50 backdrop-blur-sm shadow-md rounded-lg p-8 hover:shadow-xl">
+          <div className="border-1 transition-all hover:scale-103 border-amber-400 bg-yellow-50 backdrop-blur-sm shadow-md rounded-lg p-8 hover:shadow-2xl">
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
               Seamless Integration
             </h3>
@@ -222,7 +222,7 @@ const LandingPage = () => {
               management workflows.
             </p>
           </div>
-          <div className="border-1 border-teal-700 bg-cyan-50 backdrop-blur-sm shadow-md rounded-lg p-8 hover:shadow-xl ">
+          <div className="border-1 transition-all hover:scale-103 border-teal-700 bg-cyan-50 backdrop-blur-sm shadow-md rounded-lg p-8 hover:shadow-2xl ">
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
               Real-Time Tracking
             </h3>
@@ -231,7 +231,7 @@ const LandingPage = () => {
               your events.
             </p>
           </div>
-          <div className=" backdrop-blur-sm border-1 border-red-800 bg-red-50 shadow-md rounded-lg p-8 hover:shadow-xl ">
+          <div className="transition-all hover:scale-103 backdrop-blur-sm border-1 border-red-800 bg-red-50 shadow-md rounded-lg p-8 hover:shadow-2xl ">
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
               Comprehensive Planning
             </h3>
