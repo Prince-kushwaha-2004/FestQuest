@@ -12,14 +12,5 @@ function Dashboard() {
       <Outlet />
     </div>
   );
-  const alert = () => {
-    toast.error("Hello World");
-  };
-  return (
-    <div className="flex w-screen h-screen bg-[#e8f2fb9f]">
-      <SideBar />
-      <Outlet />
-    </div>
-  );
 }
 export default Dashboard;
