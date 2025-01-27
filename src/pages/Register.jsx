@@ -55,7 +55,7 @@ const Register = () => {
       title: "Step 3",
       description: "Confirm password",
     },
-  ]
+  ];
 
   return (
     <>
@@ -76,38 +76,33 @@ const Register = () => {
               Button: {
                 paddingInline: 29,
                 paddingBlock: 36,
-                defaultBg: '#00637C'
-
+                defaultBg: "#00637C",
               },
               Steps: {
-                colorPrimary: '#00637C',
+                colorPrimary: "#00637C",
                 colorText: "#000",
                 colorTextDisabled: "#FFBF00",
                 colorTextQuaternary: "#FFBF00",
                 fontSize: 20,
-                lineHeight: 6
+                lineHeight: 6,
               },
               Select: {
                 activeBorderColor: "#00637C",
                 hoverBorderColor: "#FFBF61",
-
-              }
+              },
             },
           }}
         >
           <div className="absolute  flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10  items-end z-10 bg-themeColor/10 h-full w-1/3  ">
-
             <div className=" w-2/3  ">
-
-              <StepwiseProcess current={current} itemsArray={processStep} logo={logo} />
-
-
+              <StepwiseProcess
+                current={current}
+                itemsArray={processStep}
+                logo={logo}
+              />
             </div>
           </div>
           <div className="drop-shadow-md static z-0 rounded-2xl self-center   bg-[#2847270e] shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
-
-
-
             <div className="flex flex-col justify-center items-center gap-20  lg:w-2/3 w-full">
               <div className="flex lg:hidden  w-2/3">
                 <img src={logo} alt="" />
@@ -118,9 +113,8 @@ const Register = () => {
               </div>
 
               <div className="flex md:w-2/3 w-full  gap-4  flex-col items-center  justify-center  ">
-
-                {
-                  current == 0 ? <>
+                {current == 0 ? (
+                  <>
                     <Input
                       name="name"
                       value={registerForm.name}
@@ -142,49 +136,48 @@ const Register = () => {
                       Next
                     </button>
                   </>
-                    : current == 1 ?
-                      <>
-                        <Input.OTP
-                          formatter={(str) => str.toUpperCase()}
-                          {...sharedProps}
-                        />
+                ) : current == 1 ? (
+                  <>
+                    <Input.OTP
+                      formatter={(str) => str.toUpperCase()}
+                      {...sharedProps}
+                    />
 
-                        <button
-                          onClick={(e) => setCurrent(2)}
-                          className="w-1/3 mt-10 bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
-                        >
-                          Next
-                        </button>
-
-                      </> :
-                      current == 2 ? <>
-
-                        <Input
-                          name="password"
-                          value={registerForm.password}
-                          onChange={(e) => HandleChange(e, setRegisterForm)}
-                          placeholder="Password"
-                        />
-                        <Input
-                          name="confirmPassword"
-                          value={registerForm.confirmPassword}
-                          onChange={(e) => HandleChange(e, setRegisterForm)}
-                          placeholder="Confirm password"
-                        />
-                        <button
-                          onClick={(e) => console.log(registerForm)}
-                          className="w-full bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
-                        >
-                          Register
-                        </button>
-                      </> : <></>
-                }
+                    <button
+                      onClick={(e) => setCurrent(2)}
+                      className="w-1/3 mt-10 bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
+                    >
+                      Next
+                    </button>
+                  </>
+                ) : current == 2 ? (
+                  <>
+                    <Input
+                      name="password"
+                      value={registerForm.password}
+                      onChange={(e) => HandleChange(e, setRegisterForm)}
+                      placeholder="Password"
+                    />
+                    <Input
+                      name="confirmPassword"
+                      value={registerForm.confirmPassword}
+                      onChange={(e) => HandleChange(e, setRegisterForm)}
+                      placeholder="Confirm password"
+                    />
+                    <button
+                      onClick={(e) => console.log(registerForm)}
+                      className="w-full bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
+                    >
+                      Register
+                    </button>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
 
-
-
               <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10   w-full">
-                <button className="px-6 py-3 rounded-md bg-blue-400/10 " >
+                <button className="px-6 py-3 rounded-md bg-blue-400/10 ">
                   <div className="flex gap-3 items-center ">
                     <FcGoogle />
                     <span>Register with Google</span>
@@ -199,15 +192,11 @@ const Register = () => {
                     </span>{" "}
                   </p>
                 </div>
-
               </div>
             </div>
-
           </div>
-
-        </ConfigProvider >
-      </div >
-
+        </ConfigProvider>
+      </div>
     </>
   );
 };

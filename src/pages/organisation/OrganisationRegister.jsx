@@ -8,18 +8,16 @@ import StepwiseProcess from "../../components/StepwiseProcess";
 import HandleChange from "../../utils/Function";
 
 const OrganisationRegister = () => {
-
     const [registerForm, setRegisterForm] = useState({
         name: "",
-        address: '',
-        Pincode: '',
-        type: '',
+        address: "",
+        Pincode: "",
+        type: "",
         email: "",
         bio: "",
         password: "",
         confirmPassword: "",
     });
-
 
     const getOTP = () => {
         const request = {
@@ -33,10 +31,10 @@ const OrganisationRegister = () => {
 
     const [current, setCurrent] = useState(0);
     const onChange = (text) => {
-        console.log('onChange:', text);
+        console.log("onChange:", text);
     };
     const onInput = (value) => {
-        console.log('onInput:', value);
+        console.log("onInput:", value);
     };
 
     useEffect(() => { }, []);
@@ -128,45 +126,40 @@ const OrganisationRegister = () => {
                             </div>
 
                             <div className="flex md:w-2/3 w-full  gap-4  flex-col items-center  justify-center  ">
-
-                                {
-                                    current == 0 ? <>
+                                {current == 0 ? (
+                                    <>
                                         <Input
                                             name="name"
                                             value={registerForm.name}
                                             onChange={(e) => HandleChange(e, setRegisterForm)}
-
                                             placeholder="Name"
                                         />
                                         <Select
                                             defaultValue="Organisation Type"
                                             size="large"
                                             style={{
-                                                width: '100%',
+                                                width: "100%",
                                             }}
                                             options={[
                                                 {
-                                                    value: 'School',
-                                                    label: 'School',
+                                                    value: "School",
+                                                    label: "School",
                                                 },
                                                 {
-                                                    value: 'Organisation',
-                                                    label: 'College',
+                                                    value: "Organisation",
+                                                    label: "College",
                                                 },
                                                 {
-                                                    value: 'other',
-                                                    label: 'Other',
-                                                }
-
+                                                    value: "other",
+                                                    label: "Other",
+                                                },
                                             ]}
                                         />
-
 
                                         <Input
                                             name="email"
                                             value={registerForm.email}
                                             onChange={(e) => HandleChange(e, setRegisterForm)}
-
                                             placeholder="Email"
                                         />
 
@@ -179,100 +172,106 @@ const OrganisationRegister = () => {
                                             Next
                                         </button>
                                     </>
-                                        : current == 1 ?
-                                            <>
+                                ) : current == 1 ? (
+                                    <>
+                                        <Input.OTP
+                                            formatter={(str) => str.toUpperCase()}
+                                            {...sharedProps}
+                                        />
 
-                                                <Input.OTP formatter={(str) => str.toUpperCase()} {...sharedProps} />
+                                        <button
+                                            onClick={(e) => setCurrent(2)}
+                                            className="w-1/3 mt-8 bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
+                                        >
+                                            Next
+                                        </button>
+                                    </>
+                                ) : current == 2 ? (
+                                    <>
+                                        <Input
+                                            name="password"
+                                            value={registerForm.password}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="Password"
+                                        />
+                                        <Input
+                                            name="confirmPassword"
+                                            value={registerForm.confirmPassword}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="Confirm password"
+                                        />
 
-                                                <button
-                                                    onClick={(e) => setCurrent(2)}
-                                                    className="w-1/3 mt-8 bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
-                                                >
-                                                    Next
-                                                </button>
+                                        <button
+                                            onClick={(e) => setCurrent(3)}
+                                            className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
+                                        >
+                                            next
+                                        </button>
+                                    </>
+                                ) : current == 3 ? (
+                                    <>
+                                        <Input
+                                            name="address"
+                                            value={registerForm.address}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="address"
+                                        />
+                                        <Input
+                                            name="Pincode"
+                                            value={registerForm.Pincode}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="Pincode"
+                                        />
+                                        <Select
+                                            defaultValue="City"
+                                            size="large"
+                                            style={{ width: "100%" }}
+                                            options={[
+                                                {
+                                                    value: "School",
+                                                    label: "School",
+                                                },
+                                                {
+                                                    value: "Organisation",
+                                                    label: "Organisation",
+                                                },
+                                                {
+                                                    value: "other",
+                                                    label: "Other",
+                                                },
+                                            ]}
+                                        />
+                                        <Select
+                                            defaultValue="State"
+                                            size="large"
+                                            style={{ width: "100%" }}
+                                            options={[
+                                                {
+                                                    value: "School",
+                                                    label: "School",
+                                                },
+                                                {
+                                                    value: "Organisation",
+                                                    label: "Organisation",
+                                                },
+                                                {
+                                                    value: "other",
+                                                    label: "Other",
+                                                },
+                                            ]}
+                                        />
 
-                                            </> :
-                                            current == 2 ? <>
-
-                                                <Input name='password' value={registerForm.password} onChange={e => HandleChange(e, setRegisterForm)} placeholder="Password" />
-                                                <Input name='confirmPassword' value={registerForm.confirmPassword} onChange={e => HandleChange(e, setRegisterForm)} placeholder="Confirm password" />
-
-                                                <button
-                                                    onClick={(e) => setCurrent(3)}
-                                                    className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
-                                                >
-                                                    next
-                                                </button>
-                                            </> : current == 3 ? <>
-
-                                                <Input
-                                                    name="address"
-                                                    value={registerForm.address}
-                                                    onChange={(e) => HandleChange(e, setRegisterForm)}
-
-                                                    placeholder="address"
-                                                />
-                                                <Input
-                                                    name="Pincode"
-                                                    value={registerForm.Pincode}
-                                                    onChange={(e) => HandleChange(e, setRegisterForm)}
-
-                                                    placeholder="Pincode"
-                                                />
-                                                <Select
-                                                    defaultValue="City"
-                                                    size="large"
-                                                    style={{ width: '100%' }}
-
-                                                    options={[
-                                                        {
-                                                            value: 'School',
-                                                            label: 'School',
-                                                        },
-                                                        {
-                                                            value: 'Organisation',
-                                                            label: 'Organisation',
-                                                        },
-                                                        {
-                                                            value: 'other',
-                                                            label: 'Other',
-                                                        }
-
-                                                    ]}
-                                                />
-                                                <Select
-                                                    defaultValue="State"
-                                                    size="large"
-                                                    style={{ width: '100%' }}
-
-                                                    options={[
-                                                        {
-                                                            value: 'School',
-                                                            label: 'School',
-                                                        },
-                                                        {
-                                                            value: 'Organisation',
-                                                            label: 'Organisation',
-                                                        },
-                                                        {
-                                                            value: 'other',
-                                                            label: 'Other',
-                                                        }
-
-                                                    ]}
-                                                />
-
-                                                <button
-                                                    onClick={(e) => setCurrent(3)}
-                                                    className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
-                                                >
-                                                    Sign Up
-                                                </button>
-                                            </> : <></>
-                                }
+                                        <button
+                                            onClick={(e) => setCurrent(3)}
+                                            className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
+                                        >
+                                            Sign Up
+                                        </button>
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
                             </div>
-
-
 
                             <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10   w-full">
                                 <button className="px-6 py-3 rounded-md bg-blue-400/10 " >
@@ -303,6 +302,4 @@ const OrganisationRegister = () => {
     );
 };
 
-
-
-export default OrganisationRegister
+export default OrganisationRegister;
