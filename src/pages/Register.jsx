@@ -47,9 +47,9 @@ const Register = () => {
           components: {
             Input: {
               inputFontSizeLG: 19,
-              paddingBlock: 7,
+              paddingBlock: 10,
               inputFontSize: 10,
-              paddingInline: 16,
+              paddingInline: 20,
               activeBorderColor: "#00637C",
               hoverBorderColor: "#FFBF61",
             },
