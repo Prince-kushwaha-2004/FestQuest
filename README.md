@@ -1,5 +1,5 @@
-# React + Vite
-# FestQuest - The All In One Event Management Platform  
+# FestQuest
+# The All In One Event Management Platform  
 
 This Event Management Platform is built using React with Vite for a blazing-fast development experience and styled using Tailwind CSS. The platform allows users to seamlessly manage events with features designed for organizers and attendees alike.
 
@@ -24,13 +24,13 @@ Receive Notifications: Stay updated on event reminders or changes.
 Installation and Setup :
 
 1. Clone the repository -
-   git clone https://github.com/your-username/event-management-platform.git
+   git clone https://github.com/Prince-kushwaha-2004/FestQuest.git
    cd FestQuest
 
-2. Install dependencies -
+3. Install dependencies -
    npm install
 
-3. Run the development server -
+4. Run the development server -
    npm run dev
 
 
