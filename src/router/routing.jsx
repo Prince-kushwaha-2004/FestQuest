@@ -16,7 +16,6 @@ function Routing() {
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path="orgregister" element={<OrganisationRegister />} />
-
                 <Route path="Dashboard" element={<Dashboard />} >
                     <Route index element={
                         <ProtectedRoute>
