@@ -1,4 +1,5 @@
 import { Button, ConfigProvider, Input, Select } from "antd";
+import { FcGoogle } from "react-icons/fc";
 
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/festLogo.png";
@@ -19,7 +20,6 @@ const OrganisationRegister = () => {
         confirmPassword: "",
     });
 
-    const [next, setNextState] = useState(0)
 
     const getOTP = () => {
         const request = {
@@ -48,16 +48,20 @@ const OrganisationRegister = () => {
 
     const items = [
         {
-            key: '1',
-            label: "School",
+            title: "Email verification",
+            description: "Email verification",
         },
         {
-            key: '2',
-            label: "College",
+            title: "Step 2",
+            description: "OTP confirmation",
         },
         {
-            key: '3',
-            label: "Other",
+            title: "Step 3",
+            description: "Password",
+        },
+        {
+            title: "Step 4",
+            description: "Address",
         },
     ];
 
@@ -104,21 +108,21 @@ const OrganisationRegister = () => {
 
                         <div className=" w-2/3  ">
 
-                            <StepwiseProcess logo={logo} current={current} />
+                            <StepwiseProcess logo={logo} itemsArray={items} current={current} />
 
 
                         </div>
                     </div>
                     <div className="drop-shadow-md static z-0 rounded-2xl self-center   bg-[#2847270e] shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
 
-                        <div className="w-1/2  md:w-1/3 p-4 hidden sm:flex flex-col justify-center items-center lg:hidden">
+                        {/* <div className="w-1/2  md:w-1/3 p-4 hidden sm:flex flex-col justify-center items-center lg:hidden">
                             <StepwiseProcess logo={logo} current={current} />
 
-                        </div>
+                        </div> */}
 
-                        <div className="flex flex-col justify-center items-center gap-20  md:w-2/3 w-full">
+                        <div className="flex flex-col justify-center items-center gap-20  lg:w-2/3 w-full">
 
-                            <div className="flex justify-center  sm:text-4xl text-2xl font-bold text-themeColor ">
+                            <div className="flex justify-center  sm:text-4xl text-3xl font-bold text-themeColor ">
                                 Create your free account
                             </div>
 
@@ -267,11 +271,21 @@ const OrganisationRegister = () => {
                                 }
                             </div>
 
-                            <div className="flex  justify-center items-center px-8 mb-10 font-semibold  w-full">
-                                <div className="px-4 ">Already have an account? </div>
-                                <Button color="default" variant="filled">
-                                    Sign in
-                                </Button>
+
+
+                            <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10   w-full">
+                                <button className="px-6 py-3 rounded-md bg-blue-400/10 " >
+                                    <div className="flex gap-3 items-center ">
+                                        <FcGoogle />
+                                        <span>Register with Google</span>
+                                    </div>
+                                </button>
+                                <div className="flex font-semibold">
+                                    <div className="px-4 ">Already have an account? </div>
+                                    <Button color="default" variant="filled">
+                                        Sign in
+                                    </Button>
+                                </div>
 
                             </div>
                         </div>
