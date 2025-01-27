@@ -4,7 +4,7 @@ import { IoLocationOutline } from "react-icons/io5";
 
 function Card2() {
   return (
-    <div className="flex min-w-74 flex-col gap-4 mx-4 p-2 rounded-2xl justify-between bg-gradient-to-br from-[#abc3da3f] to-[#c3c49e5b] border-slate-400 hover:border  transition-all hover:shadow-xl cursor-pointer">
+    <div className="flex min-w-74 flex-col gap-4 mx-4 justify-between bg-[#2847270e] shadow border border-slate-300 w-full  p-4 rounded-4xl hover:border  transition-all hover:shadow-xl cursor-pointer">
       <div className="flex gap-4">
         <img
           src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
