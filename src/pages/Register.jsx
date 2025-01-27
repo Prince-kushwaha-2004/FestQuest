@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Input } from "antd";
+import { ConfigProvider, Input } from "antd";
 import { FcGoogle } from "react-icons/fc";
 
 import React, { useEffect, useState } from "react";
@@ -35,7 +35,7 @@ const Register = () => {
     console.log("onInput:", value);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   const description = "This is a description.";
   const sharedProps = {
     onChange,
@@ -183,11 +183,14 @@ const Register = () => {
                     <span>Register with Google</span>
                   </div>
                 </button>
-                <div className="flex font-semibold">
-                  <div className="px-4 ">Already have an account? </div>
-                  <Button color="default" variant="filled">
-                    Sign in
-                  </Button>
+                <div className="flex justify-center items-center mt-3">
+                  <p className="text-md text-gray-800 text-center">
+                    Already have an account?{" "}
+                    <span className="text-secondary hover:text-primary">
+                      {" "}
+                      Sign In
+                    </span>{" "}
+                  </p>
                 </div>
               </div>
             </div>
@@ -199,10 +202,3 @@ const Register = () => {
 };
 
 export default Register;
-
-{
-  /*  */
-}
-{
-  /* <StepwiseProcess current={current} itemsArray={processStep} logo={logo} /> */
-}
