@@ -1,4 +1,5 @@
-import { Button, ConfigProvider, Input, Select } from "antd";
+import { ConfigProvider, Input, Select } from "antd";
+import { FcGoogle } from "react-icons/fc";
 
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/festLogo.png";
@@ -7,19 +8,16 @@ import StepwiseProcess from "../../components/StepwiseProcess";
 import HandleChange from "../../utils/Function";
 
 const OrganisationRegister = () => {
-
     const [registerForm, setRegisterForm] = useState({
         name: "",
-        address: '',
-        Pincode: '',
-        type: '',
+        address: "",
+        Pincode: "",
+        type: "",
         email: "",
         bio: "",
         password: "",
         confirmPassword: "",
     });
-
-    const [next, setNextState] = useState(0)
 
     const getOTP = () => {
         const request = {
@@ -33,10 +31,10 @@ const OrganisationRegister = () => {
 
     const [current, setCurrent] = useState(0);
     const onChange = (text) => {
-        console.log('onChange:', text);
+        console.log("onChange:", text);
     };
     const onInput = (value) => {
-        console.log('onInput:', value);
+        console.log("onInput:", value);
     };
 
     useEffect(() => { }, []);
@@ -48,16 +46,20 @@ const OrganisationRegister = () => {
 
     const items = [
         {
-            key: '1',
-            label: "School",
+            title: "Email verification",
+            description: "Email verification",
         },
         {
-            key: '2',
-            label: "College",
+            title: "Step 2",
+            description: "OTP confirmation",
         },
         {
-            key: '3',
-            label: "Other",
+            title: "Step 3",
+            description: "Password",
+        },
+        {
+            title: "Step 4",
+            description: "Address",
         },
     ];
 
@@ -104,64 +106,60 @@ const OrganisationRegister = () => {
 
                         <div className=" w-2/3  ">
 
-                            <StepwiseProcess logo={logo} current={current} />
+                            <StepwiseProcess logo={logo} itemsArray={items} current={current} />
 
 
                         </div>
                     </div>
                     <div className="drop-shadow-md static z-0 rounded-2xl self-center   bg-[#2847270e] shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
 
-                        <div className="w-1/2  md:w-1/3 p-4 hidden sm:flex flex-col justify-center items-center lg:hidden">
-                            <StepwiseProcess logo={logo} current={current} />
 
-                        </div>
 
-                        <div className="flex flex-col justify-center items-center gap-20  md:w-2/3 w-full">
+                        <div className="flex flex-col justify-center items-center gap-20  lg:w-2/3 w-full">
+                            <div className="flex lg:hidden  w-2/3">
+                                <img src={logo} alt="" />
+                            </div>
 
-                            <div className="flex justify-center  sm:text-4xl text-2xl font-bold text-themeColor ">
+
+                            <div className="flex justify-center  sm:text-4xl text-3xl font-bold text-themeColor ">
                                 Create your free account
                             </div>
 
                             <div className="flex md:w-2/3 w-full  gap-4  flex-col items-center  justify-center  ">
-
-                                {
-                                    current == 0 ? <>
+                                {current == 0 ? (
+                                    <>
                                         <Input
                                             name="name"
                                             value={registerForm.name}
                                             onChange={(e) => HandleChange(e, setRegisterForm)}
-
                                             placeholder="Name"
                                         />
                                         <Select
                                             defaultValue="Organisation Type"
                                             size="large"
                                             style={{
-                                                width: '100%',
+                                                width: "100%",
                                             }}
                                             options={[
                                                 {
-                                                    value: 'School',
-                                                    label: 'School',
+                                                    value: "School",
+                                                    label: "School",
                                                 },
                                                 {
-                                                    value: 'Organisation',
-                                                    label: 'College',
+                                                    value: "Organisation",
+                                                    label: "College",
                                                 },
                                                 {
-                                                    value: 'other',
-                                                    label: 'Other',
-                                                }
-
+                                                    value: "other",
+                                                    label: "Other",
+                                                },
                                             ]}
                                         />
-
 
                                         <Input
                                             name="email"
                                             value={registerForm.email}
                                             onChange={(e) => HandleChange(e, setRegisterForm)}
-
                                             placeholder="Email"
                                         />
 
@@ -174,104 +172,123 @@ const OrganisationRegister = () => {
                                             Next
                                         </button>
                                     </>
-                                        : current == 1 ?
-                                            <>
+                                ) : current == 1 ? (
+                                    <>
+                                        <Input.OTP
+                                            formatter={(str) => str.toUpperCase()}
+                                            {...sharedProps}
+                                        />
 
-                                                <Input.OTP formatter={(str) => str.toUpperCase()} {...sharedProps} />
+                                        <button
+                                            onClick={(e) => setCurrent(2)}
+                                            className="w-1/3 mt-8 bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
+                                        >
+                                            Next
+                                        </button>
+                                    </>
+                                ) : current == 2 ? (
+                                    <>
+                                        <Input
+                                            name="password"
+                                            value={registerForm.password}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="Password"
+                                        />
+                                        <Input
+                                            name="confirmPassword"
+                                            value={registerForm.confirmPassword}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="Confirm password"
+                                        />
 
-                                                <button
-                                                    onClick={(e) => setCurrent(2)}
-                                                    className="w-1/3 mt-8 bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
-                                                >
-                                                    Next
-                                                </button>
+                                        <button
+                                            onClick={(e) => setCurrent(3)}
+                                            className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
+                                        >
+                                            next
+                                        </button>
+                                    </>
+                                ) : current == 3 ? (
+                                    <>
+                                        <Input
+                                            name="address"
+                                            value={registerForm.address}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="address"
+                                        />
+                                        <Input
+                                            name="Pincode"
+                                            value={registerForm.Pincode}
+                                            onChange={(e) => HandleChange(e, setRegisterForm)}
+                                            placeholder="Pincode"
+                                        />
+                                        <Select
+                                            defaultValue="City"
+                                            size="large"
+                                            style={{ width: "100%" }}
+                                            options={[
+                                                {
+                                                    value: "School",
+                                                    label: "School",
+                                                },
+                                                {
+                                                    value: "Organisation",
+                                                    label: "Organisation",
+                                                },
+                                                {
+                                                    value: "other",
+                                                    label: "Other",
+                                                },
+                                            ]}
+                                        />
+                                        <Select
+                                            defaultValue="State"
+                                            size="large"
+                                            style={{ width: "100%" }}
+                                            options={[
+                                                {
+                                                    value: "School",
+                                                    label: "School",
+                                                },
+                                                {
+                                                    value: "Organisation",
+                                                    label: "Organisation",
+                                                },
+                                                {
+                                                    value: "other",
+                                                    label: "Other",
+                                                },
+                                            ]}
+                                        />
 
-                                            </> :
-                                            current == 2 ? <>
-
-                                                <Input name='password' value={registerForm.password} onChange={e => HandleChange(e, setRegisterForm)} placeholder="Password" />
-                                                <Input name='confirmPassword' value={registerForm.confirmPassword} onChange={e => HandleChange(e, setRegisterForm)} placeholder="Confirm password" />
-
-                                                <button
-                                                    onClick={(e) => setCurrent(3)}
-                                                    className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
-                                                >
-                                                    next
-                                                </button>
-                                            </> : current == 3 ? <>
-
-                                                <Input
-                                                    name="address"
-                                                    value={registerForm.address}
-                                                    onChange={(e) => HandleChange(e, setRegisterForm)}
-
-                                                    placeholder="address"
-                                                />
-                                                <Input
-                                                    name="Pincode"
-                                                    value={registerForm.Pincode}
-                                                    onChange={(e) => HandleChange(e, setRegisterForm)}
-
-                                                    placeholder="Pincode"
-                                                />
-                                                <Select
-                                                    defaultValue="City"
-                                                    size="large"
-                                                    style={{ width: '100%' }}
-
-                                                    options={[
-                                                        {
-                                                            value: 'School',
-                                                            label: 'School',
-                                                        },
-                                                        {
-                                                            value: 'Organisation',
-                                                            label: 'Organisation',
-                                                        },
-                                                        {
-                                                            value: 'other',
-                                                            label: 'Other',
-                                                        }
-
-                                                    ]}
-                                                />
-                                                <Select
-                                                    defaultValue="State"
-                                                    size="large"
-                                                    style={{ width: '100%' }}
-
-                                                    options={[
-                                                        {
-                                                            value: 'School',
-                                                            label: 'School',
-                                                        },
-                                                        {
-                                                            value: 'Organisation',
-                                                            label: 'Organisation',
-                                                        },
-                                                        {
-                                                            value: 'other',
-                                                            label: 'Other',
-                                                        }
-
-                                                    ]}
-                                                />
-
-                                                <button
-                                                    onClick={(e) => setCurrent(3)}
-                                                    className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
-                                                >
-                                                    Sign Up
-                                                </button>
-                                            </> : <></>
-                                }
+                                        <button
+                                            onClick={(e) => setCurrent(3)}
+                                            className="w-full bg-primary text-xl font-semibold text-white py-2 rounded-xl hover:bg-primary2"
+                                        >
+                                            Sign Up
+                                        </button>
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
                             </div>
 
-                            <div className="flex  justify-center items-center px-8 mb-10 font-semibold  w-full">
-                                <div className="px-4 ">Already have an account? </div>
-                                <Button color="default" variant="filled">
-                                    Sign in
-                                </Button>
+                            <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10   w-full">
+                                <button className="px-6 py-3 rounded-md bg-blue-400/10 " >
+                                    <div className="flex gap-3 items-center ">
+                                        <FcGoogle />
+                                        <span>Register with Google</span>
+                                    </div>
+                                </button>
+                                <div className="flex justify-center items-center mt-3">
+                                    <p className="text-md text-gray-800 text-center">
+                                        Already have an account?{" "}
+                                        <span className="text-secondary hover:text-primary">
+                                            {" "}
+                                            Sign In
+                                        </span>{" "}
+                                    </p>
+                                </div>
 
                             </div>
                         </div>
@@ -285,6 +302,4 @@ const OrganisationRegister = () => {
     );
 };
 
-
-
-export default OrganisationRegister
+export default OrganisationRegister;
