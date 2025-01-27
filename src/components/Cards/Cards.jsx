@@ -7,7 +7,7 @@ import { IoLocationOutline, IoPeople } from "react-icons/io5";
 
 function Cards() {
   return (
-    <div className="bg-gradient-to-br from-[#e4f1fe] to-[#f4feea] shadow border border-slate-300 w-full  p-4 rounded-4xl">
+    <div className="bg-[#2847270e] shadow border border-slate-300 w-full  p-4 rounded-4xl">
       <div className="flex justify-between">
         <div className="flex gap-4">
           <img

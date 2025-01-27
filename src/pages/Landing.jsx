@@ -230,7 +230,7 @@ const LandingPage = () => {
         </div>
       </nav>
 
-      <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-gradient-to-br from-[#e4f1fe] via-[#f4feea] to-[#fdeef2] rounded-4xl px-5 md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center">
+      <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-gradient-to-br from-[#ddeeff] to-[#e6f6d6] rounded-4xl px-5 md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center">
         <h1 className="text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-800 text-center leading-tight">
           <BubbleText />
           <BlockInTextCard
@@ -329,7 +329,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-br from-[#e4f1fe] via-[#f4feea] to-[#fdeef2]">
+      <footer className="bg-gradient-to-br from-[#ddeeff] to-[#e6f6d6]">
         <div className="mx-auto w-full p-4 py-6 px-20 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="flex mb-6 md:mb-0 items-center transition-all hover:scale-103">
