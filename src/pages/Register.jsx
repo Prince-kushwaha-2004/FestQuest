@@ -138,7 +138,6 @@ const Register = () => {
               )}
 
               <div className="flex justify-center items-center mt-3">
-                <div> </div>
                 <p className="text-md text-gray-500 text-center">
                   Already have an account?{" "}
                   <span className="text-secondary hover:text-primary">
