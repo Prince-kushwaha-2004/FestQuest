@@ -15,11 +15,11 @@ const Login = () => {
             paddingInline: 16,
             activeBorderColor: "#00637C",
             hoverBorderColor: "#FFBF61",
-          }
+          },
         },
       }}
     >
-      <div className="w-screen h-screen bg-slate-100 flex justify-center items-center">
+      <div className="w-screen h-screen bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] flex justify-center items-center">
         <div className="w-[90%]  sm:w-[80%] md:w-2/3 h-[90%] relative ">
           <div className="h-[80%] gap-4 w-full md:w-2/3 md:px-20 lg:w-[50%] 2xl:w-[50%] p-4 flex flex-col justify-center items-center absolute mt-22 left-0 rounded-4xl bg-white shadow-2xl drop-shadow-xl z-10">
             <form
@@ -30,14 +30,23 @@ const Login = () => {
               <Input placeholder="Email" tyle="email" size="large" />
               <Input.Password size="large" placeholder="Password" />
               <div className="w-full">
-                <button className="w-full bg-primary text-3xl text-white font-bold py-2 rounded-3xl hover:bg-primary2">Login</button>
-                <div className="mt-4" >
-                  <p className="text-md mt-2 text-neutral-600 text-center">
+                <button className="w-full transition-all hover:scale-103 bg-primary text-2xl font-medium text-white py-2 rounded-xl hover:bg-primary2">
+                  Login
+                </button>
+                <div className="mt-3">
+                  <p className="text-md mt-2 text-gray-500 text-center">
                     Don't have an account yet?{" "}
                   </p>
-                  <p className="text-md  text-neutral-600 text-center">
-                    Sign up as <span className="text-secondary hover:text-primary"> user</span> /{" "}
-                    <span className="text-secondary hover:text-primary">organisation</span>{" "}
+                  <p className="text-md text-gray-500 text-center">
+                    Sign up as{" "}
+                    <span className="text-secondary hover:text-primary">
+                      {" "}
+                      user
+                    </span>{" "}
+                    /{" "}
+                    <span className="text-secondary hover:text-primary">
+                      organisation
+                    </span>{" "}
                   </p>
                 </div>
               </div>
