@@ -7,3 +7,13 @@
     --color-primary2: #00637cce;
     --color-secondary: #eea010e5
 }
+
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
