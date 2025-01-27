@@ -1,8 +1,7 @@
-import { CaretDownOutlined } from "@ant-design/icons";
-import { Dropdown, Space } from "antd";
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../components/Nav";
 const LandingPage = () => {
   const NeumorphismButton = () => {
     return (
@@ -12,9 +11,7 @@ const LandingPage = () => {
           flex items-center gap-2 
           text-teal-700 text-lg
           shadow-[-5px_-5px_10px_rgba(255,_255,_255,_0.8),_5px_5px_10px_rgba(0,_0,_0,_0.25)]
-          
           transition-all
-  
           hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)]
           hover:text-teal-700
       `}
@@ -48,7 +45,7 @@ const LandingPage = () => {
     },
     {
       key: "2",
-      label: <Link to="login">Organisation</Link>,
+      label: <Link to="orgregister">Organisation</Link>,
     },
   ];
 
@@ -202,35 +199,7 @@ const LandingPage = () => {
   };
   return (
     <div className="min-h-screen flex flex-col h-screen overflow-y-scroll">
-      <nav className="bg-white/80 backdrop-blur-sm">
-        <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-          <div className="flex items-center transition-all hover:scale-103">
-            <img src="src/assets/festLogo.png" className="h-12" alt="Logo" />
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link to="login">
-              <div className="flex items-center justify-center">
-                <NeumorphismButton />
-              </div>
-            </Link>
-            <Space direction="vertical">
-              <Space wrap>
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottomRight"
-                >
-                  <button className="px-4 py-2 text-[#00637C] text-lg hover:bg-gray-100 rounded-full">
-                    {" "}
-                    Sign Up <CaretDownOutlined />
-                  </button>
-                </Dropdown>
-              </Space>
-            </Space>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-gradient-to-br from-[#ddeeff] to-[#e6f6d6] rounded-4xl px-5 md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center">
         <h1 className="text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-800 text-center leading-tight">
@@ -332,7 +301,7 @@ const LandingPage = () => {
       </section>
 
       <footer className="bg-gradient-to-br from-[#ddeeff] to-[#e6f6d6]">
-        <div className="mx-auto w-full p-4 py-6 px-20 lg:py-8">
+        <div className="mx-auto w-full p-4 py-6 md:px-20 px-8 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="flex mb-6 md:mb-0 items-center transition-all hover:scale-103">
               <img src="src/assets/festLogo.png" className="h-12" alt="Logo" />
