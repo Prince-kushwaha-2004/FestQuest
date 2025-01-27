@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Input, Select } from "antd";
+import { ConfigProvider, Input, Select } from "antd";
 import { FcGoogle } from "react-icons/fc";
 
 import React, { useEffect, useState } from "react";
@@ -115,12 +115,13 @@ const OrganisationRegister = () => {
                     </div>
                     <div className="drop-shadow-md static z-0 rounded-2xl self-center   bg-[#2847270e] shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
 
-                        {/* <div className="w-1/2  md:w-1/3 p-4 hidden sm:flex flex-col justify-center items-center lg:hidden">
-                            <StepwiseProcess logo={logo} current={current} />
 
-                        </div> */}
 
                         <div className="flex flex-col justify-center items-center gap-20  lg:w-2/3 w-full">
+                            <div className="flex lg:hidden  w-2/3">
+                                <img src={logo} alt="" />
+                            </div>
+
 
                             <div className="flex justify-center  sm:text-4xl text-3xl font-bold text-themeColor ">
                                 Create your free account
@@ -280,11 +281,14 @@ const OrganisationRegister = () => {
                                         <span>Register with Google</span>
                                     </div>
                                 </button>
-                                <div className="flex font-semibold">
-                                    <div className="px-4 ">Already have an account? </div>
-                                    <Button color="default" variant="filled">
-                                        Sign in
-                                    </Button>
+                                <div className="flex justify-center items-center mt-3">
+                                    <p className="text-md text-gray-800 text-center">
+                                        Already have an account?{" "}
+                                        <span className="text-secondary hover:text-primary">
+                                            {" "}
+                                            Sign In
+                                        </span>{" "}
+                                    </p>
                                 </div>
 
                             </div>
