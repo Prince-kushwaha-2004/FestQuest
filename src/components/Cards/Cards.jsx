@@ -7,16 +7,18 @@ import { IoLocationOutline, IoPeople } from "react-icons/io5";
 
 function Cards() {
     return (
-        <div className="bg-[#2847270e] backdrop-blur-2xl shadow border border-slate-300 w-full  p-4 rounded-4xl">
+        <div className="bg-[#2847270e] hover:shadow-xl transition-all border border-slate-300 w-full  p-4 rounded-4xl">
             <div className="flex justify-between">
                 <div className="flex gap-4">
                     <img
                         src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
                         alt=""
-                        className="w-12 h-12 rounded-full "
+                        className="w-12 h-12 rounded-full"
                     />
                     <div>
-                        <h1 className="font-bold text-2xl">Hack With India</h1>
+                        <h1 className="font-bold text-2xl cursor-pointer">
+                            Hack With India
+                        </h1>
                         <p className="text-neutral-700 flex gap-1 items-center ">
                             <IoLocationOutline />
                             Online
@@ -45,14 +47,14 @@ function Cards() {
                 />
                 <div className="w-full 2xl:w-1/2 p-8 flex flex-wrap gap-x-4 gap-y-2">
                     <div className="flex gap-4">
-                        <IoIosPeople className="text-[2.7rem] p-2 bg-neutral-200 text-slate-700  shadow rounded-xl " />
+                        <IoIosPeople className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
                         <div className="">
                             <p className="font-semibold text-lg">Registered</p>
                             <p className="text-slate-700 text-sm">1884</p>
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <BsCalendar2Event className="text-[2.7rem] p-2 bg-neutral-200 text-slate-700  shadow rounded-xl " />
+                        <BsCalendar2Event className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
                         <div className="">
                             <p className="font-semibold text-lg">Date</p>
                             <p className="text-slate-700 text-sm">30 Jan 2024</p>
@@ -60,14 +62,14 @@ function Cards() {
                     </div>
 
                     <div className="flex gap-4">
-                        <IoPeople className="text-[2.7rem] p-2 bg-neutral-200 text-slate-700 shadow rounded-xl " />
+                        <IoPeople className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
                         <div className="">
                             <p className="font-semibold text-lg">Team Size</p>
                             <p className="text-slate-700 text-sm">1 - 3 Members</p>
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <IoMdTime className="text-[2.7rem] sm:p-2 bg-neutral-200 text-slate-700  shadow rounded-xl " />
+                        <IoMdTime className="text-[2.7rem] sm:p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
                         <div className="">
                             <p className="font-semibold text-lg">Registration Deadline</p>
                             <p className="text-slate-700 text-sm">3 days left</p>

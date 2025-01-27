@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { FaRegBookmark } from "react-icons/fa6";
 import {
-    FiBarChart,
     FiChevronDown,
     FiChevronsRight,
     FiHome,
-    FiShoppingCart,
-    FiTag,
     FiUsers,
 } from "react-icons/fi";
+import { IoMdDoneAll } from "react-icons/io";
+import { RiCalendarEventLine } from "react-icons/ri";
 import logo from "../../assets/festLogo.png";
 export const SideBar = () => {
     return (
@@ -40,21 +40,21 @@ const Sidebar = () => {
                     open={open}
                 />
                 <Option
-                    Icon={FiShoppingCart}
-                    title="Products"
-                    selected={selected}
-                    setSelected={setSelected}
-                    open={open}
-                />
-                <Option
-                    Icon={FiTag}
+                    Icon={IoMdDoneAll}
                     title="Registered"
                     selected={selected}
                     setSelected={setSelected}
                     open={open}
                 />
                 <Option
-                    Icon={FiBarChart}
+                    Icon={FaRegBookmark}
+                    title="Saved"
+                    selected={selected}
+                    setSelected={setSelected}
+                    open={open}
+                />
+                <Option
+                    Icon={RiCalendarEventLine}
                     title="My Events"
                     selected={selected}
                     setSelected={setSelected}
@@ -80,8 +80,8 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
             layout
             onClick={() => setSelected(title)}
             className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
-                ? "shadow bg-[#6cd4b527]  border border-slate-300"
-                : "text-slate-700 hover:bg-[#1d2f331e] hover:text-black"
+                    ? "shadow bg-[#71f1cb11] border border-slate-300"
+                    : "text-slate-700 hover:bg-[#1d2f331e] hover:text-black"
                 }`}
             style={{
                 padding: open ? "1.5rem" : "1.5rem 1rem",
@@ -110,25 +110,23 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
 
 const TitleSection = ({ open }) => {
     return (
-        <>
-            <div className="mb-10 mt-4  pb-3">
-                <div className={`flex cursor-pointer items-center justify-between  ${open ? "border shadow" : ""}   border-slate-300 rounded-2xl transition-all   hover:scale-103 hover:shadow-lg  `}>
-                    <div className="flex px-8 py-2 items-center gap-2">
-                        {open && (
-                            <motion.div
-                                layout
-                                initial={{ opacity: 0, y: 12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.125 }}
-                            >
-                                <img src={logo} alt="" />
-                            </motion.div>
-                        )}
-                    </div>
-                    {open && <FiChevronDown className="mr-2" />}
+        <div className="mb-10 mt-4 border-slate-300 pb-3">
+            <div className="flex cursor-pointer items-center justify-between shadow border border-slate-300 rounded-2xl transition-all hover:scale-103 hover:shadow-lg">
+                <div className="flex px-8 py-2 items-center gap-2">
+                    {open && (
+                        <motion.div
+                            layout
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.125 }}
+                        >
+                            <img src={logo} alt="" />
+                        </motion.div>
+                    )}
                 </div>
+                {open && <FiChevronDown className="mr-2" />}
             </div>
-        </>
+        </div>
     );
 };
 const ToggleClose = ({ open, setOpen }) => {
