@@ -4,7 +4,7 @@ import Feed from '../pages/User/Feed';
 import OrgFeed from '../pages/organisation/OrgFeed';
 
 const ProtectedRoute = ({ children }) => {
-    const user = "User";
+    const user = "Org";
     let location = useLocation();
 
     if (user == "User") {
