@@ -9,24 +9,27 @@ import Feed from "../pages/User/Feed";
 import Root from "../Root";
 import ProtectedRoute from "./Protected";
 function Routing() {
-    return (
-        <Routes>
-            <Route element={<Root />}>
-                <Route index element={<Landing />} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route path="orgregister" element={<OrganisationRegister />} />
-                <Route path="Dashboard" element={<Dashboard />} >
-                    <Route index element={
-                        <ProtectedRoute>
-                            <Feed />
-                        </ProtectedRoute>
-                    } />
-                    <Route path="event/:id" element={<EventPreview />} />
-                </Route>
-            </Route>
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route element={<Root />}>
+        <Route index element={<Landing />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="orgregister" element={<OrganisationRegister />} />
+        <Route path="Dashboard" element={<Dashboard />}>
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Feed />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="event/:id" element={<EventPreview />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
 }
 
-export default Routing
+export default Routing;

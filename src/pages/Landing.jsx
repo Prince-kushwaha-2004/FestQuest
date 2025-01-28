@@ -1,26 +1,8 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import FeatureCards from "../components/FeatureCards";
 import Nav from "../components/Nav";
 const LandingPage = () => {
-  const NeumorphismButton = () => {
-    return (
-      <button
-        className={`
-          px-4 py-2 rounded-full 
-          flex items-center gap-2 
-          text-teal-700 text-lg
-          shadow-[-5px_-5px_10px_rgba(255,_255,_255,_0.8),_5px_5px_10px_rgba(0,_0,_0,_0.25)]
-          transition-all
-          hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)]
-          hover:text-teal-700
-      `}
-      >
-        <span>Login</span>
-      </button>
-    );
-  };
-
   const BounceCard = ({ className, children }) => {
     return (
       <motion.div
@@ -37,17 +19,6 @@ const LandingPage = () => {
       <h3 className="mx-auto text-center text-3xl font-semibold">{children}</h3>
     );
   };
-
-  const items = [
-    {
-      key: "1",
-      label: <Link to="register">Participant</Link>,
-    },
-    {
-      key: "2",
-      label: <Link to="orgregister">Organisation</Link>,
-    },
-  ];
 
   const BubbleText = () => {
     useEffect(() => {
@@ -201,7 +172,7 @@ const LandingPage = () => {
     <div className="min-h-screen flex flex-col h-screen overflow-y-scroll">
       <Nav />
 
-      <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-gradient-to-br from-[#ddeeff] to-[#e6f6d6] rounded-4xl px-5 md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center">
+      <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-50 rounded-4xl px-5 md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center">
         <h1 className="text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-800 text-center leading-tight">
           <BubbleText />
           <BlockInTextCard
@@ -213,35 +184,7 @@ const LandingPage = () => {
           Efficiently manage your events and boost productivity with our
           intuitive event planning platform.
         </p>
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="border-1 transition-all hover:scale-103 border-amber-400 bg-yellow-50 backdrop-blur-sm shadow-md rounded-lg p-8 hover:shadow-2xl">
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">
-              Seamless Integration
-            </h3>
-            <p className="text-gray-600">
-              Connect with your favorite tools and apps to streamline your event
-              management workflows.
-            </p>
-          </div>
-          <div className="border-1 transition-all hover:scale-103 border-teal-700 bg-cyan-50 backdrop-blur-sm shadow-md rounded-lg p-8 hover:shadow-2xl ">
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">
-              Real-Time Tracking
-            </h3>
-            <p className="text-gray-600">
-              Monitor progress, view task status, and receive timely updates on
-              your events.
-            </p>
-          </div>
-          <div className="transition-all hover:scale-103 backdrop-blur-sm border-1 border-red-800 bg-red-50 shadow-md rounded-lg p-8 hover:shadow-2xl ">
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">
-              Comprehensive Planning
-            </h3>
-            <p className="text-gray-600">
-              Easily create detailed event plans, set deadlines, and assign
-              tasks.
-            </p>
-          </div>
-        </div>
+        <FeatureCards />
       </div>
 
       <section className="mx-auto max-w-7xl px-4 py-12 text-slate-800 mt-10">
@@ -300,7 +243,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-br from-[#ddeeff] to-[#e6f6d6]">
+      <footer className="bg-teal-50">
         <div className="mx-auto w-full p-4 py-6 md:px-20 px-8 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="flex mb-6 md:mb-0 items-center transition-all hover:scale-103">
@@ -311,7 +254,7 @@ const LandingPage = () => {
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   Resources
                 </h2>
-                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <ul className="text-gray-500 font-medium">
                   <li className="mb-4">
                     <a href="https://flowbite.com/" className="hover:underline">
                       FestQuest
@@ -331,7 +274,7 @@ const LandingPage = () => {
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   Follow us
                 </h2>
-                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <ul className="text-gray-500 font-medium">
                   <li className="mb-4">
                     <a
                       href="https://github.com/themesberg/flowbite"
