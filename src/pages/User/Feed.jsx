@@ -1,7 +1,7 @@
 import { Dropdown, Space } from "antd";
+import { motion } from "framer-motion";
 import { React, useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
-import { motion } from "framer-motion";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Card2 from "../../components/Cards/Card2";
@@ -79,6 +79,55 @@ function Feed() {
 
   const [open, setOpen] = useState(false);
 
+  const LocationSelect = () => {
+    const [selected, setSelected] = useState("All Locations");
+
+    const [open, setOpen] = useState(false);
+
+    const locations = ["All Locations", "Delhi", "Noida", "Bangalore"];
+
+    return (
+      <div className="relative">
+        <motion.div animate={open ? "open" : "closed"}>
+          <button
+            onClick={() => setOpen((prev) => !prev)}
+            className="w-[200px] flex items-center justify-between px-4 py-2.5 
+                     bg-white/50 backdrop-blur-sm border border-gray-200 rounded-xl
+                     hover:bg-white/80 hover:shadow-md transition-all duration-300"
+          >
+            <span className="text-gray-700">{selected}</span>
+            <motion.span variants={iconVariants}>
+              <MdOutlineKeyboardArrowDown className="text-gray-500 text-xl" />
+            </motion.span>
+          </button>
+
+          <motion.ul
+            initial={wrapperVariants.closed}
+            variants={wrapperVariants}
+            animate={open ? "open" : "closed"}
+            style={{ originY: "top" }}
+            className="absolute z-10 w-full mt-2 bg-white rounded-xl shadow-lg 
+                     border border-gray-200 overflow-hidden"
+          >
+            {locations.map((location) => (
+              <li
+                key={location}
+                onClick={() => {
+                  setSelected(location);
+                  setOpen(false);
+                }}
+                className="px-4 py-2.5 hover:bg-[#deeff57e] cursor-pointer 
+                         transition-colors duration-200"
+              >
+                {location}
+              </li>
+            ))}
+          </motion.ul>
+        </motion.div>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className=" flex-1 overflow-scroll p-8 no-scrollbar ms-24 xl:ms-0">
@@ -108,13 +157,33 @@ function Feed() {
           </Space>
         </div>
 
-        <div className="flex  gap-4 overflow-scroll no-scrollbar mb-10 lg:hidden">
+        <div className="flex gap-4 overflow-scroll no-scrollbar mb-10 lg:hidden">
           <Card2 />
           <Card2 />
           <Card2 />
           <Card2 />
         </div>
-        <h1 className="text-3xl font-bold text-neutral-800 mb-5">Events</h1>
+        <div className="flex flex-col gap-5 mb-8">
+          <div className="flex items-center justify-between">
+            <h1 className="text-4xl font-bold text-neutral-800">Events</h1>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="Search events..."
+                className="w-full pl-10 pr-4 py-2.5 bg-white/50 backdrop-blur-sm 
+                         border border-gray-200 rounded-xl focus:outline-none 
+                         focus:ring-2 focus:ring-blue-50 focus:border-transparent
+                         transition-all duration-300 hover:bg-white/80 hover:shadow-md"
+              />
+            </div>
+
+            <LocationSelect />
+          </div>
+        </div>
+
         <div className="flex flex-col gap-4">
           <Cards />
           <Cards />
@@ -123,17 +192,17 @@ function Feed() {
         </div>
       </div>
 
-      <div className="w-[25rem] shadow bg-[#2847270e]  border-l border-slate-300 hidden lg:block overflow-scroll no-scrollbar">
+      <div className="w-[25rem] shadow bg-[#2847270e]  border-l border-slate-300 hidden lg:flex flex-col">
         <div className="flex items-center justify-center">
           <motion.div animate={open ? "open" : "closed"} className="relative">
             <button
               onClick={() => setOpen((pv) => !pv)}
               className="flex px-3 rounded-md transition-colors"
             >
-              <div className="mt-4 w-[23rem] flex justify-between py-2 px-4 rounded-2xl hover:border hover:bg-[#deeff57e] border-slate-300 transition-all">
-                <div>
+              <div className="mt-4 w-[23rem] flex justify-between py-2 px-3 rounded-2xl hover:border hover:bg-[#deeff57e] border-slate-300 transition-all">
+                <div className="flex flex-col items-start">
                   <h1 className="text-xl font-bold">Prince Kushwaha</h1>
-                  <p className="text-neutral-700 pl-4">prince121kk@gmail.com</p>
+                  <p className="text-neutral-700 ">prince121kk@gmail.com</p>
                 </div>
                 <div className="flex items-center gap-1">
                   <img
@@ -163,7 +232,7 @@ function Feed() {
         <h1 className="text-xl mt-7 font-bold text-neutral-800 mb-8 px-5">
           Suggestions
         </h1>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 overflow-y-scroll flex-1 no-scrollbar">
           <Card2 />
           <Card2 />
           <Card2 />

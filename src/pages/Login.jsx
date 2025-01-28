@@ -19,7 +19,7 @@ const Login = () => {
         },
       }}
     >
-      <div className="w-screen h-screen bg-gradient-to-br from-[#e4f1fe] via-[#f4feea] to-[#fdeef2] flex justify-center items-center">
+      <div className="w-screen h-screen bg-teal-50 flex justify-center items-center">
         <div className="w-[90%]  sm:w-[80%] md:w-2/3 h-[90%] relative ">
           <div className="h-[80%] gap-4 w-full md:w-2/3 md:px-20 lg:w-[50%] 2xl:w-[50%] p-4 flex flex-col justify-center items-center absolute mt-22 left-0 rounded-4xl bg-white shadow-2xl drop-shadow-xl z-10">
             <form

@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { FaRegBookmark } from "react-icons/fa6";
 import {
-  FiBarChart,
   FiChevronDown,
   FiChevronsRight,
   FiHome,
-  FiShoppingCart,
-  FiTag,
   FiUsers,
 } from "react-icons/fi";
+import { IoMdDoneAll } from "react-icons/io";
+import { RiCalendarEventLine } from "react-icons/ri";
 import logo from "../../assets/festLogo.png";
 export const SideBar = () => {
   return (
@@ -25,7 +25,7 @@ const Sidebar = () => {
   return (
     <motion.nav
       layout
-      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r backdrop-blur-2xl border-slate-300 p-2"
+      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r backdrop-blur-3xl border-slate-300 p-2"
       style={{
         width: open ? "285px" : "fit-content",
       }}
@@ -40,21 +40,21 @@ const Sidebar = () => {
           open={open}
         />
         <Option
-          Icon={FiShoppingCart}
-          title="Products"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
-        <Option
-          Icon={FiTag}
+          Icon={IoMdDoneAll}
           title="Registered"
           selected={selected}
           setSelected={setSelected}
           open={open}
         />
         <Option
-          Icon={FiBarChart}
+          Icon={FaRegBookmark}
+          title="Saved"
+          selected={selected}
+          setSelected={setSelected}
+          open={open}
+        />
+        <Option
+          Icon={RiCalendarEventLine}
           title="My Events"
           selected={selected}
           setSelected={setSelected}
@@ -81,7 +81,7 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
       onClick={() => setSelected(title)}
       className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${
         selected === title
-          ? "shadow bg-[#6cd4b527]  border border-slate-300"
+          ? "shadow bg-[#71f1cb11] border border-slate-300"
           : "text-slate-700 hover:bg-[#1d2f331e] hover:text-black"
       }`}
       style={{
@@ -100,7 +100,7 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.125 }}
-          className="text-lg font-medium"
+          className="text-lg"
         >
           {title}
         </motion.span>
@@ -111,8 +111,8 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
 
 const TitleSection = ({ open }) => {
   return (
-    <div className="mb-10 mt-4  border-slate-300 pb-3">
-      <div className="flex cursor-pointer items-center justify-between shadow border  border-slate-300 rounded-2xl transition-all   hover:scale-103 hover:shadow-lg   ">
+    <div className="mb-10 mt-4 pb-3">
+      <div className="flex cursor-pointer items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg">
         <div className="flex px-8 py-2 items-center gap-2">
           {open && (
             <motion.div

@@ -1,22 +1,18 @@
-import React from 'react';
+import React from "react";
 import { useLocation } from "react-router-dom";
-import Feed from '../pages/User/Feed';
-import OrgFeed from '../pages/organisation/OrgFeed';
+import Feed from "../pages/User/Feed";
+import OrgFeed from "../pages/organisation/OrgFeed";
 
 const ProtectedRoute = ({ children }) => {
-    const user = "Org";
-    let location = useLocation();
+  const user = "Org";
+  let location = useLocation();
 
-    if (user == "User") {
-        return <Feed />
-    }
-    if (user == "Org") {
-
-        return <OrgFeed />
-
-
-    }
-
+  if (user == "User") {
+    return <Feed />;
+  }
+  if (user == "Org") {
+    return <OrgFeed />;
+  }
 };
 
 export default ProtectedRoute;
