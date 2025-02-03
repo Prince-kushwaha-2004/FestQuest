@@ -5,14 +5,10 @@ import { Link } from "react-router-dom";
 
 function Card2({ data }) {
   return (
-    <Link to={`event/${data.id}`}>
+    <Link to={`/event/${data.id}`}>
       <div className="flex min-w-60 flex-col gap-4 mx-4 justify-between bg-[#2847270e] shadow border border-slate-300 p-2 rounded-3xl hover:border  transition-all hover:shadow-xl cursor-pointer">
         <div className="flex gap-4">
-          <img
-            src={data.logo}
-            alt="img"
-            className="w-10 h-10 rounded-full "
-          />
+          <img src={data.logo} alt="img" className="w-10 h-10 rounded-full " />
           <div>
             <h1 className="font-bold text-lg">{data.name}</h1>
             <p className="text-neutral-700 flex gap-1 items-center ">

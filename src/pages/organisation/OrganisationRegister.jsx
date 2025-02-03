@@ -1,6 +1,5 @@
 import { ConfigProvider, Input, Select } from "antd";
 import { FcGoogle } from "react-icons/fc";
-
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/festLogo.png";
 import Axios from "../../axios/Axios";
@@ -64,7 +63,7 @@ const OrganisationRegister = () => {
 
   return (
     <>
-      <div className="w-full justify-center h-screen flex items-center   bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] md:p-10  ">
+      <div className="w-full justify-center h-screen flex items-center bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] md:p-10  ">
         <ConfigProvider
           theme={{
             components: {
@@ -99,7 +98,7 @@ const OrganisationRegister = () => {
           }}
         >
           <div className="absolute  flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10  items-end z-10 bg-themeColor/10 h-full w-1/3  ">
-            <div className=" w-2/3  ">
+            <div className="w-2/3">
               <StepwiseProcess
                 logo={logo}
                 itemsArray={items}
