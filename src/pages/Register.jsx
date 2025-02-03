@@ -35,7 +35,7 @@ const Register = () => {
     console.log("onInput:", value);
   };
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
   const description = "This is a description.";
   const sharedProps = {
     onChange,
@@ -59,7 +59,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-full justify-center h-screen flex items-center   bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] md:p-10  ">
+      <div className="w-full justify-center h-screen flex items-center bg-teal-50 md:p-10">
         <ConfigProvider
           theme={{
             components: {
@@ -67,9 +67,9 @@ const Register = () => {
                 colorPrimary: "#1677ff",
                 inputFontSizeLG: 24,
                 size: "middle",
-                paddingBlock: 7,
+                paddingBlock: 10,
                 inputFontSize: 18,
-                paddingInline: 16,
+                paddingInline: 15,
                 activeBorderColor: "#00637C",
                 hoverBorderColor: "#FFBF61",
               },
@@ -93,8 +93,8 @@ const Register = () => {
             },
           }}
         >
-          <div className="absolute  flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10  items-end z-10 bg-themeColor/10 h-full w-1/3  ">
-            <div className=" w-2/3  ">
+          <div className="absolute flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10 items-end z-10 bg-themeColor/10 h-full w-1/3  ">
+            <div className=" w-2/3">
               <StepwiseProcess
                 current={current}
                 itemsArray={processStep}
@@ -102,17 +102,17 @@ const Register = () => {
               />
             </div>
           </div>
-          <div className="drop-shadow-md static z-0 rounded-2xl self-center   bg-[#2847270e] shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
-            <div className="flex flex-col justify-center items-center gap-20  lg:w-2/3 w-full">
-              <div className="flex lg:hidden  w-2/3">
+          <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-white shadow border border-slate-300 h-[80%] w-[85%] flex justify-end">
+            <div className="flex flex-col justify-center items-center gap-20 lg:w-2/3 w-full">
+              <div className="flex lg:hidden w-2/3">
                 <img src={logo} alt="" />
               </div>
 
-              <div className="flex justify-center  sm:text-4xl text-3xl font-semibold  text-themeColor ">
+              <div className="flex justify-center sm:text-4xl text-3xl font-semibold text-themeColor">
                 Create your free account
               </div>
 
-              <div className="flex md:w-2/3 w-full  gap-4  flex-col items-center  justify-center  ">
+              <div className="flex md:w-2/3 w-full gap-7 flex-col items-center justify-center">
                 {current == 0 ? (
                   <>
                     <Input
@@ -131,7 +131,7 @@ const Register = () => {
                       onClick={(e) => {
                         setCurrent(1);
                       }}
-                      className="w-full bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
+                      className="w-full bg-primary text-xl text-white py-3 rounded-xl hover:bg-primary2"
                     >
                       Next
                     </button>

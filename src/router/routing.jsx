@@ -4,6 +4,7 @@ import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import OrganisationRegister from "../pages/organisation/OrganisationRegister";
 import Register from "../pages/Register";
+import EventRegister from "../pages/User/EventRegister";
 import EventPreview from "../pages/User/EventPreview";
 import Feed from "../pages/User/Feed";
 import Root from "../Root";
@@ -15,7 +16,8 @@ function Routing() {
         <Route index element={<Landing />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="orgregister" element={<OrganisationRegister />} />
+        <Route path="orgRegister" element={<OrganisationRegister />} />
+        <Route path="eventRegister" element={<EventRegister />} />
         <Route path="Dashboard" element={<Dashboard />}>
           <Route
             index
