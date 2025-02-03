@@ -37,7 +37,7 @@ const OrganisationRegister = () => {
     console.log("onInput:", value);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   const sharedProps = {
     onChange,
     onInput,

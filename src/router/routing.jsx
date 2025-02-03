@@ -28,7 +28,7 @@ function Routing() {
 
 
           {/* organisation routing */}
-          <Route path="eventRegistr" element={<EventRegister />} />
+          <Route path="eventRegister" element={<EventRegister />} />
 
         </Route>
       </Route>

@@ -1,21 +1,27 @@
 import React from 'react'
 
-export const Links = () => {
+export const Links = ({ formData, setFormData, current, setCurrent }) => {
     return (
-        <div>Links</div>
+        <div> Links
+            <button className='bg-blue-400 ms-4 p-4' onClick={() => setCurrent(current + 1)}>Next</button>
+        </div>
     )
 }
 
-export const Dates = () => {
+export const Dates = ({ formData, setFormData, current, setCurrent }) => {
     return (
-        <div>Dates</div>
+        <div>Dates
+            <button className='bg-blue-400 ms-4 p-4' onClick={() => setCurrent(current + 1)}>Next</button>
+        </div>
     )
 }
 
 
-export const Prizes = () => {
+export const Prizes = ({ formData, setFormData, current, setCurrent }) => {
     return (
-        <div>Prizes</div>
+        <div>Prizes
+            <button className='bg-blue-400 ms-4 p-4' onClick={() => setCurrent(current + 1)}>Next</button>
+        </div>
     )
 }
 
