@@ -1,3 +1,4 @@
+import { DatePicker, Form, Input, Modal, Steps } from "antd";
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
 import { FiEdit, FiTrash } from "react-icons/fi";
@@ -8,7 +9,16 @@ import Donut from "../../components/Charts/Donut";
 import LineBar from "../../components/Charts/LineBar";
 
 
-
+const formItemLayout = {
+    labelCol: {
+        xs: { span: 24 },
+        sm: { span: 6 },
+    },
+    wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 14 },
+    },
+};
 const OrgFeed = () => {
     const [open, setOpen] = useState(false);
 
@@ -129,6 +139,22 @@ const OrgFeed = () => {
     });
 
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+    const description = 'This is a description.';
+
+    const [form] = Form.useForm();
+    const variant = Form.useWatch('variant', form);
+
+
 
 
 
@@ -206,7 +232,7 @@ const OrgFeed = () => {
 
                 </div>
 
-                <div className='flex flex-col justify-center items-center gap-5 py-6 border border-slate-300 rounded-2xl w-1/4 '>
+                <div className='flex flex-col justify-center items-center gap-5 py-6 border border-slate-300 rounded-2xl w-1/4 ' onClick={showModal}>
                     <div className='px-3 text-xl bg-[#deeff57e] font-bold'>
                         Add Event
                     </div>
@@ -215,7 +241,63 @@ const OrgFeed = () => {
 
                     </div>
 
+
                 </div>
+
+
+                <Modal title="Add New Event" open={isModalOpen} width={1000} onOk={handleOk} onCancel={handleCancel}>
+                    <div>
+                        <Steps
+                            current={1}
+                            items={[
+                                {
+                                    title: 'Finished',
+                                    description,
+                                },
+                                {
+                                    title: 'In Progress',
+                                    description,
+                                    subTitle: 'Left 00:00:08',
+                                },
+                                {
+                                    title: 'Waiting',
+                                    description,
+                                },
+                            ]}
+                        />
+                    </div>
+                    <div className="p-2 mt-6">
+
+                        <Form
+                            {...formItemLayout}
+
+                            form={form}
+                            variant={variant || 'filled'}
+                            initialValues={{ variant: 'filled' }}
+                        >
+                            <div className="flex w-full justify-between">
+                                <Form.Item className="w-1/2" label="Event Name" name="Input" rules={[{ required: true, message: 'Please input!' }]}>
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item className="w-1/2" label="Event Name" name="Input" rules={[{ required: true, message: 'Please input!' }]}>
+                                    <Input />
+                                </Form.Item>
+                            </div>
+                            <div className="flex w-full justify-between">
+
+                                <Form.Item
+                                    className="w-1/2"
+                                    label="DatePicker"
+                                    name="DatePicker"
+                                    rules={[{ required: true, message: 'Please input!' }]}
+                                >
+                                    <DatePicker />
+                                </Form.Item>
+                            </div>
+                        </Form>
+
+                    </div>
+                </Modal>
 
             </div>
 
