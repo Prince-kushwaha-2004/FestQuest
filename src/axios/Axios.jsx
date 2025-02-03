@@ -2,7 +2,7 @@ import axios from "axios";
 import { Constant } from "../utils/Constants";
 
 const instance = axios.create({
-  baseURL: `https://${Constant.IP}/certificate/`,
+  baseURL: Constant.baseURL
 });
 
 instance.interceptors.request.use(

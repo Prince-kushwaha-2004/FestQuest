@@ -10,7 +10,7 @@ function Cards({ data }) {
     return (
         <div className="bg-[#2847270e] hover:shadow-xl transition-all border border-slate-300 w-full  p-4 rounded-4xl">
             <div className="flex justify-between">
-                <Link to={`event/${data.id}`}>
+                <Link to={`/event/${data.id}`}>
                     <div className="flex gap-4">
                         <img
                             src={data.logo}
@@ -36,13 +36,13 @@ function Cards({ data }) {
                     )}
                 </div>
             </div>
-            <Link to={`event/${data.id}`}>
+            <Link to={`/event/${data.id}`}>
                 <p className="m-4 ">
                     {data.description}
                 </p>
             </Link>
             <div className="flex flex-col 2xl:flex-row">
-                <Link to={`event/${data.id}`} className="rounded-2xl w-full 2xl:w-1/2  2xl:m-4">
+                <Link to={`/event/${data.id}`} className="rounded-2xl w-full 2xl:w-1/2  2xl:m-4">
                     <img
                         src={data.img}
                         alt=""
@@ -50,7 +50,7 @@ function Cards({ data }) {
                     />
                 </Link>
                 <div className="w-full 2xl:w-1/2 p-8 flex flex-wrap gap-x-4 gap-y-2">
-                    <Link to={`event/${data.id}`} className="flex flex-wrap gap-x-4 gap-y-2">
+                    <Link to={`/event/${data.id}`} className="flex flex-wrap gap-x-4 gap-y-2">
                         <div className="flex gap-4">
                             <IoIosPeople className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
                             <div className="">

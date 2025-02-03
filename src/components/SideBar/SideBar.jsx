@@ -80,8 +80,8 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
             layout
             onClick={() => setSelected(title)}
             className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
-                    ? "shadow bg-[#71f1cb11] border border-slate-300"
-                    : "text-slate-700 hover:bg-[#1d2f331e] hover:text-black"
+                ? "shadow bg-[#71f1cb11] border border-slate-300"
+                : "text-slate-700 hover:bg-[#1d2f331e] hover:text-black"
                 }`}
             style={{
                 padding: open ? "1.5rem" : "1.5rem 1rem",
