@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { ConfigProvider, Form, Input, message } from "antd";
-import { FcGoogle } from "react-icons/fc";
 import {
-  UserOutlined,
-  MailOutlined,
-  LockOutlined,
-  MobileOutlined,
-  EyeTwoTone,
   EyeInvisibleOutlined,
+  EyeTwoTone,
+  MailOutlined,
+  MobileOutlined,
+  UserOutlined
 } from "@ant-design/icons";
+import { ConfigProvider, Form, Input, message } from "antd";
+import React, { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 import logo from "../assets/festLogo.png";
 import StepwiseProcess from "../components/StepwiseProcess";
 

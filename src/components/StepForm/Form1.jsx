@@ -1,6 +1,6 @@
-import React from "react";
 import { InboxOutlined } from "@ant-design/icons";
-import { Button, Form, Upload, Input, Select } from "antd";
+import { Button, Form, Input, Select, Upload } from "antd";
+import React from "react";
 
 export const Basic = ({ formData, setFormData, current, setCurrent }) => {
   const onFinish = (value) => {
