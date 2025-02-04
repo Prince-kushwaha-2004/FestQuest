@@ -39,14 +39,14 @@ function Cards({ data }) {
       <Link to={`/event/${data.id}`}>
         <p className="m-4 ">{data.description}</p>
       </Link>
-      <div className="flex flex-col 2xl:flex-row">
+      <div className="flex flex-col 2xl:flex-row items-center">
         <Link
           to={`/event/${data.id}`}
           className="rounded-2xl w-full 2xl:w-1/2  2xl:m-4"
         >
           <img src={data.img} alt="" className="rounded-2xl" />
         </Link>
-        <div className="w-full 2xl:w-1/2 p-8 flex flex-wrap gap-x-4 gap-y-2">
+        <div className="w-full 2xl:w-1/2 p-8 flex flex-wrap gap-x-4 gap-y-2 min-h-80">
           <div className="flex gap-4">
             <IoIosPeople className="text-[2.7rem] p-2 bg-white text-slate-700 border border-gray-300 rounded-xl " />
             <div className="">
