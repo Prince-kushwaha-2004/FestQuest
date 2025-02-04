@@ -1,13 +1,20 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import Brush from "../assets/brush.svg";
+import Camera from "../assets/camera.svg";
+import Money from "../assets/money.svg";
+import Plan from "../assets/plan.svg";
+import Trophy from "../assets/trophy.svg";
+
 import FeatureCards from "../components/FeatureCards";
 import Nav from "../components/Nav";
+
 const LandingPage = () => {
   const BounceCard = ({ className, children }) => {
     return (
       <motion.div
         whileHover={{ scale: 0.95, rotate: "-1deg" }}
-        className={`group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 ${className}`}
+        className={`group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-gray-50 p-8 ${className}`}
       >
         {children}
       </motion.div>
@@ -63,7 +70,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-800 leading-tight">
+      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-700 leading-tight">
         <Text>Think, plan, and track</Text>
       </h2>
     );
@@ -88,7 +95,7 @@ const LandingPage = () => {
 
   const BlockInTextCard = ({ examples }) => {
     return (
-      <div className="w-full max-w-5xl space-y-6">
+      <div className="w-full max-w-5xl mt-10 space-y-6">
         <Typewrite examples={examples} />
       </div>
     );
@@ -100,7 +107,7 @@ const LandingPage = () => {
   const FADE_DELAY = 5;
   const MAIN_FADE_DURATION = 0.25;
 
-  const SWAP_DELAY_IN_MS = 5500;
+  const SWAP_DELAY_IN_MS = 5000;
 
   const Typewrite = ({ examples }) => {
     const [exampleIndex, setExampleIndex] = useState(0);
@@ -114,7 +121,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <p className="text-2xl md:text-6xl xl:text-7xl mb-4 text-center leading-tight font-semibold text-neutral-400 uppercase">
+      <p className="text-2xl md:text-6xl xl:text-7xl mb-4 text-center leading-tight font-semibold text-gray-700 uppercase">
         <span className="ml-3">
           {" "}
           {examples[exampleIndex].split("").map((l, i) => (
@@ -160,7 +167,7 @@ const LandingPage = () => {
                   duration: BOX_FADE_DURATION,
                   ease: "easeInOut",
                 }}
-                className="absolute bottom-[3px] left-[1px] right-0 top-[3px] bg-neutral-950"
+                className="absolute bottom-[3px] left-[1px] right-0 top-[3px] bg-teal-600"
               />
             </motion.span>
           ))}
@@ -169,10 +176,26 @@ const LandingPage = () => {
     );
   };
   return (
-    <div className="min-h-screen flex flex-col h-screen overflow-y-scroll">
+    <div className="min-h-screen flex flex-col h-screen overflow-y-scroll  ">
       <Nav />
 
-      <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-50 rounded-4xl px-5 md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center">
+      <div
+        className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-500 rounded-4xl px-5 
+      md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center heading-primary relative"
+      >
+        <img
+          src={Brush}
+          className="w-[8rem] absolute top-20 left-60  "
+          alt=""
+        />
+        <img
+          src={Camera}
+          className="w-[8rem] absolute top-20 right-60 "
+          alt=""
+        />
+        <img src={Plan} className="w-[8rem] absolute top-70 right-40 " alt="" />
+        <img src={Money} className="w-[8rem] absolute top-70 left-30 " alt="" />
+
         <h1 className="text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-800 text-center leading-tight">
           <BubbleText />
           <BlockInTextCard
@@ -180,31 +203,38 @@ const LandingPage = () => {
           />
         </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl text-slate-700 mb-8 text-center max-w-2xl">
+        <p className="text-lg sm:text-xl md:text-2xl mt-2 text-slate-800 mb-8 text-center max-w-2xl">
           Efficiently manage your events and boost productivity with our
           intuitive event planning platform.
         </p>
         <FeatureCards />
       </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 text-slate-800 mt-10">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8">
-          <h2 className="max-w-lg text-4xl font-bold md:text-5xl">
+      <section className="mx-auto max-w-7xl px-4 py-6 text-slate-800  relative ">
+        <img
+          src={Trophy}
+          className="w-[8rem] absolute top-0 left-0 zindex "
+          alt=""
+        />
+
+        <div className="mb-8  flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
+          <h2 className="max-w-lg  pl-8 mt-5 text-4xl font-bold md:text-5xl">
             Grow faster with our
-            <span className="text-slate-400"> all in one solution</span>
+            <span className="text-teal-600"> all in one solution</span>
           </h2>
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="whitespace-nowrap rounded-lg bg-slate-900 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-slate-700"
+            className="whitespace-nowrap rounded-lg bg-teal-600 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-slate-700"
           >
             Get Started
           </motion.button>
         </div>
         <div className="mb-4 grid grid-cols-12 gap-4">
-          <BounceCard className="col-span-12 md:col-span-4">
+          <BounceCard className="col-span-12 md:col-span-4 ">
             <CardTitle>Seamless Integration</CardTitle>
-            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
+            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-violet-600 to-indigo-800 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
               <span className="block text-center text-md font-semibold text-indigo-50">
                 Easily create detailed event plans, set deadlines, and assign
                 tasks.
@@ -213,7 +243,7 @@ const LandingPage = () => {
           </BounceCard>
           <BounceCard className="col-span-12 md:col-span-8">
             <CardTitle>Real-Time Tracking</CardTitle>
-            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-amber-400 to-orange-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
+            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-amber-400 to-orange-700 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
               <span className="block text-center text-xl font-semibold text-orange-50">
                 Monitor progress, view task status, and receive timely updates
                 on your events.
@@ -243,7 +273,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <footer className="bg-teal-50">
+      <footer className="bg-teal-500">
         <div className="mx-auto w-full p-4 py-6 md:px-20 px-8 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="flex mb-6 md:mb-0 items-center transition-all hover:scale-103">
@@ -254,7 +284,7 @@ const LandingPage = () => {
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   Resources
                 </h2>
-                <ul className="text-gray-500 font-medium">
+                <ul className="text-gray-700 font-medium">
                   <li className="mb-4">
                     <a href="https://flowbite.com/" className="hover:underline">
                       FestQuest
@@ -274,7 +304,7 @@ const LandingPage = () => {
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   Follow us
                 </h2>
-                <ul className="text-gray-500 font-medium">
+                <ul className="text-gray-700 font-medium">
                   <li className="mb-4">
                     <a
                       href="https://github.com/themesberg/flowbite"
@@ -297,7 +327,7 @@ const LandingPage = () => {
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   Legal
                 </h2>
-                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <ul className="text-gray-700  font-medium">
                   <li className="mb-4">
                     <a href="#" className="hover:underline">
                       Privacy Policy
@@ -314,7 +344,7 @@ const LandingPage = () => {
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center">
+            <span className="text-sm text-gray-700 sm:text-center">
               © 2025{" "}
               <a href="" className="hover:underline">
                 FestQuest™

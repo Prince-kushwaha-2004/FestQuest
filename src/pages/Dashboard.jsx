@@ -7,7 +7,7 @@ function Dashboard() {
     toast.error("Hello World");
   };
   return (
-    <div className="flex w-screen h-screen bg-gradient-to-br from-[#cfe4fa] to-[#ebf9dccf]">
+    <div className="flex w-screen h-screen">
       <SideBar />
       <Outlet />
     </div>
