@@ -6,28 +6,24 @@ import { IoIosPeople, IoMdTime } from "react-icons/io";
 import { IoLocationOutline, IoPeople } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-function Cards() {
+function Cards({ data }) {
   return (
     <div className="bg-teal-50  transition-all border border-teal-600 w-full  p-4 rounded-4xl">
       <div className="flex justify-between">
-        <div className="flex gap-4">
-          <img
-            src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
-            alt=""
-            className="w-12 h-12 rounded-full"
-          />
-          <div>
-            <h1 className="font-bold text-2xl cursor-pointer">
-              Hack With India
-            </h1>
-            <p className="text-neutral-700 flex gap-1 items-center ">
-              <IoLocationOutline />
-              Online
-            </p>
+        <Link to={`/event/${data.id}`}>
+          <div className="flex gap-4">
+            <img src={data.logo} alt="" className="w-12 h-12 rounded-full" />
+            <div>
+              <h1 className="font-bold text-2xl cursor-pointer">{data.name}</h1>
+              <p className="text-neutral-700 flex gap-1 items-center ">
+                <IoLocationOutline />
+                {data.mode}
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="flex items-center justify-center px-4 gap-4">
-          {false ? (
+          {data.isSaved ? (
             <FaRegBookmark className="text-2xl font-bold text-primary" />
           ) : (
             <FaBookmark className="text-2xl font-bold text-primary" />
@@ -40,12 +36,16 @@ function Cards() {
         voluptas minus, sint iste soluta porro, provident optio ratione enim
         eos?
       </p>
+      <Link to={`/event/${data.id}`}>
+        <p className="m-4 ">{data.description}</p>
+      </Link>
       <div className="flex flex-col 2xl:flex-row">
-        <img
-          src="https://storage.googleapis.com/lablab-static-eu/images%2Fevents%2Fcljscjt9r0000356om968xnvk%2Fcljscjt9r0000356om968xnvk_9l13odi_imageLink.jpg"
-          alt=""
+        <Link
+          to={`/event/${data.id}`}
           className="rounded-2xl w-full 2xl:w-1/2  2xl:m-4"
-        />
+        >
+          <img src={data.img} alt="" className="rounded-2xl" />
+        </Link>
         <div className="w-full 2xl:w-1/2 p-8 flex flex-wrap gap-x-4 gap-y-2">
           <div className="flex gap-4">
             <IoIosPeople className="text-[2.7rem] p-2 bg-white text-slate-700 border border-gray-300 rounded-xl " />

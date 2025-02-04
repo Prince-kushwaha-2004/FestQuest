@@ -131,7 +131,7 @@ function Feed() {
 
   return (
     <>
-      <div className=" flex-1 overflow-scroll p-8 no-scrollbar ms-24 xl:ms-0 bg-teal-50">
+      <div className=" flex-1 overflow-scroll p-8 no-scrollbar ms-24 xl:ms-0">
         <div className="flex items-center justify-between lg:hidden">
           <h1 className="text-3xl font-bold text-neutral-800 ">Suggestions</h1>
           <Space direction="vertical">
@@ -159,17 +159,13 @@ function Feed() {
         </div>
 
         <div className="flex gap-4 overflow-scroll no-scrollbar mb-10 lg:hidden">
-          <Card2 />
-          <Card2 />
-          <Card2 />
-          <Card2 />
+          {data.map((value) => {
+            return <Card2 key={value.id} data={value} />;
+          })}
         </div>
-
-        <div className="flex flex-col gap-5 mb-8 ">
+        <div className="flex flex-col gap-5 mb-8">
           <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-bold text-primary heading-primary ">
-              Events
-            </h1>
+            <h1 className="text-4xl font-bold text-neutral-800">Events</h1>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -180,7 +176,7 @@ function Feed() {
                 className="w-full pl-10 pr-4 py-2.5 bg-white/50 backdrop-blur-sm 
                          border border-gray-200 rounded-xl focus:outline-none 
                          focus:ring-2 focus:ring-blue-50 focus:border-transparent
-                         transition-all duration-300 hover:bg-white/80 "
+                         transition-all duration-300 hover:bg-white/80 hover:shadow-md"
               />
             </div>
 
@@ -195,17 +191,17 @@ function Feed() {
         </div>
       </div>
 
-      <div className="w-[25rem] shadow bg-teal-50  border-l border-slate-300 hidden lg:flex flex-col">
+      <div className="w-[25rem] shadow bg-[#2847270e]  border-l border-slate-300 hidden lg:flex flex-col">
         <div className="flex items-center justify-center">
           <motion.div animate={open ? "open" : "closed"} className="relative">
             <button
               onClick={() => setOpen((pv) => !pv)}
               className="flex px-3 rounded-md transition-colors"
             >
-              <div className="mt-4 w-[23rem] flex justify-between py-3 px-3 rounded-2xl border bg-[#deeff57e] border-slate-300 transition-all">
+              <div className="mt-4 w-[23rem] flex justify-between py-2 px-3 rounded-2xl hover:border hover:bg-[#deeff57e] border-slate-300 transition-all">
                 <div className="flex flex-col items-start">
                   <h1 className="text-xl font-bold">Prince Kushwaha</h1>
-                  <p className="text-neutral-700  ">prince121kk@gmail.com</p>
+                  <p className="text-neutral-700 ">prince121kk@gmail.com</p>
                 </div>
                 <div className="flex items-center gap-1">
                   <img
