@@ -1,46 +1,27 @@
-import { ConfigProvider, Input } from "antd";
+import React, { useState } from "react";
+import { ConfigProvider, Form, Input, message } from "antd";
 import { FcGoogle } from "react-icons/fc";
-
-import React, { useEffect, useState } from "react";
+import {
+  UserOutlined,
+  MailOutlined,
+  LockOutlined,
+  MobileOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons";
 import logo from "../assets/festLogo.png";
-import Axios from "../axios/Axios";
 import StepwiseProcess from "../components/StepwiseProcess";
-import HandleChange from "../utils/Function";
+
 const Register = () => {
-  const [registerForm, setRegisterForm] = useState({
+  const [form] = Form.useForm();
+  const [current, setCurrent] = useState(0);
+  const [registerData, setRegisterData] = useState({
     name: "",
     email: "",
-    bio: "",
+    otp: "",
     password: "",
     confirmPassword: "",
   });
-
-  const [next, setNextState] = useState(0);
-
-  const getOTP = () => {
-    const request = {
-      method: "POST",
-      dataObject: registerForm,
-    };
-    Axios(request).then((res) => {
-      console.log(res);
-    });
-  };
-
-  const [current, setCurrent] = useState(0);
-  const onChange = (text) => {
-    console.log("onChange:", text);
-  };
-  const onInput = (value) => {
-    console.log("onInput:", value);
-  };
-
-  useEffect(() => {}, []);
-  const description = "This is a description.";
-  const sharedProps = {
-    onChange,
-    onInput,
-  };
 
   const processStep = [
     {
@@ -57,9 +38,26 @@ const Register = () => {
     },
   ];
 
+  const handleSendOTP = () => {
+    message.success("OTP sent to your email");
+  };
+
+  const handleFinalSubmit = async () => {
+    try {
+      console.log("Final Registration Data:", registerData);
+      message.success("Registration Successful!");
+    } catch (errorInfo) {
+      message.error("Please complete all fields correctly");
+    }
+  };
+
+  const handleNextStep = () => {
+    setCurrent(current + 1);
+  };
+
   return (
     <>
-      <div className="w-full justify-center h-screen flex items-center bg-teal-50 md:p-10">
+      <div className="w-full justify-center h-screen flex items-center bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] md:p-10">
         <ConfigProvider
           theme={{
             components: {
@@ -93,8 +91,8 @@ const Register = () => {
             },
           }}
         >
-          <div className="absolute flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10 items-end z-10 bg-themeColor/10 h-full w-1/3  ">
-            <div className=" w-2/3">
+          <div className="absolute flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10 items-end z-10 bg-themeColor/10 h-full w-1/3">
+            <div className="w-2/3">
               <StepwiseProcess
                 current={current}
                 itemsArray={processStep}
@@ -102,7 +100,7 @@ const Register = () => {
               />
             </div>
           </div>
-          <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-white shadow border border-slate-300 h-[80%] w-[85%] flex justify-end">
+          <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-[#2847270e] shadow border border-slate-300 p-5 h-[90%] w-[94%] flex justify-end">
             <div className="flex flex-col justify-center items-center gap-20 lg:w-2/3 w-full">
               <div className="flex lg:hidden w-2/3">
                 <img src={logo} alt="" />
@@ -112,73 +110,143 @@ const Register = () => {
                 Create your free account
               </div>
 
-              <div className="flex md:w-2/3 w-full gap-7 flex-col items-center justify-center">
-                {current == 0 ? (
+              <Form
+                form={form}
+                className="flex md:w-2/3 w-full gap-4 flex-col items-center justify-center"
+              >
+                {current === 0 && (
                   <>
-                    <Input
+                    <Form.Item
                       name="name"
-                      value={registerForm.name}
-                      onChange={(e) => HandleChange(e, setRegisterForm)}
-                      placeholder="Name"
-                    />
-                    <Input
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please input your name",
+                        },
+                      ]}
+                      className="w-full"
+                    >
+                      <Input
+                        prefix={<UserOutlined className="text-gray-400" />}
+                        placeholder="Name"
+                      />
+                    </Form.Item>
+                    <Form.Item
                       name="email"
-                      value={registerForm.email}
-                      onChange={(e) => HandleChange(e, setRegisterForm)}
-                      placeholder="Email"
-                    />
+                      rules={[
+                        {
+                          required: true,
+                          type: "email",
+                          message: "Please input a valid email",
+                        },
+                      ]}
+                      className="w-full"
+                    >
+                      <Input
+                        prefix={<MailOutlined className="text-gray-400" />}
+                        placeholder="Email"
+                      />
+                    </Form.Item>
                     <button
-                      onClick={(e) => {
-                        setCurrent(1);
-                      }}
-                      className="w-full bg-primary text-xl text-white py-3 rounded-xl hover:bg-primary2"
+                      onClick={() => handleNextStep(0)}
+                      className="w-full bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
                     >
                       Next
                     </button>
                   </>
-                ) : current == 1 ? (
-                  <>
-                    <Input.OTP
-                      formatter={(str) => str.toUpperCase()}
-                      {...sharedProps}
-                    />
+                )}
 
-                    <button
-                      onClick={(e) => setCurrent(2)}
-                      className="w-1/3 mt-10 bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
-                    >
-                      Next
-                    </button>
-                  </>
-                ) : current == 2 ? (
+                {current === 1 && (
                   <>
-                    <Input
+                    <Form.Item
+                      name="otp"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please input the OTP",
+                        },
+                      ]}
+                      className="w-full"
+                    >
+                      <Input
+                        prefix={<MobileOutlined className="text-gray-400" />}
+                        placeholder="Enter OTP"
+                        maxLength={6}
+                      />
+                    </Form.Item>
+                    <div className="flex w-full gap-2">
+                      <button
+                        onClick={handleSendOTP}
+                        className="w-1/3 mt-10 bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
+                      >
+                        Resend
+                      </button>
+                      <button
+                        onClick={() => handleNextStep(1)}
+                        className="w-1/3 mt-10 bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                {current === 2 && (
+                  <>
+                    <Form.Item
                       name="password"
-                      value={registerForm.password}
-                      onChange={(e) => HandleChange(e, setRegisterForm)}
-                      placeholder="Password"
-                    />
-                    <Input
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please input your password",
+                          min: 8,
+                          max: 16,
+                        },
+                      ]}
+                      className="w-full"
+                    >
+                      <Input.Password
+                        name="password"
+                        value={registerData.password}
+                        placeholder="Password"
+                        iconRender={(visible) =>
+                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                        }
+                      />
+                    </Form.Item>
+                    <Form.Item
                       name="confirmPassword"
-                      value={registerForm.confirmPassword}
-                      onChange={(e) => HandleChange(e, setRegisterForm)}
-                      placeholder="Confirm password"
-                    />
+                      dependencies={["password"]}
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please confirm your password",
+                        },
+                      ]}
+                      className="w-full"
+                    >
+                      <Input.Password
+                        name="confirmPassword"
+                        value={registerData.confirmPassword}
+                        placeholder="Confirm Password"
+                        iconRender={(visible) =>
+                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                        }
+                      />
+                    </Form.Item>
                     <button
-                      onClick={(e) => console.log(registerForm)}
+                      onClick={handleFinalSubmit}
                       className="w-full bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
                     >
                       Register
                     </button>
                   </>
-                ) : (
-                  <></>
                 )}
-              </div>
+              </Form>
 
-              <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10   w-full">
-                <button className="px-6 py-3 rounded-md bg-blue-400/10 ">
-                  <div className="flex gap-3 items-center ">
+              <div className="flex gap-4 flex-col justify-center items-center px-8 mb-10 w-full">
+                <button className="px-6 py-3 rounded-md bg-blue-400/10">
+                  <div className="flex gap-3 items-center">
                     <FcGoogle />
                     <span>Register with Google</span>
                   </div>
@@ -187,9 +255,8 @@ const Register = () => {
                   <p className="text-md text-gray-800 text-center">
                     Already have an account?{" "}
                     <span className="text-secondary hover:text-primary">
-                      {" "}
                       Sign In
-                    </span>{" "}
+                    </span>
                   </p>
                 </div>
               </div>
