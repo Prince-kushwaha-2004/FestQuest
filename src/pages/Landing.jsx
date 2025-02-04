@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import Brush from '../assets/brush.svg';
-import Camera from '../assets/camera.svg';
-import Money from '../assets/money.svg';
-import Plan from '../assets/plan.svg';
-import Trophy from '../assets/trophy.svg';
+import Brush from "../assets/brush.svg";
+import Camera from "../assets/camera.svg";
+import Money from "../assets/money.svg";
+import Plan from "../assets/plan.svg";
+import Trophy from "../assets/trophy.svg";
 
 import FeatureCards from "../components/FeatureCards";
 import Nav from "../components/Nav";
@@ -179,11 +179,20 @@ const LandingPage = () => {
     <div className="min-h-screen flex flex-col h-screen overflow-y-scroll  ">
       <Nav />
 
-      <div className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-500 rounded-4xl px-5 
-      md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center heading-primary relative">
-
-        <img src={Brush} className="w-[8rem] absolute top-20 left-60  " alt="" />
-        <img src={Camera} className="w-[8rem] absolute top-20 right-60 " alt="" />
+      <div
+        className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-500 rounded-4xl px-5 
+      md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center heading-primary relative"
+      >
+        <img
+          src={Brush}
+          className="w-[8rem] absolute top-20 left-60  "
+          alt=""
+        />
+        <img
+          src={Camera}
+          className="w-[8rem] absolute top-20 right-60 "
+          alt=""
+        />
         <img src={Plan} className="w-[8rem] absolute top-70 right-40 " alt="" />
         <img src={Money} className="w-[8rem] absolute top-70 left-30 " alt="" />
 
@@ -202,17 +211,17 @@ const LandingPage = () => {
       </div>
 
       <section className="mx-auto max-w-7xl px-4 py-6 text-slate-800  relative ">
-
-        <img src={Trophy} className="w-[8rem] absolute top-0 left-0 zindex " alt="" />
+        <img
+          src={Trophy}
+          className="w-[8rem] absolute top-0 left-0 zindex "
+          alt=""
+        />
 
         <div className="mb-8  flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
-
           <h2 className="max-w-lg  pl-8 mt-5 text-4xl font-bold md:text-5xl">
             Grow faster with our
             <span className="text-teal-600"> all in one solution</span>
           </h2>
-
-
 
           <motion.button
             whileHover={{ scale: 1.05 }}
