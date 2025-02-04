@@ -147,37 +147,34 @@ const OrgFeed = () => {
   const [form] = Form.useForm();
   const variant = Form.useWatch("variant", form);
 
-  return (
-    <div className="flex flex-col justify-between w-full h-screen p-3">
-      <div className="flex justify-between items-center px-3 rounded-xl  font-bold  py-3">
-        <span className="text-3xl">Overview</span>
-        <div className="flex items-center justify-center ">
-          <motion.div animate={open ? "open" : "closed"} className="relative">
-            <button
-              onClick={() => setOpen((pv) => !pv)}
-              className="flex px-3 rounded-md transition-colors"
-            >
-              <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-                <div className=" flex flex-col items-start px-3 ">
-                  <h1 className="text-lg font-bold">
-                    Krishna institute of Engineering
-                  </h1>
-                  <p className="text-neutral-700 text-sm ">
-                    prince121kk@gmail.com
-                  </p>
-                </div>
-                <div className="flex items-center gap-1">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                    className="w-12 h-12 border rounded-full"
-                    alt=""
-                  />
-                  <motion.span variants={iconVariants}>
-                    <MdOutlineKeyboardArrowDown />
-                  </motion.span>
-                </div>
-              </div>
-            </button>
+    return (
+        <div className='flex flex-col justify-between w-full h-screen p-3 heading-secondary'>
+
+            <div className='flex justify-between items-center px-3 rounded-xl  font-bold  py-3'>
+                <span className="text-4xl text-primary heading-primary ">Overview</span>
+                <div className="flex items-center justify-center ">
+                    <motion.div animate={open ? "open" : "closed"} className="relative">
+                        <button
+                            onClick={() => setOpen((pv) => !pv)}
+                            className="flex px-3 rounded-md transition-colors "
+                        >
+                            <div className=" flex justify-between py-2 px-4 rounded-2xl bg-teal-50 border-teal-600 border text-gray-700 transition-all">
+                                <div className=" flex flex-col items-start px-3 ">
+                                    <h1 className="text-lg font-bold">Krishna institute of Engineering</h1>
+                                    <p className="text-neutral-700 text-sm ">prince121kk@gmail.com</p>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                    <img
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                                        className="w-12 h-12 border rounded-full"
+                                        alt=""
+                                    />
+                                    <motion.span variants={iconVariants}>
+                                        <MdOutlineKeyboardArrowDown />
+                                    </motion.span>
+                                </div>
+                            </div>
+                        </button>
 
             <motion.ul
               initial={wrapperVariants.closed}
@@ -192,35 +189,49 @@ const OrgFeed = () => {
         </div>
       </div>
 
-      <div className="flex gap-6 px-4">
-        <div className="flex flex-col gap-5 py-4 bg-[#deeff57e] border border-slate-300 rounded-2xl w-1/4 ">
-          <div className="px-3 text-xl font-bold">Total Events</div>
-          <div className=" px-3 text-xl font-semibold">67</div>
-        </div>
+            <div className='flex gap-6 px-4'>
 
-        <div className="flex flex-col gap-5 py-4 border border-slate-300 rounded-2xl w-1/4 ">
-          <div className="px-3 text-xl bg-[#deeff57e] font-bold">
-            Live Events
-          </div>
-          <div className=" px-3 text-xl font-semibold">6</div>
-        </div>
+                <div className='flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700  rounded-2xl w-1/4 '>
+                    <div className='px-3 text-xl font-bold'>
+                        Total Events
+                    </div>
+                    <div className=' px-3 text-xl font-semibold'>
+                        67
+                    </div>
 
-        <div className="flex flex-col gap-5 py-4 border border-slate-300 rounded-2xl w-1/4 ">
-          <div className="px-3 text-xl bg-[#deeff57e] font-bold">
-            Ended Events
-          </div>
-          <div className=" px-3 text-xl font-semibold">60</div>
-        </div>
+                </div>
 
-        <div
-          className="flex flex-col justify-center items-center gap-5 py-6 border border-slate-300 rounded-2xl w-1/4 "
-          onClick={showModal}
-        >
-          <div className="px-3 text-xl bg-[#deeff57e] font-bold">Add Event</div>
-          <div className=" px-3 text-xl font-semibold">
-            <RiAddLargeLine />
-          </div>
-        </div>
+                <div className='flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-1/4 '>
+                    <div className='px-3 text-xl  font-bold'>
+                        Live Events
+                    </div>
+                    <div className=' px-3 text-xl font-semibold'>
+                        6
+                    </div>
+
+                </div>
+
+                <div className='flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-1/4 '>
+                    <div className='px-3 text-xl  font-bold'>
+                        Ended Events
+                    </div>
+                    <div className=' px-3 text-xl font-semibold'>
+                        60
+                    </div>
+
+                </div>
+
+                <div className='flex flex-col justify-center items-center gap-5 py-6 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-1/4 ' onClick={showModal}>
+                    <div className='px-3 text-xl font-bold'>
+                        Add Event
+                    </div>
+                    <div className=' px-3 text-xl font-semibold'>
+                        <RiAddLargeLine />
+
+                    </div>
+
+
+                </div>
 
         <Modal
           title="Add New Event"
@@ -289,258 +300,295 @@ const OrgFeed = () => {
         </Modal>
       </div>
 
-      <div className="flex gap-4   w-full p-4">
-        <div className="border border-slate-300  rounded-2xl px-5 w-2/5 py-8">
-          <Bar />
-        </div>
+            <div className='flex gap-4   w-full p-4'>
 
-        <div className="border border-slate-300 gap-4  rounded-2xl px-3 w-2/5 py-3 flex flex-col justify-center items-center">
-          <Donut />
-        </div>
-        <div className="border border-slate-300  rounded-2xl px-5 w-2/5 py-8">
-          <LineBar />
-        </div>
-      </div>
 
-      <div className=" flex  h-[18rem] gap-4 px-5">
-        <div className="border flex gap-4 flex-col border-slate-300 w-1/3 rounded-2xl p-3 ">
-          <div className="text-xl px-2 font-semibold">Events Coordintors</div>
-          <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <div className="flex items-center gap-3">
-                  <h1 className="text-lg font-bold">Shivanshu Gupta</h1>
-                  <p className="text-neutral-700 text-sm font-bold ">Rann</p>
-                </div>
-                <p className="text-neutral-700 text-sm ">
-                  shivanshu1109@gmail.com
-                </p>
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <div className="flex items-center gap-3">
-                  <h1 className="text-lg font-bold">Suhani Singh</h1>
-                  <p className="text-neutral-700 text-sm font-bold ">Epoque</p>
+
+                <div className="bg-teal-50 border-teal-600 border text-gray-700  rounded-2xl px-5 w-2/5 py-8" >
+
+                    <Bar />
                 </div>
 
-                <p className="text-neutral-700 text-sm ">suhani885@gmail.com</p>
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <div className="flex items-center gap-3">
-                  <h1 className="text-lg font-bold">Prince Kumar Kushwaha</h1>
-                  <p className="text-neutral-700 text-sm font-bold ">Rann</p>
+                <div className="bg-teal-50 border-teal-600 border text-gray-700 gap-4  rounded-2xl px-3 w-2/5 py-3 flex flex-col justify-center items-center">
+
+                    <Donut />
+                </div>
+                <div className="bg-teal-50 border-teal-600 border text-gray-700 rounded-2xl px-5 w-2/5 py-8" >
+                    <LineBar />
+
                 </div>
 
-                <p className="text-neutral-700 text-sm ">
-                  prince121kk@gmail.com
-                </p>
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
+
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <div className="flex items-center gap-3">
-                  <h1 className="text-lg font-bold">Prince Kumar Kushwaha</h1>
-                  <p className="text-neutral-700 text-sm font-bold ">Rann</p>
+
+            <div className=" flex  h-[18rem] gap-4 px-5">
+                <div className=" flex gap-4 flex-col bg-teal-50 border-teal-600 border text-gray-700 w-1/3 rounded-2xl p-3 ">
+
+                    <div className="text-xl px-2 font-Bold  font-bold ">
+                        Events Coordintors
+                    </div>
+                    <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border  hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <div className="flex items-center gap-3">
+                                    <h1 className="text-lg font-semibold ">Shivanshu Gupta</h1>
+                                    <p className="text-neutral-700 text-sm  ">Rann</p>
+                                </div>
+                                <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p>
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <div className="flex items-center gap-3">
+
+                                    <h1 className="text-lg font-bold">Suhani Singh</h1>
+                                    <p className="text-neutral-700 text-sm font-bold ">Epoque</p>
+                                </div>
+
+                                <p className="text-neutral-700 text-sm ">suhani885@gmail.com</p>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <div className="flex items-center gap-3">
+
+                                    <h1 className="text-lg font-bold">Prince Kumar Kushwaha</h1>
+                                    <p className="text-neutral-700 text-sm font-bold ">Rann</p>
+                                </div>
+
+                                <p className="text-neutral-700 text-sm ">prince121kk@gmail.com</p>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <div className="flex items-center gap-3">
+
+                                    <h1 className="text-lg font-bold">Prince Kumar Kushwaha</h1>
+                                    <p className="text-neutral-700 text-sm font-bold ">Rann</p>
+                                </div>
+
+                                <p className="text-neutral-700 text-sm ">prince121kk@gmail.com</p>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div className="border flex gap-4 flex-col bg-teal-50 border-teal-600  w-1/3 rounded-2xl p-3 ">
+
+                    <div className="text-xl px-2 font-semibold">
+                        Events
+                    </div>
+                    <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <h1 className="text-lg font-bold">Rann</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <h1 className="text-lg font-bold">Rann</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <h1 className="text-lg font-bold">Rann</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-3 ">
+                                <h1 className="text-lg font-bold">Rann</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div className="border flex gap-4 flex-col bg-teal-50 border-teal-600  w-1/3 rounded-2xl p-3 ">
+
+                    <div className="text-xl px-2 font-semibold">
+                        Payments
+                    </div>
+
+                    <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-2 py-1 ">
+                                <h1 className="text-md ">&#8377;99 credited to your bank through Razorpay.</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-2 py-1 ">
+                                <h1 className="text-md ">&#8377;10 credited to your bank through Razorpay.</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-2 py-1 ">
+                                <h1 className="text-md ">&#8377;919 credited to your bank through Razorpay.</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-2 py-1 ">
+                                <h1 className="text-md ">&#8377;992 credited to your bank through Razorpay.</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+                            <div className=" flex flex-col items-start px-2 py-1 ">
+                                <h1 className="text-md ">&#8377;992 credited to your bank through Razorpay.</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+                        <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary  transition-all">
+                            <div className=" flex flex-col items-start px-2 py-1 ">
+                                <h1 className="text-md ">&#8377;99 credited to your bank through Razorpay.</h1>
+                                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
+                                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
+
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <img
+                                    src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
+                                    className="w-12 h-12 border rounded-full"
+                                    alt=""
+                                />
+
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
 
-                <p className="text-neutral-700 text-sm ">
-                  prince121kk@gmail.com
-                </p>
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="border flex gap-4 flex-col border-slate-300 w-1/3 rounded-2xl p-3 ">
-          <div className="text-xl px-2 font-semibold">Events</div>
-          <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <h1 className="text-lg font-bold">Rann</h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <h1 className="text-lg font-bold">Rann</h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <h1 className="text-lg font-bold">Rann</h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-3 ">
-                <h1 className="text-lg font-bold">Rann</h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://images-platform.99static.com/WFbHcJTGYNOP9fOW8RIu4L_3meQ=/0x0:1700x1700/500x500/top/smart/99designs-contests-attachments/134/134078/attachment_134078518"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="border flex gap-4 flex-col border-slate-300 w-1/3 rounded-2xl p-3 ">
-          <div className="text-xl px-2 font-semibold">Payments</div>
-
-          <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-2 py-1 ">
-                <h1 className="text-md ">
-                  &#8377;99 credited to your bank through Razorpay.
-                </h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-2 py-1 ">
-                <h1 className="text-md ">
-                  &#8377;10 credited to your bank through Razorpay.
-                </h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-2 py-1 ">
-                <h1 className="text-md ">
-                  &#8377;919 credited to your bank through Razorpay.
-                </h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-2 py-1 ">
-                <h1 className="text-md ">
-                  &#8377;992 credited to your bank through Razorpay.
-                </h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-2 py-1 ">
-                <h1 className="text-md ">
-                  &#8377;992 credited to your bank through Razorpay.
-                </h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-slate-300 transition-all">
-              <div className=" flex flex-col items-start px-2 py-1 ">
-                <h1 className="text-md ">
-                  &#8377;99 credited to your bank through Razorpay.
-                </h1>
-                <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
-                {/* <p className="text-neutral-700 text-sm ">shivanshu1109@gmail.com</p> */}
-              </div>
-              <div className="flex items-center gap-1">
-                <img
-                  src="https://media.tradly.app/images/marketplace/34521/razor_pay_icon-ICtywSbN.png"
-                  className="w-12 h-12 border rounded-full"
-                  alt=""
-                />
-              </div>
             </div>
           </div>
         </div>
