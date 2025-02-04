@@ -3,18 +3,18 @@ import { InboxOutlined } from "@ant-design/icons";
 import { Button, Form, Upload, Input, Select } from "antd";
 
 export const Basic = ({ formData, setFormData, current, setCurrent }) => {
+  const { TextArea } = Input;
+
   const onFinish = (value) => {
     console.log(value);
     setCurrent(current + 1);
   };
 
-  const { TextArea } = Input;
-
   const onChange = (e) => {
     console.log("Change:", e.target.value);
   };
   return (
-    <div className="mx-20">
+    <div className="md:mx-20">
       <Form name="form" layout="vertical" onFinish={onFinish}>
         <Form.Item
           name="name"
@@ -53,9 +53,9 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
           valuePropName="fileList"
           getValueFromEvent={(e) => e?.fileList}
         >
-          <Upload.Dragger style={{ backgroundColor: "white" }} name="files">
+          <Upload.Dragger style={{ backgroundColor: "white" }} name="bannerImg">
             <p className="ant-upload-drag-icon">
-              <InboxOutlined />
+              <InboxOutlined style={{ color: "teal" }} />
             </p>
             <p className="ant-upload-text">
               Click or drag Banner Image to this area to upload
@@ -64,7 +64,7 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
         </Form.Item>
 
         <div className="flex justify-center">
-          <Button type="primary" htmlType="submit">
+          <Button size="large" htmlType="submit">
             Next
           </Button>
         </div>
@@ -78,12 +78,12 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
     console.log(value);
     setCurrent(current + 1);
   };
-
   return (
-    <div className="mx-20">
+    <div className="md:mx-20">
       <Form name="form" layout="vertical" onFinish={onFinish}>
         <Form.Item
           name="mode"
+          size="large"
           label="MODE OF EVENT"
           rules={[
             { required: true, message: "Please select the mode of your event" },
@@ -128,7 +128,7 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
             },
           ]}
         >
-          <Input type="number" min={4} max={6} placeholder="e.g. 4" />
+          <Input type="number" min={4} max={15} placeholder="e.g. 4" />
         </Form.Item>
 
         <div className="flex justify-center">
@@ -137,11 +137,12 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
             variant="filled"
             style={{ marginRight: "16px" }}
             onClick={() => setCurrent(current - 1)}
+            size="large"
           >
             Previous
           </Button>
 
-          <Button type="primary" htmlType="submit">
+          <Button htmlType="submit" size="large">
             Next
           </Button>
         </div>
