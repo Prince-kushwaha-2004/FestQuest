@@ -5,10 +5,20 @@
     --color-themeColor: #00637C;
     --color-primary: #00637C;
     --color-primary2: #00637cce;
-    --color-secondary: #eea010e5
+    --color-secondary: #1A2C2A;
+    --color-tertiary: #8B79F1;
 }
 
+.heading-primary{
+    font-family: "Roboto Slab", serif;
+}
+.heading-secondary{
+    font-family: "Crimson Text", serif;
+}
 
+.zindex{
+    z-index:-1
+}
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }

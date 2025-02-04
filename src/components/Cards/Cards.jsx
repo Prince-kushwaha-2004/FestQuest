@@ -7,7 +7,7 @@ import { IoLocationOutline, IoPeople } from "react-icons/io5";
 
 function Cards() {
     return (
-        <div className="bg-[#2847270e] hover:shadow-xl transition-all border border-slate-300 w-full  p-4 rounded-4xl">
+        <div className="bg-teal-50  transition-all border border-teal-600 w-full  p-4 rounded-4xl">
             <div className="flex justify-between">
                 <div className="flex gap-4">
                     <img
@@ -33,7 +33,7 @@ function Cards() {
                     )}
                 </div>
             </div>
-            <p className="m-4 ">
+            <p className="m-4 text-lg">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut illum
                 quaerat saepe quasi distinctio excepturi quia, vitae sapiente minima
                 voluptas minus, sint iste soluta porro, provident optio ratione enim
@@ -47,36 +47,36 @@ function Cards() {
                 />
                 <div className="w-full 2xl:w-1/2 p-8 flex flex-wrap gap-x-4 gap-y-2">
                     <div className="flex gap-4">
-                        <IoIosPeople className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
+                        <IoIosPeople className="text-[2.7rem] p-2 bg-white text-slate-700 border border-gray-300 rounded-xl " />
                         <div className="">
-                            <p className="font-semibold text-lg">Registered</p>
+                            <p className="font-medium text-lg">Registered</p>
                             <p className="text-slate-700 text-sm">1884</p>
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <BsCalendar2Event className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
+                        <BsCalendar2Event className="text-[2.7rem] p-2 bg-white text-slate-700 border border-gray-300 rounded-xl " />
                         <div className="">
-                            <p className="font-semibold text-lg">Date</p>
+                            <p className="font-medium text-lg">Date</p>
                             <p className="text-slate-700 text-sm">30 Jan 2024</p>
                         </div>
                     </div>
 
                     <div className="flex gap-4">
-                        <IoPeople className="text-[2.7rem] p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
+                        <IoPeople className="text-[2.7rem] p-2 bg-white text-slate-700 border border-gray-300  rounded-xl " />
                         <div className="">
-                            <p className="font-semibold text-lg">Team Size</p>
+                            <p className="font-medium text-lg">Team Size</p>
                             <p className="text-slate-700 text-sm">1 - 3 Members</p>
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <IoMdTime className="text-[2.7rem] sm:p-2 bg-white text-slate-700 shadow-xl rounded-xl " />
+                        <IoMdTime className="text-[2.7rem] sm:p-2 bg-white text-slate-700 border border-gray-300 rounded-xl " />
                         <div className="">
-                            <p className="font-semibold text-lg">Registration Deadline</p>
+                            <p className="font-medium text-lg">Registration Deadline</p>
                             <p className="text-slate-700 text-sm">3 days left</p>
                         </div>
                     </div>
                     <div className="flex items-center sm:px-4 w-full flex-row gap-4 justify-between flex-wrap">
-                        <p className="text-2xl font-semibold text-black">&#8377;999</p>
+                        <p className="text-2xl font-medium text-black">&#8377;999/-</p>
                         <button className="px-16 py-2 bg-[#00637C] text-white text-md rounded-lg hover:bg-[#00637cc0] ">
                             Register
                         </button>

@@ -10,22 +10,17 @@ import {
 import { IoMdDoneAll } from "react-icons/io";
 import { RiCalendarEventLine } from "react-icons/ri";
 import logo from "../../assets/festLogo.png";
-export const SideBar = () => {
-  return (
-    <div className="flex">
-      <Sidebar />
-    </div>
-  );
-};
 
-const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+
+
+export const SideBar = () => {
+  const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
   return (
     <motion.nav
       layout
-      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r backdrop-blur-3xl border-slate-300 p-2"
+      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r bg-teal-600 backdrop-blur-3xl border-slate-300 p-2"
       style={{
         width: open ? "285px" : "fit-content",
       }}
@@ -79,11 +74,10 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
     <motion.button
       layout
       onClick={() => setSelected(title)}
-      className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${
-        selected === title
-          ? "shadow bg-[#71f1cb11] border border-slate-300"
-          : "text-slate-700 hover:bg-[#1d2f331e] hover:text-black"
-      }`}
+      className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
+        ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
+        : "text-white hover:bg-gray-300 hover:text-black"
+        }`}
       style={{
         padding: open ? "1.5rem" : "1.5rem 1rem",
       }}
@@ -111,8 +105,8 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
 
 const TitleSection = ({ open }) => {
   return (
-    <div className="mb-10 mt-4 pb-3">
-      <div className="flex cursor-pointer items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg">
+    <div className="mb-10 mt-4 pb-3  ">
+      <div className={"flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg"}  >
         <div className="flex px-8 py-2 items-center gap-2">
           {open && (
             <motion.div
@@ -135,9 +129,9 @@ const ToggleClose = ({ open, setOpen }) => {
     <motion.button
       layout
       onClick={() => setOpen((pv) => !pv)}
-      className="absolute bottom-0 left-0 right-0 border-t border-slate-300 transition-colors hover:bg-[#1d2f331e]"
+      className="absolute bottom-0 left-0 right-0 border-t border-slate-300 transition-colors hover:bg-gray-400"
     >
-      <div className="flex items-center px-6 py-3">
+      <div className="flex items-center px-6 py-3 text-white">
         <motion.div
           layout
           className="grid size-10 place-content-center text-xl"
@@ -152,7 +146,7 @@ const ToggleClose = ({ open, setOpen }) => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.125 }}
-            className="text-lg font-medium"
+            className="text-lg font-medium "
           >
             Hide
           </motion.span>
