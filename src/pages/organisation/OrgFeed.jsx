@@ -593,9 +593,6 @@ const OrgFeed = () => {
             </div>
 
 
-
-
-
         </div>
     )
 }
