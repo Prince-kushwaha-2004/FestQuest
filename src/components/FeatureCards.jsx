@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 const FeatureCards = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -9,7 +9,7 @@ const FeatureCards = () => {
       title: "Seamless Integration",
       description:
         "Connect with your favorite tools and apps to streamline your event management workflows.",
-      gradient: "from-pink-400 via-purple-400 to-indigo-400",
+      gradient: "from-pink-500 via-purple-600 to-indigo-700",
       pattern:
         "radial-gradient(circle at top right, rgba(255,255,255,0.15) 1px, transparent 1px) 0 0/20px 20px",
       bgAccent:
@@ -19,7 +19,7 @@ const FeatureCards = () => {
       title: "Real-Time Tracking",
       description:
         "Connect with your favorite tools and apps to streamline your event management workflows.",
-      gradient: "from-green-400 via-teal-400 to-cyan-400",
+      gradient: "from-green-500 via-teal-400 to-cyan-600",
       pattern:
         "radial-gradient(circle at center, rgba(255,255,255,0.15) 1px, transparent 1px) 0 0/15px 15px",
       bgAccent:
@@ -29,7 +29,7 @@ const FeatureCards = () => {
       title: "Comprehensive Planning",
       description:
         "Connect with your favorite tools and apps to streamline your event management workflows.",
-      gradient: "from-orange-400 via-amber-400 to-yellow-400",
+      gradient: "from-orange-500 via-amber-400 to-yellow-600",
       pattern:
         "radial-gradient(circle at bottom left, rgba(255,255,255,0.15) 1px, transparent 1px) 0 0/18px 18px",
       bgAccent:
@@ -52,7 +52,7 @@ const FeatureCards = () => {
   };
 
   return (
-    <div className="py-12 px-4">
+    <div className="py-12 px-4  ">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -73,7 +73,7 @@ const FeatureCards = () => {
                 relative overflow-hidden rounded-xl p-8
                 bg-gradient-to-br ${feature.gradient}
                 shadow-lg transition-all duration-500
-                hover:shadow-2xl
+              
               `}
               whileHover={{
                 scale: 1.02,
@@ -118,7 +118,7 @@ const FeatureCards = () => {
 
               <motion.div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100
-                         bg-gradient-to-t from-black/20 to-transparent"
+                         bg-gradient-to-t to-transparent"
                 initial={false}
                 animate={{
                   opacity: hoveredCard === index ? 1 : 0,
