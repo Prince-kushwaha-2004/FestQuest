@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { ConfigProvider, Form, Input, message } from "antd";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
@@ -7,6 +5,8 @@ import {
   MobileOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { ConfigProvider, Form, Input, message } from "antd";
+import React, { useState } from "react";
 
 import logo from "../assets/festLogo.png";
 import StepwiseProcess from "../components/StepwiseProcess";

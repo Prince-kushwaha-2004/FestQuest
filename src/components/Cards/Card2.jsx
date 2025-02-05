@@ -18,8 +18,9 @@ function Card2({ data, index }) {
 
   return (
     <div
-      className={`bg-[${boxColor[colorNumber]}] flex flex-col w-full h-[20rem] gap-4  justify-between   
+      className={` flex flex-col w-full h-[20rem] gap-4  justify-between   
         border p-4 rounded-xl   hover:border  transition-all  cursor-pointer`}
+      style={{ backgroundColor: boxColor[colorNumber] }}
     >
       <img src={data.logo} alt="img" className=" w-17 h-15 rounded-2xl" />
 

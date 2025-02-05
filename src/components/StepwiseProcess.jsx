@@ -5,7 +5,7 @@ const StepwiseProcess = ({ logo, current, itemsArray }) => {
   return (
     <>
       <div className="flex flex-col justify-between">
-        <div className="flex 2xl:[21rem]  xl:w-[19rem] lg:[18rem] md:[10rem] mb-15">
+        <div className="flex 2xl:[21rem]  xl:w-[17rem] mt-16 lg:[18rem] md:[10rem] mb-15">
           <img src={logo} alt="" />
         </div>
         <div className="flex pl-6 ">

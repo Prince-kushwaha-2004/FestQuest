@@ -68,7 +68,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-8xl font-bold text-gray-800 leading-tight">
+      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-7xl font-bold text-gray-800 leading-tight z-10">
         <Text>Think, plan, and track</Text>
       </h2>
     );
@@ -178,40 +178,39 @@ const LandingPage = () => {
       <Nav />
 
       <div
-        className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-500 rounded-4xl px-5 
-      md:px-6 lg:px-60 2xl:px-80 py-30 flex flex-col items-center justify-center heading-primary relative"
+        className="m-4 mt-0 border-2  border-slate-200 flex-1 bg-teal-500 rounded-4xl  flex flex-col items-center justify-center heading-primary relative"
       >
-        <img src={Brush} className="w-[8rem] absolute top-20 left-60" alt="" />
+        <img src={Brush} className="w-[8rem] absolute top-20 left-60 z-5" alt="" />
         <img
           src={Camera}
-          className="w-[8rem] absolute top-20 right-60"
+          className="w-[8rem] absolute top-20 right-60 z-5"
           alt=""
         />
-        <img src={Plan} className="w-[8rem] absolute top-70 right-40" alt="" />
-        <img src={Money} className="w-[8rem] absolute top-70 left-30" alt="" />
-
-        <h1 className="text-4xl md:text-6xl xl:text-8xl text-gray-800 text-center leading-tight">
+        <img src={Plan} className="w-[8rem] absolute top-70 right-40 z-5" alt="" />
+        <img src={Money} className="w-[8rem] absolute top-70 left-30 z-5" alt="" />
+        <div className="backdrop-blur-xs z-10 justify-center flex flex-col items-center py-30 rounded-4xl">
           <BubbleText />
           <BlockInTextCard
             examples={["all in one place", "all in one place"]}
           />
-        </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl mt-2 text-white mb-8 text-center max-w-2xl">
-          Efficiently manage your events and boost productivity with our
-          intuitive event planning platform.
-        </p>
+
+          <p className="text-lg sm:text-xl md:text-2xl mt-2 text-white mb-8 text-center max-w-2xl z-10">
+            Efficiently manage your events and boost productivity with our
+            intuitive event planning platform.
+          </p>
+        </div>
         {/* <FeatureCards /> */}
       </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-6 text-slate-800  relative ">
+      <section className="mx-auto max-w-7xl px-8 py-1 text-slate-800  relative ">
         <img
           src={Trophy}
-          className="w-[8rem] absolute top-0 left-0 zindex "
+          className="w-[8rem] absolute top-0 left-0 zindex hidden md:block "
           alt=""
         />
 
-        <div className="mb-8  flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
+        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
           <h2 className="max-w-lg  pl-8 mt-5 text-4xl font-bold md:text-5xl">
             Grow faster with our
             <span className="text-indigo-400"> all in one solution</span>
