@@ -1,38 +1,52 @@
 import React from "react";
-import { BsCalendar2Event } from "react-icons/bs";
+// import { BsCalendar2Event } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { BsArrowUpRightCircle } from "react-icons/bs";
+import { Color } from "../../utils/Color";
 
-function Card2({ data }) {
+
+function Card2({ data, index }) {
+
+  const boxColor = Color.arrayColor
+
+  var colorNumber = index
+  if (index + 1 > boxColor.length) {
+    colorNumber = index % boxColor.length
+  }
+
+
   return (
-    <Link to={`/event/${data.id}`}>
-      <div
-        className="flex min-w-60 flex-col gap-4 mx-4 justify-between bg-teal-50 border-teal-600 shadow border 
-p-3 rounded-3xl hover:border  transition-all hover:shadow-xl cursor-pointer"
-      >
-        <div className="flex gap-4 px-2">
-          <img src={data.logo} alt="img" className="w-10 h-10 rounded-full " />
-          <div>
-            <h1 className="font-bold text-lg">{data.name}</h1>
-            <p className="text-neutral-700 flex gap-1 items-center ">
-              <IoLocationOutline />
-              {data.mode}
-            </p>
-          </div>
+    <div
+      className={`bg-[${boxColor[colorNumber]}] flex flex-col w-full h-[20rem] gap-4  justify-between   
+        border p-4 rounded-xl   hover:border  transition-all  cursor-pointer`}
+    >
+      <img src={data.logo} alt="img" className=" w-17 h-15 rounded-2xl" />
+
+      <h1 className="font-medium  text-2xl">{data.name}</h1>
+
+      <p className=" flex justify-between items-center ">
+        <div className="gap-2 flex items-center">
+          <IoLocationOutline />
+          {data.mode}
+          <p>
+            {data.date}
+
+          </p>
         </div>
 
-        <div className="flex justify-between gap-4 mb-3 mx-2">
-          <div className="flex items-center gap-3">
-            <BsCalendar2Event className="text-[2rem] p-2 bg-white text-slate-700 shadow rounded-xl" />
-            <p className="text-slate-700 text-sm">{data.date}</p>
-          </div>
-          <button className="px-4 py-1 bg-[#00637C] text-white text-sm rounded-lg hover:bg-[#00637cc0] ">
-            Details
-          </button>
-        </div>
-      </div>
-    </Link>
+
+        <BsArrowUpRightCircle className="text-2xl" />
+      </p>
+
+
+
+
+
+
+    </div>
+
   );
 }
 
-export default Card2;
+export default Card2

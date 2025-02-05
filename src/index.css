@@ -7,6 +7,7 @@
     --color-primary2: #00637cce;
     --color-secondary: #1A2C2A;
     --color-tertiary: #8B79F1;
+    --color-newPrimary: #022B28;
 }
 
 .heading-primary{
@@ -18,6 +19,9 @@
 
 .zindex{
     z-index:-1
+}
+.zindexPlus{
+    z-index:+1
 }
 .no-scrollbar::-webkit-scrollbar {
     display: none;
