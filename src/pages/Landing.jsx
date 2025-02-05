@@ -69,6 +69,7 @@ const LandingPage = () => {
 
     return (
       <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-7xl font-bold text-gray-800 leading-tight z-10">
+
         <Text>Think, plan, and track</Text>
       </h2>
     );
@@ -176,7 +177,6 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen flex flex-col h-screen overflow-y-scroll  ">
       <Nav />
-
       <div
         className="m-4 mt-0 border-2  border-slate-200 flex-1 bg-teal-500 rounded-4xl  flex flex-col items-center justify-center heading-primary relative"
       >
@@ -203,12 +203,14 @@ const LandingPage = () => {
         {/* <FeatureCards /> */}
       </div>
 
+
       <section className="mx-auto max-w-7xl px-8 py-1 text-slate-800  relative ">
         <img
           src={Trophy}
           className="w-[8rem] absolute top-0 left-0 zindex hidden md:block "
           alt=""
         />
+
 
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
           <h2 className="max-w-lg  pl-8 mt-5 text-4xl font-bold md:text-5xl">
@@ -266,7 +268,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <footer className="bg-indigo-200">
+      <footer className="bg-indigo-300">
         <div className="mx-auto w-full p-4 py-6 md:px-20 px-8 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="flex mb-6 md:mb-0 items-center transition-all hover:scale-103">
@@ -335,9 +337,9 @@ const LandingPage = () => {
           <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-700 sm:text-center">
-              © 2025{" "}
+              ©️ 2025{" "}
               <a href="" className="hover:underline">
-                FestQuest™
+                FestQuest™️
               </a>
               . All Rights Reserved.
             </span>
