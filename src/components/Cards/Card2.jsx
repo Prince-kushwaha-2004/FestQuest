@@ -6,8 +6,8 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Color } from "../../utils/Color";
 
-
 function Card2({ data, index }) {
+  const boxColor = Color.arrayColor;
 
   const boxColor = Color.arrayColor
 
@@ -50,4 +50,4 @@ function Card2({ data, index }) {
   );
 }
 
-export default Card2
+export default Card2;

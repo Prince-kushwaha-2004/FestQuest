@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 import { IoMdDoneAll } from "react-icons/io";
 import { RiCalendarEventLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import logo from "../../assets/festLogo.png";
 import smallLogo from './../../assets/favicon.png';
 
@@ -27,13 +28,15 @@ export const SideBar = () => {
     >
       <TitleSection open={open} />
       <div className="space-y-1">
-        <Option
-          Icon={FiHome}
-          title="Dashboard"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
+        <Link to="/dashboard">
+          <Option
+            Icon={FiHome}
+            title="Dashboard"
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+          />
+        </Link>
         <Option
           Icon={IoMdDoneAll}
           title="Registered"
@@ -55,13 +58,15 @@ export const SideBar = () => {
           setSelected={setSelected}
           open={open}
         />
-        <Option
-          Icon={FiUsers}
-          title="Create Event"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
+        <Link to="/eventRegister">
+          <Option
+            Icon={FiUsers}
+            title="Create Event"
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+          />
+        </Link>
       </div>
 
       <ToggleClose open={open} setOpen={setOpen} />
@@ -75,8 +80,8 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
       layout
       onClick={() => setSelected(title)}
       className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
-        ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
-        : "text-white hover:bg-gray-300 hover:text-black"
+          ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
+          : "text-white hover:bg-gray-300 hover:text-black"
         }`}
       style={{
         padding: open ? "1.5rem" : "1.5rem 1rem",

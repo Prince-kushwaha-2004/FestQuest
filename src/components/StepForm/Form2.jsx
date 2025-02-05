@@ -1,8 +1,9 @@
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
-import { Image, Button, Upload, DatePicker, Form, Input, Space } from "antd";
+import { Button, DatePicker, Form, Image, Input, Space, Upload } from "antd";
 import React, { useState } from "react";
-const { RangePicker } = DatePicker;
 import { Regex } from "../../utils/Constants";
+
+const { RangePicker } = DatePicker;
 
 export const Links = ({ formData, setFormData, current, setCurrent }) => {
   const getBase64 = (file) =>
@@ -47,21 +48,54 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
 
   const onFinish = (value) => {
     console.log(value);
+    setFormData({ ...formData, links: value });
     setCurrent(current + 1);
   };
   return (
     <div className="md:mx-20">
-      <Form name="form" layout="vertical" onFinish={onFinish}>
-        <Form.Item name="linkedin" label="LINKEDIN">
-          <Input placeholder="A tagline for your event" />
+      <Form
+        name="form"
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={formData.links}
+      >
+        <Form.Item
+          name="linkedin"
+          label="LINKEDIN"
+          rules={[
+            {
+              pattern: Regex.urlRegex,
+              message: "Please enter a valid url",
+            },
+          ]}
+        >
+          <Input placeholder="eg. https://linkedin.com" />
         </Form.Item>
 
-        <Form.Item name="instagram" label="INSTAGRAM">
-          <Input placeholder="A tagline for your event" />
+        <Form.Item
+          name="instagram"
+          label="INSTAGRAM"
+          rules={[
+            {
+              pattern: Regex.urlRegex,
+              message: "Please enter a valid url",
+            },
+          ]}
+        >
+          <Input placeholder="eg. https://instagram.com" />
         </Form.Item>
 
-        <Form.Item name="discord" label="DISCORD">
-          <Input placeholder="A tagline for your event" />
+        <Form.Item
+          name="discord"
+          label="DISCORD"
+          rules={[
+            {
+              pattern: Regex.urlRegex,
+              message: "Please enter a valid url",
+            },
+          ]}
+        >
+          <Input placeholder="eg. https://discord.com" />
         </Form.Item>
 
         <Form.Item label="SPONSOR IMAGES" name="sponsors">
@@ -70,36 +104,39 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             fileList={fileList}
             onPreview={handlePreview}
             onChange={handleChange}
+            accept="image/*"
+            beforeUpload={() => {
+              return false;
+            }}
           >
             {fileList.length >= 10 ? null : uploadButton}
           </Upload>
-          {previewImage && (
-            <Image
-              wrapperStyle={{
-                display: "none",
-              }}
-              preview={{
-                visible: previewOpen,
-                onVisibleChange: (visible) => setPreviewOpen(visible),
-                afterOpenChange: (visible) => !visible && setPreviewImage(""),
-              }}
-              src={previewImage}
-            />
-          )}
         </Form.Item>
-
-        <div className="flex justify-center">
+        {previewImage && (
+          <Image
+            wrapperStyle={{
+              display: "none",
+            }}
+            preview={{
+              visible: previewOpen,
+              onVisibleChange: (visible) => setPreviewOpen(visible),
+              afterOpenChange: (visible) => !visible && setPreviewImage(""),
+            }}
+            src={previewImage}
+          />
+        )}
+        <div className="flex justify-center my-3">
           <Button
             color="cyan"
             variant="filled"
-            style={{ marginRight: "16px" }}
+            style={{ marginRight: "16px", width: "50%" }}
             onClick={() => setCurrent(current - 1)}
             size="large"
           >
             Previous
           </Button>
 
-          <Button htmlType="submit" size="large">
+          <Button htmlType="submit" size="large" style={{ width: "50%" }}>
             Next
           </Button>
         </div>
@@ -109,6 +146,7 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
 };
 
 export const Dates = ({ formData, setFormData, current, setCurrent }) => {
+  const [finalData, setFinalData] = useState({});
   const rangeConfig = {
     rules: [
       {
@@ -119,28 +157,32 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
     ],
   };
   const onFinish = (fieldsValue) => {
-    const registrationDate = fieldsValue["registrationDate"];
-    const eventDate = fieldsValue["eventDate"];
-    const values = {
-      ...fieldsValue,
-      registrationDate: [
-        registrationDate[0].format("YYYY-MM-DD HH:mm:ss"),
-        registrationDate[1].format("YYYY-MM-DD HH:mm:ss"),
-      ],
-      eventDate: [
-        eventDate[0].format("YYYY-MM-DD HH:mm:ss"),
-        eventDate[1].format("YYYY-MM-DD HH:mm:ss"),
-      ],
-    };
-    console.log(values);
-    setFormData({ ...formData, dates: fieldsValue, eventDates: values });
-    console.log("Received values of form: ", formData);
-    setCurrent(current + 1);
+    setFormData({ ...formData, dateAndPrices: fieldsValue });
+    const { description, name, type } = formData.basic;
+    setFinalData({
+      ...finalData,
+      eventDate: formData.eventDate,
+      registrationDate: formData.registrationDate,
+      description,
+      name,
+      type,
+      ...formData.eventDetails,
+      links: formData.links,
+      sponsors: formData.links?.sponsors?.fileList,
+      banner: formData.basic.banner.file,
+      prizes: formData.dateAndPrices?.prizes,
+    });
+    console.log("finaldata", finalData);
   };
 
   return (
     <div className="md:mx-20 flex justify-center">
-      <Form name="form" layout="vertical" onFinish={onFinish}>
+      <Form
+        name="dateAndPrices"
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={formData.dateAndPrices}
+      >
         <Form.Item
           name="registrationDate"
           label="REGISTRATION DATES"
@@ -151,6 +193,9 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             size="large"
             showTime
             format="YYYY-MM-DD HH:mm:ss"
+            onChange={(_, value) =>
+              setFormData({ ...formData, registrationDate: value })
+            }
           />
         </Form.Item>
         <Form.Item name="eventDate" label="EVENT DATES" {...rangeConfig}>
@@ -159,6 +204,9 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             size="large"
             showTime
             format="YYYY-MM-DD HH:mm:ss"
+            onChange={(_, value) =>
+              setFormData({ ...formData, eventDate: value })
+            }
           />
         </Form.Item>
 
@@ -207,7 +255,7 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
                         },
                       ]}
                     >
-                      <Input placeholder="Prize" />
+                      <Input placeholder="Prizes" />
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>
@@ -216,20 +264,19 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             )}
           </Form.List>
         </div>
-
-        <div className="flex justify-center">
+        <div className="flex justify-center my-3">
           <Button
             color="cyan"
             variant="filled"
-            style={{ marginRight: "16px" }}
+            style={{ marginRight: "16px", width: "50%" }}
             onClick={() => setCurrent(current - 1)}
             size="large"
           >
             Previous
           </Button>
 
-          <Button htmlType="submit" size="large">
-            Next
+          <Button htmlType="submit" size="large" style={{ width: "50%" }}>
+            Submit
           </Button>
         </div>
       </Form>

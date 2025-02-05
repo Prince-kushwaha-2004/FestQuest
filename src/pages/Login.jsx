@@ -19,13 +19,10 @@ const Login = () => {
         },
       }}
     >
-      <div className="w-screen h-screen bg-teal-50 flex justify-center items-center">
+      <div className="w-screen h-screen bg-indigo-50 flex justify-center items-center">
         <div className="w-[90%]  sm:w-[80%] md:w-2/3 h-[90%] relative ">
-          <div className="h-[80%] gap-4 w-full md:w-2/3 md:px-20 lg:w-[50%] 2xl:w-[50%] p-4 flex flex-col justify-center items-center absolute mt-22 left-0 rounded-4xl bg-white shadow-2xl drop-shadow-xl z-10">
-            <form
-              action=""
-              className="flex w-full gap-9  flex-col justify-center items-center"
-            >
+          <div className="h-[80%] gap-4 w-full bg-white md:w-2/3 md:px-20 lg:w-[50%] 2xl:w-[50%] p-4 flex flex-col justify-center items-center absolute mt-22 left-0 rounded-4xl shadow-2xl drop-shadow-xl z-10">
+            <form className="flex w-full gap-9 flex-col justify-center items-center">
               <img src={logo} alt="" />
               <Input placeholder="Email" tyle="email" size="large" />
               <Input.Password size="large" placeholder="Password" />
@@ -39,12 +36,12 @@ const Login = () => {
                   </p>
                   <p className="text-md text-gray-500 text-center">
                     Sign up as{" "}
-                    <span className="text-secondary hover:text-primary">
+                    <span className="text-indigo-400 hover:text-teal-500">
                       {" "}
                       user
                     </span>{" "}
                     /{" "}
-                    <span className="text-secondary hover:text-primary">
+                    <span className="text-indigo-400 hover:text-teal-500">
                       organisation
                     </span>{" "}
                   </p>
