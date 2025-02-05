@@ -1,10 +1,10 @@
 [
  
     {
-        "id": 2,
-        "name": "Code Wars",
+        "id": 1,
+        "name": "CodeWars",
         "organiser": "National Institute of Technology (NIT) Trichy",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": false,
         "description": "Code Wars is a competitive coding event that brings together some of the brightest minds in the country to tackle unique algorithmic challenges and puzzles.",
@@ -20,10 +20,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 3,
+        "id": 2,
         "name": "Hacktoberfest",
         "organiser": "GitHub and DigitalOcean",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrMdFJ3Im7cKHllpR7UkGzI-zydXKZnvkVGg&s",
         "mode": "Online",
         "isSaved": true,
         "description": "Hacktoberfest is a global celebration of open-source software. Participants can contribute to open-source projects, solving problems and improving codebases across the world.",
@@ -39,10 +39,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 4,
+        "id": 3,
         "name": "InnoTech Hackathon",
         "organiser": "University of Delhi",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://kestra.io/blogs/2023-04-21-unveiling-kestra-s-new-visual-identity/image5.png",
         "mode": "Hybrid",
         "isSaved": false,
         "description": "InnoTech Hackathon is an innovative platform for students and professionals to showcase their technical prowess. From AI solutions to blockchain, the event covers a wide range of tech domains.",
@@ -58,10 +58,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 5,
+        "id": 4,
         "name": "CodeX",
         "organiser": "BITS Pilani",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://pbs.twimg.com/profile_images/1778980381452038145/AJRa1KYq_400x400.jpg",
         "mode": "Offline",
         "isSaved": true,
         "description": "CodeX is a coding marathon designed to test your problem-solving skills, featuring challenging problems in algorithms, databases, and web development.",
@@ -77,10 +77,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 6,
+        "id": 5,
         "name": "CyberHack",
         "organiser": "Indian Institute of Information Technology (IIIT) Allahabad",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://kestra.io/blogs/2023-04-21-unveiling-kestra-s-new-visual-identity/image5.png",
         "mode": "Online",
         "isSaved": false,
         "description": "CyberHack is a unique cybersecurity competition where participants battle it out in simulated environments to identify vulnerabilities and create solutions.",
@@ -96,10 +96,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 7,
+        "id": 6,
         "name": "CultureHack",
         "organiser": "Mumbai University",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": true,
         "description": "CultureHack blends technology and culture, allowing participants to work on projects that celebrate cultural heritage while integrating modern tech solutions.",
@@ -115,10 +115,10 @@
         "eventType": "Cultural"
     },
     {
-        "id": 8,
+        "id": 7,
         "name": "HackMaster",
         "organiser": "University of Pune",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Hybrid",
         "isSaved": false,
         "description": "HackMaster is a global hackathon where participants solve real-world problems using technology, pushing the limits of innovation and creativity.",
@@ -134,10 +134,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 9,
+        "id": 8,
         "name": "MindMeld Hackathon",
         "organiser": "National Institute of Design (NID) Ahmedabad",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Online",
         "isSaved": false,
         "description": "MindMeld Hackathon brings together designers, developers, and business experts to create products that solve complex real-world challenges.",
@@ -153,10 +153,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 10,
+        "id": 9,
         "name": "TechFutura",
         "organiser": "Amity University",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": false,
         "description": "TechFutura is a tech-based competition for the innovators of tomorrow to present solutions that can shape the future of our world.",
@@ -172,10 +172,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 2,
+        "id": 10,
         "name": "Code Wars",
         "organiser": "National Institute of Technology (NIT) Trichy",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": false,
         "description": "Code Wars is a competitive coding event that brings together some of the brightest minds in the country to tackle unique algorithmic challenges and puzzles.",
@@ -191,10 +191,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 3,
+        "id": 11,
         "name": "Hacktoberfest",
         "organiser": "GitHub and DigitalOcean",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Online",
         "isSaved": true,
         "description": "Hacktoberfest is a global celebration of open-source software. Participants can contribute to open-source projects, solving problems and improving codebases across the world.",
@@ -210,10 +210,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 1,
+        "id": 12,
         "name": "HaXplore",
         "organiser": "Indian Institute of Technology (Banaras Hindu University)",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Online",
         "isSaved": true,
         "description": "HaXplore is the flagship hackathon of CodeFest, the annual fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This prestigious event brings together innovative minds from various domains, creating a vibrant platform to showcase groundbreaking ideas.",
@@ -229,10 +229,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 4,
+        "id": 13,
         "name": "InnoTech Hackathon",
         "organiser": "University of Delhi",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Hybrid",
         "isSaved": false,
         "description": "InnoTech Hackathon is an innovative platform for students and professionals to showcase their technical prowess. From AI solutions to blockchain, the event covers a wide range of tech domains.",
@@ -248,10 +248,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 5,
+        "id": 14,
         "name": "CodeX",
         "organiser": "BITS Pilani",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": true,
         "description": "CodeX is a coding marathon designed to test your problem-solving skills, featuring challenging problems in algorithms, databases, and web development.",
@@ -267,10 +267,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 6,
+        "id": 15,
         "name": "CyberHack",
         "organiser": "Indian Institute of Information Technology (IIIT) Allahabad",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Online",
         "isSaved": false,
         "description": "CyberHack is a unique cybersecurity competition where participants battle it out in simulated environments to identify vulnerabilities and create solutions.",
@@ -286,10 +286,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 7,
+        "id": 16,
         "name": "CultureHack",
         "organiser": "Mumbai University",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": true,
         "description": "CultureHack blends technology and culture, allowing participants to work on projects that celebrate cultural heritage while integrating modern tech solutions.",
@@ -305,10 +305,10 @@
         "eventType": "Cultural"
     },
     {
-        "id": 8,
+        "id": 17,
         "name": "HackMaster",
         "organiser": "University of Pune",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Hybrid",
         "isSaved": false,
         "description": "HackMaster is a global hackathon where participants solve real-world problems using technology, pushing the limits of innovation and creativity.",
@@ -324,10 +324,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 9,
+        "id": 18,
         "name": "MindMeld Hackathon",
         "organiser": "National Institute of Design (NID) Ahmedabad",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Online",
         "isSaved": false,
         "description": "MindMeld Hackathon brings together designers, developers, and business experts to create products that solve complex real-world challenges.",
@@ -343,10 +343,10 @@
         "eventType": "Technical"
     },
     {
-        "id": 10,
+        "id": 19,
         "name": "TechFutura",
         "organiser": "Amity University",
-        "logo": "https://i.pinimg.com/736x/57/ef/97/57ef977c681ac1df7f7daa92ffada6cd.jpg",
+        "logo": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/641/515/datas/original.png",
         "mode": "Offline",
         "isSaved": false,
         "description": "TechFutura is a tech-based competition for the innovators of tomorrow to present solutions that can shape the future of our world.",

@@ -59,3 +59,28 @@
 .shiny-text.disabled {
     animation: none;
 }
+
+.box {
+    -webkit-animation-name: move;
+    -webkit-animation-duration: 15s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: left;
+    -webkit-animation-timing-function: linear;
+  }
+  
+  .box:hover {
+    -webkit-animation-play-state: paused;
+  }
+  
+  @-webkit-keyframes move {
+    0% {
+      margin-left: -400px;
+    }
+    100% {
+      margin-left: 800px;
+    }
+  }
+
+  .rotate{
+    transform:rotate(-14deg)
+  }

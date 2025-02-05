@@ -7,7 +7,7 @@ function Dashboard() {
     toast.error("Hello World");
   };
   return (
-    <div className="flex w-screen h-screen">
+    <div className="flex h-screen">
       <SideBar />
       <Outlet />
     </div>
