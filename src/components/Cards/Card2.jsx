@@ -5,21 +5,19 @@ import { IoLocationOutline } from "react-icons/io5";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { Color } from "../../utils/Color";
 
-
 function Card2({ data, index }) {
+  const boxColor = Color.arrayColor;
 
-  const boxColor = Color.arrayColor
-
-  var colorNumber = index
+  var colorNumber = index;
   if (index + 1 > boxColor.length) {
-    colorNumber = index % boxColor.length
+    colorNumber = index % boxColor.length;
   }
-
 
   return (
     <div
-      className={`bg-[${boxColor[colorNumber]}] flex flex-col w-full h-[20rem] gap-4  justify-between   
+      className={` flex flex-col w-full h-[20rem] gap-4  justify-between   
         border p-4 rounded-xl   hover:border  transition-all  cursor-pointer`}
+      style={{ backgroundColor: boxColor[colorNumber] }}
     >
       <img src={data.logo} alt="img" className=" w-17 h-15 rounded-2xl" />
 
@@ -29,24 +27,13 @@ function Card2({ data, index }) {
         <div className="gap-2 flex items-center">
           <IoLocationOutline />
           {data.mode}
-          <p>
-            {data.date}
-
-          </p>
+          <p>{data.date}</p>
         </div>
-
 
         <BsArrowUpRightCircle className="text-2xl" />
       </p>
-
-
-
-
-
-
     </div>
-
   );
 }
 
-export default Card2
+export default Card2;

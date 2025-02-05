@@ -86,7 +86,7 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
         </Form.Item>
 
         <div className="flex justify-center my-3">
-          <Button size="large" style={{ width: "100%" }} htmlType="submit">
+          <Button size="large" className="w-full" htmlType="submit">
             Next
           </Button>
         </div>
@@ -179,6 +179,7 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
             <Form.Item
               name="pin"
               label="PINCODE"
+              maxLength={6}
               rules={[
                 {
                   required: true,

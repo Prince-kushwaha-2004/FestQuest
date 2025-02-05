@@ -158,7 +158,6 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
   };
   const onFinish = (fieldsValue) => {
     setFormData({ ...formData, dateAndPrices: fieldsValue });
-    console.log("finaldata: ", formData);
     const { description, name, type } = formData.basic;
     setFinalData({
       ...finalData,
@@ -169,11 +168,11 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
       type,
       ...formData.eventDetails,
       links: formData.links,
-      sponsors: formData.links.sponsors.fileList,
+      sponsors: formData.links?.sponsors?.fileList,
       banner: formData.basic.banner.file,
-      prizes: formData.dateAndPrices.prizes,
+      prizes: formData.dateAndPrices?.prizes,
     });
-    console.log(finalData);
+    console.log("finaldata", finalData);
   };
 
   return (

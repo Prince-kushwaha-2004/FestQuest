@@ -19,7 +19,7 @@ export const SideBar = () => {
   return (
     <motion.nav
       layout
-      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r bg-teal-600 backdrop-blur-3xl border-slate-300 p-2"
+      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r bg-teal-600 backdrop-blur-3xl z-100 border-slate-300 p-2"
       style={{
         width: open ? "285px" : "fit-content",
       }}
@@ -56,7 +56,7 @@ export const SideBar = () => {
           setSelected={setSelected}
           open={open}
         />
-        <Link to="/eventRegister" >
+        <Link to="/eventRegister">
           <Option
             Icon={FiUsers}
             title="Create Event"
@@ -65,7 +65,6 @@ export const SideBar = () => {
             open={open}
           />
         </Link>
-
       </div>
 
       <ToggleClose open={open} setOpen={setOpen} />
@@ -78,10 +77,11 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
     <motion.button
       layout
       onClick={() => setSelected(title)}
-      className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
-        ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
-        : "text-white hover:bg-gray-300 hover:text-black"
-        }`}
+      className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${
+        selected === title
+          ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
+          : "text-white hover:bg-gray-300 hover:text-black"
+      }`}
       style={{
         padding: open ? "1.5rem" : "1.5rem 1rem",
       }}
@@ -112,7 +112,9 @@ const TitleSection = ({ open }) => {
     <div className="mb-10 mt-4 pb-3  ">
       <div
         className={
-          open ? "flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg" : 'hidden'
+          open
+            ? "flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg"
+            : "hidden"
         }
       >
         <div className="flex px-8 py-2 items-center gap-2">
