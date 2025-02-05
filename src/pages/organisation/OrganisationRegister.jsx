@@ -267,16 +267,16 @@ const OrganisationRegister = () => {
               </div>
 
               <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10 w-full">
-                <button className="px-6 py-3 rounded-md bg-blue-400/10 ">
+                {/* <button className="px-6 py-3 rounded-md bg-blue-400/10 ">
                   <div className="flex gap-3 items-center ">
                     <FcGoogle />
                     <span>Register with Google</span>
                   </div>
-                </button>
-                <div className="flex justify-center items-center mt-3">
+                </button> */}
+                <div className="flex justify-center items-center">
                   <p className="text-md text-gray-800 text-center">
                     Already have an account?{" "}
-                    <span className="text-secondary hover:text-primary">
+                    <span className="text-amber-500 hover:text-primary">
                       {" "}
                       Sign In
                     </span>{" "}

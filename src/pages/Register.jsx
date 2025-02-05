@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ConfigProvider, Form, Input, message } from "antd";
-import { FcGoogle } from "react-icons/fc";
 import {
   UserOutlined,
   MailOutlined,
@@ -57,7 +56,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-full justify-center h-screen flex items-center bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] md:p-10">
+      <div className="w-full justify-center h-screen flex items-center bg-teal-500 md:p-10">
         <ConfigProvider
           theme={{
             components: {
@@ -100,14 +99,14 @@ const Register = () => {
               />
             </div>
           </div>
-          <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-[#2847270e] shadow border border-slate-300 p-5 h-[90%] w-[94%] flex justify-end">
-            <div className="flex flex-col justify-center items-center gap-20 lg:w-2/3 w-full">
+          <div className="drop-shadow-md static z-0 rounded-2xl self-center shadow border bg-white border-slate-300 h-[90%] w-[94%] flex justify-end">
+            <div className="flex flex-col justify-center items-center lg:w-2/3 w-full">
               <div className="flex lg:hidden w-2/3">
                 <img src={logo} alt="" />
               </div>
 
-              <div className="flex justify-center sm:text-4xl text-3xl font-semibold text-themeColor">
-                Create your free account
+              <div className="flex justify-center sm:text-4xl mb-20 text-3xl font-semibold text-teal-700">
+                Create Your Free Account
               </div>
 
               <Form
@@ -149,7 +148,7 @@ const Register = () => {
                     </Form.Item>
                     <button
                       onClick={() => handleNextStep(0)}
-                      className="w-full bg-primary text-lg text-white py-2 rounded-xl hover:bg-primary2"
+                      className="w-full bg-teal-500 text-lg text-white py-2 rounded-xl hover:bg-teal-600"
                     >
                       Next
                     </button>
@@ -243,22 +242,13 @@ const Register = () => {
                   </>
                 )}
               </Form>
-
-              <div className="flex gap-4 flex-col justify-center items-center px-8 mb-10 w-full">
-                <button className="px-6 py-3 rounded-md bg-blue-400/10">
-                  <div className="flex gap-3 items-center">
-                    <FcGoogle />
-                    <span>Register with Google</span>
-                  </div>
-                </button>
-                <div className="flex justify-center items-center mt-3">
-                  <p className="text-md text-gray-800 text-center">
-                    Already have an account?{" "}
-                    <span className="text-secondary hover:text-primary">
-                      Sign In
-                    </span>
-                  </p>
-                </div>
+              <div className="flex justify-center items-center mt-3">
+                <p className="text-md text-gray-800 text-center">
+                  Already have an account?{" "}
+                  <span className="text-amber-500 hover:text-primary">
+                    Sign In
+                  </span>
+                </p>
               </div>
             </div>
           </div>

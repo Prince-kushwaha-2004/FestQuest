@@ -66,7 +66,7 @@ const EventRegister = () => {
         },
       }}
     >
-      <div className="flex w-screen overflow-y-scroll h-screen ps-28 xl:ps-4 bg-teal-50 flex-col">
+      <div className="flex w-screen overflow-y-scroll h-screen ps-28 xl:ps-4 bg-indigo-50 flex-col">
         <div className="hidden md:flex flex-col justify-between w-full pt-6">
           <Steps current={current} labelPlacement="vertical" items={items} />
         </div>

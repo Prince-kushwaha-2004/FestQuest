@@ -1,8 +1,9 @@
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
-import { Image, Button, Upload, DatePicker, Form, Input, Space } from "antd";
+import { Button, DatePicker, Form, Image, Input, Space, Upload } from "antd";
 import React, { useState } from "react";
-const { RangePicker } = DatePicker;
 import { Regex } from "../../utils/Constants";
+
+const { RangePicker } = DatePicker;
 
 export const Links = ({ formData, setFormData, current, setCurrent }) => {
   const getBase64 = (file) =>
@@ -47,20 +48,54 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
 
   const onFinish = (value) => {
     console.log(value);
+    setFormData({ ...formData, links: value });
     setCurrent(current + 1);
   };
+
   return (
     <div className="md:mx-20">
-      <Form name="form" layout="vertical" onFinish={onFinish}>
-        <Form.Item name="linkedin" label="LINKEDIN">
+      <Form
+        name="form"
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={formData.links}
+      >
+        <Form.Item
+          name="linkedin"
+          label="LINKEDIN"
+          rules={[
+            {
+              pattern: Regex.urlRegex,
+              message: "Please enter a valid url",
+            },
+          ]}
+        >
           <Input placeholder="A tagline for your event" />
         </Form.Item>
 
-        <Form.Item name="instagram" label="INSTAGRAM">
+        <Form.Item
+          name="instagram"
+          label="INSTAGRAM"
+          rules={[
+            {
+              pattern: Regex.urlRegex,
+              message: "Please enter a valid url",
+            },
+          ]}
+        >
           <Input placeholder="A tagline for your event" />
         </Form.Item>
 
-        <Form.Item name="discord" label="DISCORD">
+        <Form.Item
+          name="discord"
+          label="DISCORD"
+          rules={[
+            {
+              pattern: Regex.urlRegex,
+              message: "Please enter a valid url",
+            },
+          ]}
+        >
           <Input placeholder="A tagline for your event" />
         </Form.Item>
 
@@ -70,36 +105,37 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             fileList={fileList}
             onPreview={handlePreview}
             onChange={handleChange}
+            action="http://localhost:8080/test"
           >
             {fileList.length >= 10 ? null : uploadButton}
           </Upload>
-          {previewImage && (
-            <Image
-              wrapperStyle={{
-                display: "none",
-              }}
-              preview={{
-                visible: previewOpen,
-                onVisibleChange: (visible) => setPreviewOpen(visible),
-                afterOpenChange: (visible) => !visible && setPreviewImage(""),
-              }}
-              src={previewImage}
-            />
-          )}
         </Form.Item>
+        {previewImage && (
+          <Image
+            wrapperStyle={{
+              display: "none",
+            }}
+            preview={{
+              visible: previewOpen,
+              onVisibleChange: (visible) => setPreviewOpen(visible),
+              afterOpenChange: (visible) => !visible && setPreviewImage(""),
+            }}
+            src={previewImage}
+          />
+        )}
 
-        <div className="flex justify-center">
+        <div className="flex justify-center my-3">
           <Button
             color="cyan"
             variant="filled"
-            style={{ marginRight: "16px" }}
+            style={{ marginRight: "16px", width: "50%" }}
             onClick={() => setCurrent(current - 1)}
             size="large"
           >
             Previous
           </Button>
 
-          <Button htmlType="submit" size="large">
+          <Button htmlType="submit" size="large" style={{ width: "50%" }}>
             Next
           </Button>
         </div>
@@ -133,14 +169,22 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
       ],
     };
     console.log(values);
-    setFormData({ ...formData, dates: fieldsValue, eventDates: values });
-    console.log("Received values of form: ", formData);
-    setCurrent(current + 1);
+    setFormData({
+      ...formData,
+      dates: fieldsValue,
+      dateAndPrices: fieldsValue,
+    });
+    console.log("finaldata: ", formData);
   };
 
   return (
     <div className="md:mx-20 flex justify-center">
-      <Form name="form" layout="vertical" onFinish={onFinish}>
+      <Form
+        name="dateAndPrices"
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={formData.dateAndPrices}
+      >
         <Form.Item
           name="registrationDate"
           label="REGISTRATION DATES"
@@ -195,7 +239,7 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
                         },
                       ]}
                     >
-                      <Input placeholder="Name" />
+                      <Input placeholder="Track" />
                     </Form.Item>
                     <Form.Item
                       {...restField}
@@ -217,19 +261,19 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
           </Form.List>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center my-5">
           <Button
             color="cyan"
             variant="filled"
-            style={{ marginRight: "16px" }}
+            style={{ marginRight: "16px", width: "50%" }}
             onClick={() => setCurrent(current - 1)}
             size="large"
           >
             Previous
           </Button>
 
-          <Button htmlType="submit" size="large">
-            Next
+          <Button htmlType="submit" size="large" style={{ width: "50%" }}>
+            Submit
           </Button>
         </div>
       </Form>

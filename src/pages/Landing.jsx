@@ -5,8 +5,6 @@ import Camera from "../assets/camera.svg";
 import Money from "../assets/money.svg";
 import Plan from "../assets/plan.svg";
 import Trophy from "../assets/trophy.svg";
-
-import FeatureCards from "../components/FeatureCards";
 import Nav from "../components/Nav";
 
 const LandingPage = () => {
@@ -70,7 +68,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-700 leading-tight">
+      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-8xl font-bold text-gray-800 leading-tight">
         <Text>Think, plan, and track</Text>
       </h2>
     );
@@ -121,7 +119,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <p className="text-2xl md:text-6xl xl:text-7xl mb-4 text-center leading-tight font-semibold text-gray-700 uppercase">
+      <p className="text-2xl md:text-6xl xl:text-7xl mb-4 text-center leading-tight font-semibold text-gray-800 uppercase">
         <span className="ml-3">
           {" "}
           {examples[exampleIndex].split("").map((l, i) => (
@@ -181,33 +179,29 @@ const LandingPage = () => {
 
       <div
         className="m-4 mt-0 border-2 border-slate-200 flex-1 bg-teal-500 rounded-4xl px-5 
-      md:px-6 lg:px-60 2xl:px-80 py-15 flex flex-col items-center justify-center heading-primary relative"
+      md:px-6 lg:px-60 2xl:px-80 py-30 flex flex-col items-center justify-center heading-primary relative"
       >
-        <img
-          src={Brush}
-          className="w-[8rem] absolute top-20 left-60  "
-          alt=""
-        />
+        <img src={Brush} className="w-[8rem] absolute top-20 left-60" alt="" />
         <img
           src={Camera}
-          className="w-[8rem] absolute top-20 right-60 "
+          className="w-[8rem] absolute top-20 right-60"
           alt=""
         />
-        <img src={Plan} className="w-[8rem] absolute top-70 right-40 " alt="" />
-        <img src={Money} className="w-[8rem] absolute top-70 left-30 " alt="" />
+        <img src={Plan} className="w-[8rem] absolute top-70 right-40" alt="" />
+        <img src={Money} className="w-[8rem] absolute top-70 left-30" alt="" />
 
-        <h1 className="text-4xl md:text-6xl xl:text-8xl font-semibold text-gray-800 text-center leading-tight">
+        <h1 className="text-4xl md:text-6xl xl:text-8xl text-gray-800 text-center leading-tight">
           <BubbleText />
           <BlockInTextCard
             examples={["all in one place", "all in one place"]}
           />
         </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl mt-2 text-slate-800 mb-8 text-center max-w-2xl">
+        <p className="text-lg sm:text-xl md:text-2xl mt-2 text-white mb-8 text-center max-w-2xl">
           Efficiently manage your events and boost productivity with our
           intuitive event planning platform.
         </p>
-        <FeatureCards />
+        {/* <FeatureCards /> */}
       </div>
 
       <section className="mx-auto max-w-7xl px-4 py-6 text-slate-800  relative ">
@@ -220,13 +214,13 @@ const LandingPage = () => {
         <div className="mb-8  flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
           <h2 className="max-w-lg  pl-8 mt-5 text-4xl font-bold md:text-5xl">
             Grow faster with our
-            <span className="text-teal-600"> all in one solution</span>
+            <span className="text-indigo-400"> all in one solution</span>
           </h2>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="whitespace-nowrap rounded-lg bg-teal-600 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-slate-700"
+            className="whitespace-nowrap rounded-lg bg-indigo-400 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-gray-800"
           >
             Get Started
           </motion.button>
@@ -234,7 +228,7 @@ const LandingPage = () => {
         <div className="mb-4 grid grid-cols-12 gap-4">
           <BounceCard className="col-span-12 md:col-span-4 ">
             <CardTitle>Seamless Integration</CardTitle>
-            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-violet-600 to-indigo-800 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
+            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-violet-600 to-indigo-600 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
               <span className="block text-center text-md font-semibold text-indigo-50">
                 Easily create detailed event plans, set deadlines, and assign
                 tasks.
@@ -254,7 +248,7 @@ const LandingPage = () => {
         <div className="grid grid-cols-12 gap-4">
           <BounceCard className="col-span-12 md:col-span-8">
             <CardTitle>Comprehensive Planning</CardTitle>
-            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-green-400 to-emerald-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
+            <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-emerald-400 to-teal-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
               <span className="block text-center text-xl font-semibold text-emerald-50">
                 Connect with your favorite tools and apps to streamline your
                 event management workflows.
@@ -273,11 +267,11 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <footer className="bg-teal-500">
+      <footer className="bg-indigo-200">
         <div className="mx-auto w-full p-4 py-6 md:px-20 px-8 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="flex mb-6 md:mb-0 items-center transition-all hover:scale-103">
-              <img src="src/assets/festLogo.png" className="h-12" alt="Logo" />
+              <img src="src/assets/festLogo.png" className="h-16" alt="Logo" />
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
@@ -286,15 +280,12 @@ const LandingPage = () => {
                 </h2>
                 <ul className="text-gray-700 font-medium">
                   <li className="mb-4">
-                    <a href="https://flowbite.com/" className="hover:underline">
+                    <a href="/" className="hover:underline">
                       FestQuest
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://tailwindcss.com/"
-                      className="hover:underline"
-                    >
+                    <a href="/" className="hover:underline">
                       Events
                     </a>
                   </li>
