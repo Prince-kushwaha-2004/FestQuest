@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { ConfigProvider, Form, Input, message } from "antd";
 import {
-  UserOutlined,
-  MailOutlined,
-  LockOutlined,
-  MobileOutlined,
-  EyeTwoTone,
   EyeInvisibleOutlined,
+  EyeTwoTone,
+  MailOutlined,
+  MobileOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
+
 import logo from "../assets/festLogo.png";
 import StepwiseProcess from "../components/StepwiseProcess";
 

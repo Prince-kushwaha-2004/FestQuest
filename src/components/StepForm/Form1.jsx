@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Regex } from "../../utils/Constants";
 
 const validImageTypes = ["image/jpg", "image/jpeg", "image/png"];
-
 export const Basic = ({ formData, setFormData, current, setCurrent }) => {
   const { TextArea } = Input;
   const onFinish = (value) => {
@@ -12,7 +11,6 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
     console.log(formData);
     setCurrent(current + 1);
   };
-
   return (
     <div className="md:mx-20">
       <Form
@@ -203,7 +201,7 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
 
         <div className="flex flex-row justify-between">
           <Form.Item
-            name="min"
+            name="minTeam"
             label="MIN. TEAM SIZE ALLOWED"
             rules={[
               {
@@ -216,7 +214,7 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
           </Form.Item>
 
           <Form.Item
-            name="max"
+            name="maxTeam"
             label="MAX. TEAM SIZE ALLOWED"
             rules={[
               {

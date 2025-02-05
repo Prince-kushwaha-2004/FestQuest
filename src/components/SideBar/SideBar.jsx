@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 import { IoMdDoneAll } from "react-icons/io";
 import { RiCalendarEventLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import logo from "../../assets/festLogo.png";
 
 export const SideBar = () => {
@@ -25,13 +26,15 @@ export const SideBar = () => {
     >
       <TitleSection open={open} />
       <div className="space-y-1">
-        <Option
-          Icon={FiHome}
-          title="Dashboard"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
+        <Link to="/dashboard">
+          <Option
+            Icon={FiHome}
+            title="Dashboard"
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+          />
+        </Link>
         <Option
           Icon={IoMdDoneAll}
           title="Registered"
@@ -53,13 +56,16 @@ export const SideBar = () => {
           setSelected={setSelected}
           open={open}
         />
-        <Option
-          Icon={FiUsers}
-          title="Create Event"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
+        <Link to="/eventRegister" >
+          <Option
+            Icon={FiUsers}
+            title="Create Event"
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+          />
+        </Link>
+
       </div>
 
       <ToggleClose open={open} setOpen={setOpen} />

@@ -63,7 +63,7 @@ const OrganisationRegister = () => {
 
   return (
     <>
-      <div className="w-full justify-center h-screen flex items-center bg-gradient-to-br from-[#e6f3ff] via-[#f0f9e6] to-[#fff0f4] md:p-10  ">
+      <div className="w-full justify-center h-screen flex items-center bg-teal-400 md:p-10  ">
         <ConfigProvider
           theme={{
             components: {
@@ -106,7 +106,7 @@ const OrganisationRegister = () => {
               />
             </div>
           </div>
-          <div className="drop-shadow-md static z-0 rounded-2xl self-center   bg-[#2847270e] shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
+          <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-white shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
             <div className="flex flex-col justify-center items-center gap-20  lg:w-2/3 w-full">
               <div className="flex lg:hidden w-2/3">
                 <img src={logo} alt="" />
@@ -266,22 +266,14 @@ const OrganisationRegister = () => {
                 )}
               </div>
 
-              <div className="flex gap-4 flex-col  justify-center items-center px-8 mb-10 w-full">
-                {/* <button className="px-6 py-3 rounded-md bg-blue-400/10 ">
-                  <div className="flex gap-3 items-center ">
-                    <FcGoogle />
-                    <span>Register with Google</span>
-                  </div>
-                </button> */}
-                <div className="flex justify-center items-center">
-                  <p className="text-md text-gray-800 text-center">
-                    Already have an account?{" "}
-                    <span className="text-amber-500 hover:text-primary">
-                      {" "}
-                      Sign In
-                    </span>{" "}
-                  </p>
-                </div>
+              <div className="flex justify-center items-center">
+                <p className="text-md text-gray-800 text-center">
+                  Already have an account?{" "}
+                  <span className="text-indigo-400 hover:text-teal-500">
+                    {" "}
+                    Sign In
+                  </span>{" "}
+                </p>
               </div>
             </div>
           </div>

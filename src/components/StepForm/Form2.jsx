@@ -51,7 +51,6 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
     setFormData({ ...formData, links: value });
     setCurrent(current + 1);
   };
-
   return (
     <div className="md:mx-20">
       <Form
@@ -70,7 +69,7 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             },
           ]}
         >
-          <Input placeholder="A tagline for your event" />
+          <Input placeholder="eg. https://linkedin.com" />
         </Form.Item>
 
         <Form.Item
@@ -83,7 +82,7 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             },
           ]}
         >
-          <Input placeholder="A tagline for your event" />
+          <Input placeholder="eg. https://instagram.com" />
         </Form.Item>
 
         <Form.Item
@@ -96,7 +95,7 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             },
           ]}
         >
-          <Input placeholder="A tagline for your event" />
+          <Input placeholder="eg. https://discord.com" />
         </Form.Item>
 
         <Form.Item label="SPONSOR IMAGES" name="sponsors">
@@ -105,7 +104,10 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             fileList={fileList}
             onPreview={handlePreview}
             onChange={handleChange}
-            action="http://localhost:8080/test"
+            accept="image/*"
+            beforeUpload={() => {
+              return false;
+            }}
           >
             {fileList.length >= 10 ? null : uploadButton}
           </Upload>
@@ -123,7 +125,6 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
             src={previewImage}
           />
         )}
-
         <div className="flex justify-center my-3">
           <Button
             color="cyan"
@@ -145,6 +146,7 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
 };
 
 export const Dates = ({ formData, setFormData, current, setCurrent }) => {
+  const [finalData, setFinalData] = useState({});
   const rangeConfig = {
     rules: [
       {
@@ -155,26 +157,23 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
     ],
   };
   const onFinish = (fieldsValue) => {
-    const registrationDate = fieldsValue["registrationDate"];
-    const eventDate = fieldsValue["eventDate"];
-    const values = {
-      ...fieldsValue,
-      registrationDate: [
-        registrationDate[0].format("YYYY-MM-DD HH:mm:ss"),
-        registrationDate[1].format("YYYY-MM-DD HH:mm:ss"),
-      ],
-      eventDate: [
-        eventDate[0].format("YYYY-MM-DD HH:mm:ss"),
-        eventDate[1].format("YYYY-MM-DD HH:mm:ss"),
-      ],
-    };
-    console.log(values);
-    setFormData({
-      ...formData,
-      dates: fieldsValue,
-      dateAndPrices: fieldsValue,
-    });
+    setFormData({ ...formData, dateAndPrices: fieldsValue });
     console.log("finaldata: ", formData);
+    const { description, name, type } = formData.basic;
+    setFinalData({
+      ...finalData,
+      eventDate: formData.eventDate,
+      registrationDate: formData.registrationDate,
+      description,
+      name,
+      type,
+      ...formData.eventDetails,
+      links: formData.links,
+      sponsors: formData.links.sponsors.fileList,
+      banner: formData.basic.banner.file,
+      prizes: formData.dateAndPrices.prizes,
+    });
+    console.log(finalData);
   };
 
   return (
@@ -195,6 +194,9 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             size="large"
             showTime
             format="YYYY-MM-DD HH:mm:ss"
+            onChange={(_, value) =>
+              setFormData({ ...formData, registrationDate: value })
+            }
           />
         </Form.Item>
         <Form.Item name="eventDate" label="EVENT DATES" {...rangeConfig}>
@@ -203,6 +205,9 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             size="large"
             showTime
             format="YYYY-MM-DD HH:mm:ss"
+            onChange={(_, value) =>
+              setFormData({ ...formData, eventDate: value })
+            }
           />
         </Form.Item>
 
@@ -239,7 +244,7 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
                         },
                       ]}
                     >
-                      <Input placeholder="Track" />
+                      <Input placeholder="Name" />
                     </Form.Item>
                     <Form.Item
                       {...restField}
@@ -251,7 +256,7 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
                         },
                       ]}
                     >
-                      <Input placeholder="Prize" />
+                      <Input placeholder="Prizes" />
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>
@@ -260,8 +265,7 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             )}
           </Form.List>
         </div>
-
-        <div className="flex justify-center my-5">
+        <div className="flex justify-center my-3">
           <Button
             color="cyan"
             variant="filled"
