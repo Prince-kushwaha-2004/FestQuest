@@ -1,34 +1,16 @@
 import { Dropdown, Space } from "antd";
 import { motion } from "framer-motion";
-import { React, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Card2 from "../../components/Cards/Card2";
 import Cards from "../../components/Cards/Cards";
+import DropDownSelect from "../../components/Dropdown/DropDownSelect";
 import data from "../../utils/data.json";
-function Feed() {
-  const wrapperVariants = {
-    open: {
-      scaleY: 1,
-      transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-      },
-    },
-    closed: {
-      scaleY: 0,
-      transition: {
-        when: "afterChildren",
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
-  const iconVariants = {
-    open: { rotate: 180 },
-    closed: { rotate: 0 },
-  };
+
+function Feed() {
 
   const itemVariants = {
     open: {
@@ -47,10 +29,13 @@ function Feed() {
     },
   };
 
+
+
   const actionIconVariants = {
     open: { scale: 1, y: 0 },
     closed: { scale: 0, y: -7 },
   };
+
 
   const Option = ({ text, Icon, setOpen }) => {
     return (
@@ -79,13 +64,15 @@ function Feed() {
   ];
 
   const [open, setOpen] = useState(false);
+  const locations = ["All Locations", "Delhi", "Noida", "Bangalore"];
+  const filterEvent = ["All Event", "Technical", "Sports", "Cultural"];
 
-  const LocationSelect = () => {
-    const [selected, setSelected] = useState("All Locations");
+
+  const LocationSelect = ({ data }) => {
+    const [selected, setSelected] = useState(data[0]);
 
     const [open, setOpen] = useState(false);
 
-    const locations = ["All Locations", "Delhi", "Noida", "Bangalore"];
 
     return (
       <div className="relative">
@@ -110,7 +97,7 @@ function Feed() {
             className="absolute z-10 w-full mt-2 bg-white rounded-xl shadow-lg 
                      border border-gray-200 overflow-hidden"
           >
-            {locations.map((location) => (
+            {data.map((location) => (
               <li
                 key={location}
                 onClick={() => {
@@ -129,9 +116,65 @@ function Feed() {
     );
   };
 
+  const [eventData, setEventData] = useState([])
+
+  const getData = () => {
+    const obj = {
+      apiName: '',
+      method: 'GET',
+      dataObject: '',
+      contentType: ''
+    }
+    // Axios(obj).then((res) => {
+    //   if (res.status == 200) {
+    //     setEventData(eventData)
+    //   }
+    // }).catch((err) => {
+    // })
+  }
+  const iconVariants = {
+    open: { rotate: 180 },
+    closed: { rotate: 0 },
+  };
+  const wrapperVariants = {
+    open: {
+      scaleY: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+    closed: {
+      scaleY: 0,
+      transition: {
+        when: "afterChildren",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+  useEffect(() => {
+    // getData()
+
+  }, [])
+
+  const listInnerRef = useRef();
+
+  const onScroll = () => {
+    if (listInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (scrollTop + clientHeight === scrollHeight) {
+        console.log("ScrollTop+", scrollTop + clientHeight, clientHeight)
+      }
+    }
+  }
+
+
+
+
+
   return (
     <>
-      <div className=" flex-1 overflow-scroll p-8 no-scrollbar ms-24 xl:ms-0">
+      <div className=" flex-1 overflow-scroll p-8 no-scrollbar ms-24 xl:ms-0  " onScroll={onScroll} ref={listInnerRef}>
         <div className="flex items-center justify-between lg:hidden">
           <h1 className="text-3xl font-bold text-neutral-800 ">Suggestions</h1>
           <Space direction="vertical">
@@ -164,8 +207,50 @@ function Feed() {
           })}
         </div>
         <div className="flex flex-col gap-5 mb-8">
+
           <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-bold text-neutral-800">Events</h1>
+            <h1 className="text-4xl font-bold text-primary heading-primary " >Events</h1>
+
+            <div className="flex items-center justify-center">
+              <motion.div animate={open ? "open" : "closed"} className="relative">
+                <button
+                  onClick={() => setOpen((pv) => !pv)}
+                  className="flex rounded-md transition-colors"
+                >
+
+
+                  <div className=" w-[18rem] flex  py-3 rounded-2xl  items-center justify-between transition-all">
+                    <p className="text-neutral-700  font-semibold"> prince121kk@gmail.com</p>
+
+
+                    <div className="flex items-center gap-1 ">
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                        className="w-10 h-10 border rounded-full"
+                        alt=""
+                      />
+                      <motion.span variants={iconVariants}>
+                        <MdOutlineKeyboardArrowDown />
+                      </motion.span>
+                    </div>
+
+                    {/* <h1 className="text-xl font-bold">Prince Kushwaha</h1> */}
+
+
+                  </div>
+                </button>
+
+                <motion.ul
+                  initial={wrapperVariants.closed}
+                  variants={wrapperVariants}
+                  style={{ originY: "top", translateX: "-50%" }}
+                  className="flex flex-col p-1 rounded-md shadow-2xl absolute left-[70%] w-50 text-4xl overflow-hidden"
+                >
+                  <Option setOpen={setOpen} Icon={FiEdit} text="Edit" />
+                  <Option setOpen={setOpen} Icon={FiTrash} text="Logout" />
+                </motion.ul>
+              </motion.div>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -180,60 +265,27 @@ function Feed() {
               />
             </div>
 
-            <LocationSelect className="w-full" />
+            <DropDownSelect data={locations} className="w-1/2" />
+            <DropDownSelect data={filterEvent} className="w-1//2" />
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 p-9">
           {data.map((value) => {
             return <Cards key={value.id} data={value} />;
           })}
         </div>
       </div>
 
-      <div className="w-[25rem] shadow bg-[#2847270e]  border-l border-slate-300 hidden lg:flex flex-col">
-        <div className="flex items-center justify-center">
-          <motion.div animate={open ? "open" : "closed"} className="relative">
-            <button
-              onClick={() => setOpen((pv) => !pv)}
-              className="flex px-3 rounded-md transition-colors"
-            >
-              <div className="mt-4 w-[23rem] flex justify-between py-2 px-3 rounded-2xl hover:border hover:bg-[#deeff57e] border-slate-300 transition-all">
-                <div className="flex flex-col items-start">
-                  <h1 className="text-xl font-bold">Prince Kushwaha</h1>
-                  <p className="text-neutral-700 ">prince121kk@gmail.com</p>
-                </div>
-                <div className="flex items-center gap-1">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                    className="w-16 h-16 border rounded-full"
-                    alt=""
-                  />
-                  <motion.span variants={iconVariants}>
-                    <MdOutlineKeyboardArrowDown />
-                  </motion.span>
-                </div>
-              </div>
-            </button>
+      <div className="w-[21rem] shadow bg-teal-700  border-l border-slate-300 hidden lg:flex flex-col">
 
-            <motion.ul
-              initial={wrapperVariants.closed}
-              variants={wrapperVariants}
-              style={{ originY: "top", translateX: "-50%" }}
-              className="flex flex-col p-1 rounded-md shadow-2xl absolute left-[70%] w-50 overflow-hidden"
-            >
-              <Option setOpen={setOpen} Icon={FiEdit} text="Edit" />
-              <Option setOpen={setOpen} Icon={FiTrash} text="Logout" />
-            </motion.ul>
-          </motion.div>
-        </div>
 
-        <h1 className="text-xl mt-7 font-bold text-neutral-800 mb-8 px-5">
+        <h1 className="text-2xl heading-primary mt-7 font-bold text-white mb-8 px-5">
           Suggestions
         </h1>
-        <div className="flex flex-col gap-4 overflow-y-scroll flex-1 no-scrollbar">
-          {data.map((value) => {
-            return <Card2 key={value.id} data={value} />;
+        <div className="flex flex-col items-center gap-4 overflow-y-scroll p-4 flex-1 no-scrollbar">
+          {data.map((value, index) => {
+            return <Card2 key={value.id} index={index} data={value} />;
           })}
         </div>
       </div>

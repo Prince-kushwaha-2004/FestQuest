@@ -72,11 +72,10 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
     <motion.button
       layout
       onClick={() => setSelected(title)}
-      className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${
-        selected === title
-          ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
-          : "text-white hover:bg-gray-300 hover:text-black"
-      }`}
+      className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
+        ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
+        : "text-white hover:bg-gray-300 hover:text-black"
+        }`}
       style={{
         padding: open ? "1.5rem" : "1.5rem 1rem",
       }}
@@ -107,7 +106,7 @@ const TitleSection = ({ open }) => {
     <div className="mb-10 mt-4 pb-3  ">
       <div
         className={
-          "flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg"
+          open ? "flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg" : 'hidden'
         }
       >
         <div className="flex px-8 py-2 items-center gap-2">
@@ -132,7 +131,7 @@ const ToggleClose = ({ open, setOpen }) => {
     <motion.button
       layout
       onClick={() => setOpen((pv) => !pv)}
-      className="absolute bottom-0 left-0 right-0 border-t border-slate-300 transition-colors hover:bg-gray-400"
+      className="absolute bottom-0 left-0 right-0 border-t border-slate-300 transition-colors hover:bg-teal-700"
     >
       <div className="flex items-center px-6 py-3 text-white">
         <motion.div
