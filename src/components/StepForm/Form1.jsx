@@ -5,12 +5,28 @@ import Axios from "../../axios/Axios";
 import { Regex } from "../../utils/Constants";
 
 export const Basic = ({ formData, setFormData, current, setCurrent }) => {
+  const [typeDropdown, setTypeDropdown] = useState([])
   const { TextArea } = Input;
   const onFinish = (value) => {
     setFormData({ ...formData, basic: value });
     console.log(formData);
     setCurrent(current + 1);
   };
+  const req = {
+    apiName: "list/",
+    method: "get",
+    params: { "type": 4 }
+  }
+  useEffect(() => {
+    Axios(req)
+      .then((response) => {
+        console.log(response.data.details)
+        setTypeDropdown(response.data.details)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
   return (
     <div className="md:mx-20">
       <Form
@@ -42,48 +58,54 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
           rules={[{ required: true, message: "Please select the event type" }]}
         >
           <Select placeholder="Select type" size="large">
-            <Select.Option value="sports">Sports</Select.Option>
-            <Select.Option value="cultural">Cultural</Select.Option>
-            <Select.Option value="fintech">FinTech</Select.Option>
-            <Select.Option value="technical">Technical</Select.Option>
+            {typeDropdown.map((value) => <Select.Option key={value.id} value={value.id}>{value.value}</Select.Option>)}
           </Select>
         </Form.Item>
-
-        <Form.Item
-          name="banner"
-          label="EVENT BANNER"
-          rules={[
-            {
-              required: true,
-              message: "Please select a banner for your event",
-            },
-            () => ({
-              async validator(_, value) {
-                if (value) {
-                  const isImage = validImageTypes.includes(value.file.type);
-                  if (isImage) {
-                    return Promise.resolve;
-                  } else {
-                    return Promise.reject("Invalid file format, not an image");
-                  }
-                }
+        <div className="flex items-center justify-center gap-4 *:w-full">
+          <Form.Item
+            name="banner"
+            label="EVENT BANNER"
+            rules={[
+              {
+                required: true,
+                message: "Please select a banner for your event",
               },
-            }),
-          ]}
-        >
-          <Upload
-            listType="picture"
-            maxCount={1}
-            accept="image/*"
-            beforeUpload={() => {
-              return false;
-            }}
+              () => ({
+                async validator(_, value) {
+                  if (value) {
+                    const isImage = validImageTypes.includes(value.file.type);
+                    if (isImage) {
+                      return Promise.resolve;
+                    } else {
+                      return Promise.reject("Invalid file format, not an image");
+                    }
+                  }
+                },
+              }),
+            ]}
           >
-            <Button icon={<UploadOutlined />} size="large" block>
-              Upload Banner
-            </Button>
-          </Upload>
-        </Form.Item>
+            <Upload
+              listType="picture"
+              maxCount={1}
+              accept="image/*"
+              beforeUpload={() => {
+                return false;
+              }}
+            >
+
+              <Button icon={<UploadOutlined />} size="large" block>
+                Upload Banner
+              </Button>
+            </Upload>
+          </Form.Item>
+          <Form.Item
+            name="registration_fee"
+            label="REGISTRATION FEE"
+            rules={[{ required: true, message: "Please enter registration fee" }]}
+          >
+            <Input placeholder="Enter fee" type="number" min={0} />
+          </Form.Item>
+        </div>
 
         <div className="flex justify-center my-3">
           <Button size="large" className="w-full" htmlType="submit">
@@ -147,7 +169,7 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
             ))}
           </Select>
         </Form.Item>
-        {mode == "online" && (
+        {mode == 3 && (
           <Form.Item
             name="url"
             label="EVENT WEBSITE URL"
@@ -166,7 +188,7 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
           </Form.Item>
         )}
 
-        {mode == "offline" && (
+        {mode == 2 && (
           <>
             <div className="flex flex-row justify-between">
               <Form.Item
