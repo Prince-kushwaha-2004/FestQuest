@@ -11,6 +11,7 @@ import { IoMdDoneAll } from "react-icons/io";
 import { RiCalendarEventLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import logo from "../../assets/festLogo.png";
+import smallLogo from "./../../assets/favicon.png";
 
 export const SideBar = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ export const SideBar = () => {
   return (
     <motion.nav
       layout
-      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r bg-teal-600 backdrop-blur-3xl z-100 border-slate-300 p-2"
+      className="absolute xl:sticky top-0 h-screen shrink-0 shadow-lg border-r bg-teal-600 backdrop-blur-3xl border-slate-300 p-2 z-100"
       style={{
         width: open ? "285px" : "fit-content",
       }}
@@ -110,24 +111,27 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
 const TitleSection = ({ open }) => {
   return (
     <div className="mb-10 mt-4 pb-3  ">
-      <div
-        className={
-          open
-            ? "flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg"
-            : "hidden"
-        }
-      >
-        <div className="flex px-8 py-2 items-center gap-2">
-          {open && (
-            <motion.div
-              layout
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.125 }}
-            >
+      <div className="flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg">
+        <div
+          className={"flex py-2 items-center gap-2" + open ? " px-8" : "px-4"}
+        >
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.125 }}
+          >
+            {open ? (
               <img src={logo} alt="" />
-            </motion.div>
-          )}
+            ) : (
+              <img
+                src={smallLogo}
+                className="h-9 w-5 
+              "
+                alt=""
+              />
+            )}
+          </motion.div>
         </div>
         {open && <FiChevronDown className="mr-2" />}
       </div>

@@ -4,6 +4,7 @@ import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import EventRegister from "../pages/organisation/EventRegister";
 import OrganisationRegister from "../pages/organisation/OrganisationRegister";
+import UserDynamicForm from "../pages/organisation/User-Dynamic-Form";
 import Register from "../pages/Register";
 import EventPreview from "../pages/User/EventPreview";
 import Root from "../Root";
@@ -22,6 +23,7 @@ function Routing() {
           <Route path="event/:id" element={<EventPreview />} />
           {/* organisation routing */}
           <Route path="eventRegister" element={<EventRegister />} />
+          <Route path="dynamicForm" element={<UserDynamicForm />} />
         </Route>
       </Route>
     </Routes>

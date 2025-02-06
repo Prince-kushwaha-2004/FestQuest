@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import data from '../../utils/data.json';
-function EventPreview() {
+
+const EventPreview = () => {
     let params = useParams()
     let id = params.id
     const EventData = data.filter((value) => {
@@ -27,7 +28,6 @@ function EventPreview() {
                     </div>
                 </div>
             </div>
-            <div className='w-120 bg-green-200' >das</div>
         </div>
     )
 }
