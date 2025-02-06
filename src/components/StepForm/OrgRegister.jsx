@@ -12,6 +12,7 @@ export const EmailVerify = ({ formData, setFormData, current, setCurrent }) => {
     const onFinish = (value) => {
         console.log(value)
         setFormData({ ...formData, "basic": value })
+        setCurrent(current + 1)
         const req = {
             apiName: "test",
             method: "post",
@@ -26,6 +27,7 @@ export const EmailVerify = ({ formData, setFormData, current, setCurrent }) => {
             .catch((error) => {
                 console.log(error)
                 toast.error(error.response.data.message)
+
             })
 
     }
@@ -283,7 +285,8 @@ export const Password = ({ formData, setFormData, current, setCurrent }) => {
 export const Address = ({ formData, setFormData, current, setCurrent }) => {
     const onFinish = (value) => {
         setFormData({ ...formData, "address": value })
-        console.log(JSON.stringify(formData))
+        console.log(formData)
+
 
 
     }

@@ -158,7 +158,9 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
     const onFinish = (fieldsValue) => {
         setFormData({ ...formData, dateAndPrices: fieldsValue });
         console.log("finaldata: ", formData);
-        const { description, name, type } = formData.basic;
+        const { description, name, type, registration_fee } = formData.basic;
+        let allSponsors = formData.links.sponsors.fileList.map((value) => value.originFileObj)
+        console.log(allSponsors)
 
         const finalData = {
             start_date_of_event: formData.eventDate[0],
@@ -166,6 +168,7 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             end_date_of_event: formData.eventDate[1],
             registration_end_date: formData.registrationDate[1],
             description,
+            registration_fee,
             ...formData?.eventDetails,
             event_name: name,
             event_type: type,
@@ -173,8 +176,8 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
             linkedin_url: formData?.links?.linkedins,
             instagram_url: formData?.links?.instagram,
             discord_url: formData?.links?.discord,
-            sponsors: formData?.links?.sponsors?.fileList,
-            banner_image: formData.basic.banner.file,
+            sponsors: allSponsors,
+            banner_image: formData.basic.banner.fileList[0].originFileObj,
             prizes: formData?.dateAndPrices?.prizes,
         }
         const req = {
