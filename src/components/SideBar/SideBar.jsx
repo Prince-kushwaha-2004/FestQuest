@@ -66,6 +66,15 @@ export const SideBar = () => {
             open={open}
           />
         </Link>
+        <Link to="/reports">
+          <Option
+            Icon={RiCalendarEventLine}
+            title="Reports"
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+          />
+        </Link>
       </div>
 
       <ToggleClose open={open} setOpen={setOpen} />

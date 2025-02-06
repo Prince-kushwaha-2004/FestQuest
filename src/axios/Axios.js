@@ -1,6 +1,6 @@
 import axios from "axios";
+import { useAuthStore } from "../store/authStore";
 import { Constant } from "../utils/Constants";
-import { useAuthStore } from "../store/authStore"
 
 const instance = axios.create({
   baseURL: Constant.baseURL,
@@ -53,7 +53,7 @@ const Axios = async (object) => {
     headers: {
       "Content-Type": `${object.contentType}`,
     },
-    params: object.param,
+    params: object.params,
   });
 };
 

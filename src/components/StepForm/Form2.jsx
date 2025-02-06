@@ -1,8 +1,8 @@
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, DatePicker, Form, Image, Input, Space, Upload } from "antd";
 import React, { useState } from "react";
+import Axios from "../../axios/Axios";
 import { Regex } from "../../utils/Constants";
-
 const { RangePicker } = DatePicker;
 
 export const Links = ({ formData, setFormData, current, setCurrent }) => {
@@ -146,7 +146,6 @@ export const Links = ({ formData, setFormData, current, setCurrent }) => {
 };
 
 export const Dates = ({ formData, setFormData, current, setCurrent }) => {
-    const [finalData, setFinalData] = useState({});
     const rangeConfig = {
         rules: [
             {
@@ -160,19 +159,37 @@ export const Dates = ({ formData, setFormData, current, setCurrent }) => {
         setFormData({ ...formData, dateAndPrices: fieldsValue });
         console.log("finaldata: ", formData);
         const { description, name, type } = formData.basic;
-        setFinalData({
-            ...finalData,
-            eventDate: formData.eventDate,
-            registrationDate: formData.registrationDate,
+
+        const finalData = {
+            start_date_of_event: formData.eventDate[0],
+            registration_start_date: formData.registrationDate[0],
+            end_date_of_event: formData.eventDate[1],
+            registration_end_date: formData.registrationDate[1],
             description,
-            name,
-            type,
-            ...formData.eventDetails,
+            ...formData?.eventDetails,
+            event_name: name,
+            event_type: type,
             links: formData?.links,
+            linkedin_url: formData?.links?.linkedins,
+            instagram_url: formData?.links?.instagram,
+            discord_url: formData?.links?.discord,
             sponsors: formData?.links?.sponsors?.fileList,
-            banner: formData.basic.banner.file,
+            banner_image: formData.basic.banner.file,
             prizes: formData?.dateAndPrices?.prizes,
-        });
+        }
+        const req = {
+            apiName: "create_event/",
+            method: "post",
+            dataObject: finalData,
+            contentType: "multipart/form-data"
+        }
+        Axios(req)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         console.log(finalData);
     };
 

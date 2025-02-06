@@ -1,6 +1,7 @@
-import { Button, Form, Input, Select, message } from "antd";
-import React from "react";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { Button, Form, Input, Select, message } from "antd";
+import React, { useEffect, useState } from "react";
+
 
 export const Basic = ({ formData, setFormData, current, setCurrent }) => {
   const onFinish = (value) => {
@@ -52,60 +53,85 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
 };
 
 export const OTP = ({ formData, setFormData, current, setCurrent }) => {
+  const [time, setTime] = useState(30);
+  useEffect(() => {
+    let timer = setInterval(() => {
+      setTime((time) => {
+        if (time === 0) {
+          clearInterval(timer);
+          return 0;
+        } else return time - 0.5;
+      });
+    }, 1000);
+  }, []);
+
+  const resendOtp = () => {
+    setTime(30)
+    let timer = setInterval(() => {
+      setTime((time) => {
+        if (time === 0) {
+          clearInterval(timer);
+          return 0;
+        } else return time - 1;
+      });
+    }, 1000);
+  }
   const onFinish = (value) => {
-    setFormData({ ...formData, otp: value });
-    console.log(formData);
-    setCurrent(current + 1);
+    console.log(value)
+    setCurrent(current + 1)
+  }
+  const onChange = (text) => {
+    console.log('onChange:', text);
+  };
+  const onInput = (value) => {
+    console.log('onInput:', value);
+  };
+  const sharedProps = {
+    onChange,
+    onInput,
   };
 
-  const handleSendOTP = () => {
-    message.success("OTP sent to your email");
-  };
   return (
     <Form
       name="form"
       layout="vertical"
+      initialValues={formData.basic}
       onFinish={onFinish}
-      initialValues={formData.otp}
-      className="flex md:w-2/3 w-full gap-4 flex-col items-center justify-center"
     >
       <Form.Item
         name="otp"
         label="OTP"
-        rules={[
-          {
-            required: true,
-            message: "Please input the OTP",
-          },
-        ]}
-        className="w-full"
+        rules={[{ required: true, message: "Please enter OTP" }]}
+        className="flex justify-center"
       >
-        <Input
-          placeholder="Enter OTP"
-          type="number"
-          maxLength={6}
-          minLength={6}
-        />
+        <Input.OTP  {...sharedProps} size="large" />
       </Form.Item>
+      <div className="flex justify-center my-3 mt-16">
+        {time ?
+          <p className="mx-4 my-auto text-xl flex w-full gap-4">
+            <span>Resend OTP :</span> <span> {`${Math.floor(time / 60)}`.padStart(2, 0)}:
+              {`${Math.ceil(time % 60)}`.padStart(2, 0)}</span>
+          </p>
+          :
+          <Button
+            color="cyan"
+            variant="filled"
+            style={{ marginRight: "16px", width: "50%" }}
+            onClick={resendOtp}
+            size="large"
+          >
+            Resend OTP
+          </Button>
+        }
 
-      <div className="flex justify-center w-full">
-        <Button
-          className="w-full mr-3"
-          color="cyan"
-          variant="filled"
-          size="large"
-          onClick={handleSendOTP}
-        >
-          Resend
-        </Button>
 
-        <Button htmlType="submit" size="large" className="w-full">
-          Next
+        <Button htmlType="submit" size="large" style={{ width: "50%" }}>
+          Verify
         </Button>
       </div>
     </Form>
-  );
-};
+  )
+}
 
 export const Final = ({ formData, setFormData }) => {
   const onFinish = (value) => {

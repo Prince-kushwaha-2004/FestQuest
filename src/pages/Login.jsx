@@ -2,11 +2,11 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button, ConfigProvider, Form, Input, message } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/authStore";
-import Axios from "../axios/Axios";
 import bg1 from "../assets/bg10.jpeg";
 import logo from "../assets/festLogo.png";
 import { Regex } from "../utils/Constants";
+import { useAuthStore } from "../store/authStore";
+import Axios from "../axios/Axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ const Login = () => {
         },
       }}
     >
-      <div className="w-screen h-screen bg-indigo-50 flex justify-center items-center">
+      <div className="w-screen h-screen bg-violet-100 flex justify-center items-center">
         <div className="w-[90%] sm:w-[80%] md:w-2/3 h-[90%] relative">
           <div className="h-[80%] w-full bg-white md:w-2/3 md:px-20 lg:w-[50%] 2xl:w-[50%] p-4 flex flex-col justify-center items-center absolute mt-22 left-0 rounded-4xl shadow-2xl drop-shadow-xl z-10">
             <img src={logo} alt="logo" className="mb-16" />

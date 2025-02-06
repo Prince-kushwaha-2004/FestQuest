@@ -1,5 +1,5 @@
 export const Constant = {
-  baseURL: "http://localhost:8080/",
+  baseURL: "https://10.21.97.66:8000/event/",
 };
 export const Regex = {
   emailRegex: /^[a-zA-Z]+[a-zA-Z0-9]+[@][a-z]+[\.][a-z]{2,}$/,
