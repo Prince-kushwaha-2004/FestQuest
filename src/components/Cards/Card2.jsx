@@ -15,24 +15,24 @@ function Card2({ data, index }) {
   return (
     <Link
       to={`/event/${data.id}`}
-      className="flex flex-col  lg:w-full w-90 gap-4  justify-between   
+      className="flex flex-col lg:w-full w-90 gap-2 justify-between   
            p-4 rounded-xl transition-all  cursor-pointer"
       style={{ backgroundColor: `${boxColor[colorNumber]}` }}
     >
       <div className="flex justify-between flex-col md:flex-row ">
         <img src={data.logo} alt="img" className=" w-17 h-15 rounded-2xl" />
-        <div className="text-sm font-normal w-26 py-2 md:py-0  text-gray-800">
-          {data.organiser}
+        <div className="text-lg font-normal py-2 md:py-0 text-gray-800">
+          {data.date}
         </div>
       </div>
-      <div className="font-medium  text-2xl">{data.name}</div>
-      <div>{data.date}</div>
+      <div className="font-medium font-serif text-2xl">{data.name}</div>
+      {/* <div className="flex flex-row">
+        <IoLocationOutline />
+        {data.mode}
+      </div> */}
 
-      <p className=" flex justify-between gap-3 items-center ">
-        <div className="gap-2 flex items-center">
-          <IoLocationOutline />
-          {data.mode}
-        </div>
+      <p className="flex justify-between gap-3 items-center ">
+        <div className="gap-2 flex items-center">{data.organiser}</div>
         <BsArrowUpRightCircle className="text-2xl" />
       </p>
     </Link>

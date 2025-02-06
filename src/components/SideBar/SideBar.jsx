@@ -110,11 +110,9 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
 
 const TitleSection = ({ open }) => {
   return (
-    <div className="mb-10 mt-4 pb-3  ">
-      <div className="flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg">
-        <div
-          className={"flex py-2 items-center gap-2" + open ? " px-8" : "px-4"}
-        >
+    <div className="mb-10 mt-5">
+      <div className="flex cursor-pointer bg-white items-center justify-between shadow-md rounded-full transition-all hover:scale-103 hover:shadow-lg">
+        <div className={"flex items-center" + open ? " px-8" : "p-0"}>
           <motion.div
             layout
             initial={{ opacity: 0, y: 12 }}
@@ -126,7 +124,7 @@ const TitleSection = ({ open }) => {
             ) : (
               <img
                 src={smallLogo}
-                className="h-9 w-5 
+                className="h-12 w-3
               "
                 alt=""
               />

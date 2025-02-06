@@ -1,7 +1,7 @@
 import { ConfigProvider } from "antd";
 import { useState } from "react";
 import logo from "../assets/festLogo.png";
-import { Basic, OTP, Final } from "../components/StepForm/UserRegister";
+import { Basic, Final, OTP } from "../components/StepForm/UserRegister";
 import StepwiseProcess from "../components/StepwiseProcess";
 const Register = () => {
   const [formData, setFormData] = useState({});

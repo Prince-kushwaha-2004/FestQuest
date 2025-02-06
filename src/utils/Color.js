@@ -13,11 +13,12 @@ export const Color = {
         default:'#8B79F1'
     },
     arrayColor:[
-        '#FF4E78',
+        '#fecee9',
+        '#a9fff7',
+        '#f7ebe8',
         '#E9FF4F',
-        '#B0F5E2',
-        '#FFD78E',
-        '#B393D5',
+        '#bedcfe',
+        //'#B3FFEA',
     ]
 
 

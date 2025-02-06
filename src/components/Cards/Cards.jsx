@@ -57,7 +57,7 @@ function Cards({ data, index }) {
       <div className="flex justify-between mt-2 py-1 gap-3 px-3">
         <p className="text-xl font-medium text-black">&#8377;999/-</p>
 
-        <button className="px-8 py-2 bg-black text-white text-md rounded-lg hover:bg-[#00637cc0] ">
+        <button className="px-8 py-2 bg-black text-white text-md rounded-lg hover:bg-gray-700">
           Register
         </button>
       </div>

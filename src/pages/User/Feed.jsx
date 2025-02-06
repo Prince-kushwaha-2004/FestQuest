@@ -8,10 +8,9 @@ import Card2 from "../../components/Cards/Card2";
 import Cards from "../../components/Cards/Cards";
 import DropDownSelect from "../../components/Dropdown/DropDownSelect";
 import data from "../../utils/data.json";
-import smallLogo from './../../assets/favicon.png';
+import smallLogo from "./../../assets/favicon.png";
 
 function Feed() {
-
   const itemVariants = {
     open: {
       opacity: 1,
@@ -29,13 +28,10 @@ function Feed() {
     },
   };
 
-
-
   const actionIconVariants = {
     open: { scale: 1, y: 0 },
     closed: { scale: 0, y: -7 },
   };
-
 
   const Option = ({ text, Icon, setOpen }) => {
     return (
@@ -67,12 +63,10 @@ function Feed() {
   const locations = ["All Locations", "Delhi", "Noida", "Bangalore"];
   const filterEvent = ["All Event", "Technical", "Sports", "Cultural"];
 
-
   const LocationSelect = ({ data }) => {
     const [selected, setSelected] = useState(data[0]);
 
     const [open, setOpen] = useState(false);
-
 
     return (
       <div className="relative">
@@ -116,22 +110,22 @@ function Feed() {
     );
   };
 
-  const [eventData, setEventData] = useState([])
+  const [eventData, setEventData] = useState([]);
 
   const getData = () => {
     const obj = {
-      apiName: '',
-      method: 'GET',
-      dataObject: '',
-      contentType: ''
-    }
+      apiName: "",
+      method: "GET",
+      dataObject: "",
+      contentType: "",
+    };
     // Axios(obj).then((res) => {
     //   if (res.status == 200) {
     //     setEventData(eventData)
     //   }
     // }).catch((err) => {
     // })
-  }
+  };
   const iconVariants = {
     open: { rotate: 180 },
     closed: { rotate: 0 },
@@ -154,9 +148,7 @@ function Feed() {
   };
   useEffect(() => {
     // getData()
-
-  }, [])
-
+  }, []);
 
   //InfiniteScroll
   const listInnerRef = useRef();
@@ -165,21 +157,22 @@ function Feed() {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
       if (scrollTop + clientHeight === scrollHeight) {
-        console.log("ScrollTop+", scrollTop, clientHeight, scrollHeight)
+        console.log("ScrollTop+", scrollTop, clientHeight, scrollHeight);
       }
     }
-  }
-
-
-
-
+  };
 
   return (
     <>
-      <div className=" flex-1 overflow-scroll px-8 no-scrollbar ms-24 xl:ms-0  " onScroll={onScroll} ref={listInnerRef}>
-
-        <div className="flex items-center justify-between lg:hidden">
-          <h1 className="text-3xl font-bold text-teal-800 heading-primary  ">Suggestions</h1>
+      <div
+        className=" flex-1 overflow-scroll px-8 no-scrollbar ms-24 xl:ms-0  "
+        onScroll={onScroll}
+        ref={listInnerRef}
+      >
+        <div className="flex items-center justify-between lg:hidden mt-5">
+          <h1 className="text-3xl font-serif font-bold text-teal-800 heading-primary  ">
+            Suggestions
+          </h1>
           <Space direction="vertical">
             <Space wrap>
               <Dropdown
@@ -210,16 +203,22 @@ function Feed() {
           })}
         </div>
         <div className="flex flex-col gap-5 mb-8 ">
-
           <div className="flex items-center justify-between relative">
+            {/* <img
+              src={smallLogo}
+              className="h-10 absolute top-1 left-0 rotate"
+              alt=""
+            /> */}
 
-            <img src={smallLogo} className="h-10 absolute top-1 left-0 rotate" alt="" />
-
-            <h1 className="text-4xl font-bold text-primary heading-primary pl-7  px-5" >Events</h1>
+            <h1 className="text-4xl font-bold text-primary heading-primary pl-7 px-5">
+              Events
+            </h1>
 
             <div className=" items-center justify-center hidden lg:flex ">
-              <motion.div animate={open ? "open" : "closed"} className="relative">
-
+              <motion.div
+                animate={open ? "open" : "closed"}
+                className="relative"
+              >
                 <Space direction="vertical">
                   <Space wrap>
                     <Dropdown
@@ -229,7 +228,10 @@ function Feed() {
                       placement="bottomRight"
                     >
                       <div className=" flex items-center justify-between py-2 px-4 rounded-2xl m-2 transition-all ">
-                        <p className="text-neutral-700  font-semibold px-3"> prince121kk@gmail.com</p>
+                        <p className="text-neutral-700  font-semibold px-3">
+                          {" "}
+                          prince121kk@gmail.com
+                        </p>
 
                         <div className="flex items-center gap-1">
                           <img
@@ -283,9 +285,7 @@ function Feed() {
       </div>
 
       <div className="w-[21rem] shadow bg-teal-600  border-l border-slate-300 hidden lg:flex flex-col">
-
-
-        <h1 className="text-2xl heading-primary mt-5 font-bold text-white mb-8 px-5">
+        <h1 className="text-3xl font-serif heading-primary mt-5 font-bold text-white mb-8 px-5">
           Suggestions
         </h1>
         <div className="flex flex-col items-center gap-4 overflow-y-scroll p-4 flex-1 no-scrollbar">
