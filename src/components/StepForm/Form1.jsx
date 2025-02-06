@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Axios from "../../axios/Axios";
 import { Regex } from "../../utils/Constants";
 
-const validImageTypes = ["image/jpg", "image/jpeg", "image/png"];
 export const Basic = ({ formData, setFormData, current, setCurrent }) => {
   const { TextArea } = Input;
   const onFinish = (value) => {
@@ -97,7 +96,7 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
 };
 
 export const Details = ({ formData, setFormData, current, setCurrent }) => {
-  const [modeDropdown, setModeDropdown] = useState([])
+  const [modeDropdown, setModeDropdown] = useState([]);
   const onFinish = (value) => {
     setFormData({ ...formData, eventDetails: value });
     console.log(formData);
@@ -111,18 +110,18 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
   const req = {
     apiName: "list/",
     method: "get",
-    params: { "type": 1 }
-  }
+    params: { type: 1 },
+  };
   useEffect(() => {
     Axios(req)
       .then((response) => {
-        console.log(response.data.details)
-        setModeDropdown(response.data.details)
+        console.log(response.data.details);
+        setModeDropdown(response.data.details);
       })
       .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="md:mx-20">
@@ -141,8 +140,11 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
           ]}
         >
           <Select placeholder="Select mode" onChange={changeMode} size="large">
-            {modeDropdown.map((value) => <Select.Option key={value.id} value={value.id}>{value.value}</Select.Option>)}
-
+            {modeDropdown.map((value) => (
+              <Select.Option key={value.id} value={value.id}>
+                {value.value}
+              </Select.Option>
+            ))}
           </Select>
         </Form.Item>
         {mode == "online" && (
