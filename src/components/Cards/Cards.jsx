@@ -16,7 +16,7 @@ function Cards({ data, index }) {
 
     return (
 
-        <div className={`flex bg-[${boxColor[colorNumber]}] px-4 w-170 flex-col border border-gray-300  transition-all   py-4 rounded-xl`}>
+        <div className={`flex  px-4 w-170 flex-col border border-gray-300  transition-all   py-4 rounded-xl`}>
 
             <div>
                 <div className="flex justify-between ">

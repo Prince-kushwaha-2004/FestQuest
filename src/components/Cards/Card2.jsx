@@ -9,7 +9,6 @@ import { Color } from "../../utils/Color";
 function Card2({ data, index }) {
   const boxColor = Color.arrayColor;
 
-  const boxColor = Color.arrayColor
 
   var colorNumber = index
   colorNumber = index % boxColor.length
