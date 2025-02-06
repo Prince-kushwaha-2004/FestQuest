@@ -25,7 +25,6 @@ Installation and Setup :
 
 1. Clone the repository -
    git clone https://github.com/Prince-kushwaha-2004/FestQuest.git
-   cd FestQuest
 
 3. Install dependencies -
    npm install
