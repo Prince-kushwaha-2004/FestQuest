@@ -8,19 +8,19 @@ const OrganisationRegister = () => {
   const items = [
     {
       title: "Step 1",
-      description: "Email verification",
+      description: "Basics",
     },
     {
       title: "Step 2",
-      description: "OTP confirmation",
+      description: "OTP Confirmation",
     },
     {
       title: "Step 3",
-      description: "Password",
+      description: "About",
     },
     {
       title: "Step 4",
-      description: "Address",
+      description: "Final Step",
     },
   ];
   const [formData, setFormData] = useState({});
@@ -76,7 +76,7 @@ const OrganisationRegister = () => {
           </div>
           <div className="drop-shadow-md static z-0 rounded-2xl self-center bg-white shadow border border-slate-300   p-5 h-[90%] w-[94%] flex justify-end  ">
             <div className="flex flex-col justify-center items-center gap-20 lg:w-2/3 w-full">
-              <div className="flex lg:hidden w-1/3">
+              <div className="flex lg:hidden w-[20rem]">
                 <img src={logo} alt="" />
               </div>
 
@@ -122,15 +122,7 @@ const OrganisationRegister = () => {
                 )}
               </div>
 
-              <div className="flex justify-center items-center">
-                <p className="text-md text-gray-800 text-center">
-                  Already have an account?{" "}
-                  <span className="text-indigo-400 hover:text-teal-500">
-                    {" "}
-                    Sign In
-                  </span>{" "}
-                </p>
-              </div>
+
             </div>
           </div>
         </ConfigProvider>

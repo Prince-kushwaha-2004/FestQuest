@@ -1,10 +1,12 @@
-import { Button, Form, Input, Select } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone, UploadOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Select, Upload } from "antd";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 import Axios from "../../axios/Axios";
 import { Regex } from "../../utils/Constants";
 
-
+const validImageTypes = ["image/jpg", "image/jpeg", "image/png"];
 export const EmailVerify = ({ formData, setFormData, current, setCurrent }) => {
 
     const onFinish = (value) => {
@@ -78,13 +80,37 @@ export const EmailVerify = ({ formData, setFormData, current, setCurrent }) => {
             <Button size="large" style={{ width: "100%" }} htmlType="submit">
                 Next
             </Button>
+            <div className="flex justify-center items-center mt-2">
+                <p className="text-md text-gray-800 text-center">
+                    Already have an account?{" "}
+                    <span className="text-indigo-400 hover:text-teal-500">
+                        {" "}
+                        <Link to="/login">
+                            Sign In
+                        </Link>
+
+                    </span>{" "}
+                </p>
+            </div>
         </Form>
     )
 }
 
 export const OtpValidate = ({ formData, setFormData, current, setCurrent }) => {
-    const [time, setTime] = useState(300);
+    const [time, setTime] = useState(30);
     useEffect(() => {
+        let timer = setInterval(() => {
+            setTime((time) => {
+                if (time === 0) {
+                    clearInterval(timer);
+                    return 0;
+                } else return time - 0.5;
+            });
+        }, 1000);
+    }, []);
+
+    const resendOtp = () => {
+        setTime(30)
         let timer = setInterval(() => {
             setTime((time) => {
                 if (time === 0) {
@@ -93,9 +119,6 @@ export const OtpValidate = ({ formData, setFormData, current, setCurrent }) => {
                 } else return time - 1;
             });
         }, 1000);
-    }, []);
-    const resendOtp = () => {
-        window.location.reload()
     }
     const onFinish = (value) => {
         console.log(value)
@@ -111,15 +134,6 @@ export const OtpValidate = ({ formData, setFormData, current, setCurrent }) => {
         onChange,
         onInput,
     };
-    const Completionist = () => <Button
-        color="cyan"
-        variant="filled"
-        style={{ marginRight: "16px", width: "50%" }}
-        onClick={resendOtp}
-        size="large"
-    >
-        Resend OTP
-    </Button>;
 
     return (
         <Form
@@ -137,10 +151,23 @@ export const OtpValidate = ({ formData, setFormData, current, setCurrent }) => {
                 <Input.OTP  {...sharedProps} size="large" />
             </Form.Item>
             <div className="flex justify-center my-3 mt-16">
-                <p>
-                    Time left: {`${Math.floor(time / 60)}`.padStart(2, 0)}:
-                    {`${time % 60}`.padStart(2, 0)}
-                </p>
+                {time ?
+                    <p className="mx-4 my-auto text-xl flex w-full gap-4">
+                        <span>Resend OTP :</span> <span> {`${Math.floor(time / 60)}`.padStart(2, 0)}:
+                            {`${Math.ceil(time % 60)}`.padStart(2, 0)}</span>
+                    </p>
+                    :
+                    <Button
+                        color="cyan"
+                        variant="filled"
+                        style={{ marginRight: "16px", width: "50%" }}
+                        onClick={resendOtp}
+                        size="large"
+                    >
+                        Resend OTP
+                    </Button>
+                }
+
 
                 <Button htmlType="submit" size="large" style={{ width: "50%" }}>
                     Verify
@@ -151,104 +178,208 @@ export const OtpValidate = ({ formData, setFormData, current, setCurrent }) => {
 }
 
 export const Password = ({ formData, setFormData, current, setCurrent }) => {
+    const { TextArea } = Input;
     const onFinish = (value) => {
         console.log(value)
         setCurrent(current + 1)
+        setFormData({ ...formData, "orgDetails": value })
+
     }
     return (
         <Form
             name="password"
             layout="vertical"
-            initialValues={formData.basic}
+            initialValues={formData.orgDetails}
             onFinish={onFinish}
         >
             <Form.Item
-                name="password"
-                label="Password"
-                rules={[{ required: true, message: "Please enter password" }]}
-            >
-                <Input placeholder="password" />
-            </Form.Item>
-            <Form.Item
-                name="confirmpass"
-                label="Confirm password"
-                rules={[{ required: true, message: "Please enter the event name" }]}
-            >
-                <Input placeholder="Name of the event" />
-            </Form.Item>
+                name="bio"
+                label="BIO"
 
-            <div className="flex justify-center my-3">
-                <Button
-                    color="cyan"
-                    variant="filled"
-                    style={{ marginRight: "16px", width: "50%" }}
-                    onClick={() => setCurrent(current - 1)}
-                    size="large"
+            >
+                <TextArea showCount maxLength={100} placeholder="About your organisation" />
+            </Form.Item>
+            <div className="w-full flex gap-3 *:w-1/2">
+
+                <Form.Item
+                    name="coverImage"
+                    label="COVER IMAGE"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please select a banner for your event",
+                        },
+                        () => ({
+                            async validator(_, value) {
+                                if (value) {
+                                    const isImage = validImageTypes.includes(value.file.type);
+                                    if (isImage) {
+                                        return Promise.resolve;
+                                    } else {
+                                        return Promise.reject("Invalid file format, not an image");
+                                    }
+                                }
+                            },
+                        }),
+                    ]}
                 >
-                    Previous
-                </Button>
+                    <Upload
+                        listType="picture"
+                        maxCount={1}
+                        accept="image/*"
+                        beforeUpload={() => {
+                            return false;
+                        }}
+                    >
+                        <Button icon={<UploadOutlined />} size="large" block>
+                            Upload Banner
+                        </Button>
+                    </Upload>
+                </Form.Item>
 
-                <Button htmlType="submit" size="large" style={{ width: "50%" }}>
-                    Next
-                </Button>
+                <Form.Item
+                    name="logo"
+                    label="LOGO"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please select logo",
+                        },
+                        () => ({
+                            async validator(_, value) {
+                                if (value) {
+                                    const isImage = validImageTypes.includes(value.file.type);
+                                    if (isImage) {
+                                        return Promise.resolve;
+                                    } else {
+                                        return Promise.reject("Invalid file format, not an image");
+                                    }
+                                }
+                            },
+                        }),
+                    ]}
+                >
+                    <Upload
+                        listType="picture"
+                        maxCount={1}
+                        accept="image/*"
+                        beforeUpload={() => {
+                            return false;
+                        }}
+                    >
+                        <Button icon={<UploadOutlined />} size="large" block >
+                            Upload Banner
+                        </Button>
+                    </Upload>
+                </Form.Item>
             </div>
+            <Button size="large" style={{ width: "100%" }} htmlType="submit">
+                Next
+            </Button>
         </Form>
     )
 }
 
 export const Address = ({ formData, setFormData, current, setCurrent }) => {
     const onFinish = (value) => {
-        console.log(value)
-        setCurrent(current + 1)
+        setFormData({ ...formData, "address": value })
+        console.log(JSON.stringify(formData))
+
+
     }
     return (
         <Form
             name="password"
             layout="vertical"
-            initialValues={formData.basic}
+            initialValues={formData.address}
             onFinish={onFinish}
         >
+            <div className="w-full flex gap-3 *:w-1/2">
+                <Form.Item
+                    name="state"
+                    size="large"
+                    label="STATE"
+                    rules={[{ required: true, message: "Please select state" }]}
+                >
+                    <Select placeholder="Select type" size="large">
+                        <Select.Option value="sports">School</Select.Option>
+                        <Select.Option value="cultural">Organisation</Select.Option>
+                        <Select.Option value="fintech">other</Select.Option>
+                    </Select>
+                </Form.Item>
+
+                <Form.Item
+                    name="city"
+                    size="large"
+                    label="CITY"
+                    rules={[{ required: true, message: "Please select city" }]}
+                >
+                    <Select placeholder="Select type" size="large">
+                        <Select.Option value="sports">School</Select.Option>
+                        <Select.Option value="cultural">Organisation</Select.Option>
+                        <Select.Option value="fintech">other</Select.Option>
+                    </Select>
+                </Form.Item>
+            </div>
             <Form.Item
                 name="name"
-                label="Address"
-                rules={[{ required: true, message: "Please enter the event name" }]}
+                label="ADDRESS"
+                rules={[{ required: true, message: "Please enter your address" }]}
             >
                 <Input placeholder="Name of the event" />
             </Form.Item>
             <Form.Item
-                name="name"
-                label="Pincode"
-                rules={[{ required: true, message: "Please enter the event name" }]}
+                name="pincode"
+                label="PIN CODE"
+                rules={[{ required: true, message: "Please enter PIN code" }]}
             >
-                <Input placeholder="Name of the event" />
+                <Input placeholder="Name of the event" type="number" maxLength={6} />
             </Form.Item>
 
-            <Form.Item
-                name="type"
-                size="large"
-                label="State"
-                rules={[{ required: true, message: "Please select the Organisation type" }]}
-            >
-                <Select placeholder="Select type" size="large">
-                    <Select.Option value="sports">School</Select.Option>
-                    <Select.Option value="cultural">Organisation</Select.Option>
-                    <Select.Option value="fintech">other</Select.Option>
-                </Select>
-            </Form.Item>
+            <div className="w-full flex gap-3 *:w-1/2">
 
-            <Form.Item
-                name="type"
-                size="large"
-                label="City"
-                rules={[{ required: true, message: "Please select the Organisation type" }]}
-            >
-                <Select placeholder="Select type" size="large">
-                    <Select.Option value="sports">School</Select.Option>
-                    <Select.Option value="cultural">Organisation</Select.Option>
-                    <Select.Option value="fintech">other</Select.Option>
-                </Select>
-            </Form.Item>
-
+                <Form.Item
+                    name="password"
+                    label="PASSWORD"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your password",
+                            min: 8,
+                            max: 16,
+                        },
+                    ]}
+                    className="w-full"
+                >
+                    <Input.Password
+                        name="password"
+                        placeholder="Password"
+                        iconRender={(visible) =>
+                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                        }
+                    />
+                </Form.Item>
+                <Form.Item
+                    name="confirmPassword"
+                    label="CONFIRM PASSWORD"
+                    dependencies={["password"]}
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please confirm your password",
+                        },
+                    ]}
+                    className="w-full"
+                >
+                    <Input.Password
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        iconRender={(visible) =>
+                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                        }
+                    />
+                </Form.Item>
+            </div>
             <div className="flex justify-center my-3">
                 <Button
                     color="cyan"
@@ -261,7 +392,7 @@ export const Address = ({ formData, setFormData, current, setCurrent }) => {
                 </Button>
 
                 <Button htmlType="submit" size="large" style={{ width: "50%" }}>
-                    Next
+                    Register
                 </Button>
             </div>
         </Form>
