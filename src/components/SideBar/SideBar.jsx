@@ -11,6 +11,7 @@ import { IoMdDoneAll } from "react-icons/io";
 import { RiCalendarEventLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import logo from "../../assets/festLogo.png";
+import smallLogo from "./../../assets/favicon.png";
 
 export const SideBar = () => {
   const [open, setOpen] = useState(false);
@@ -65,6 +66,15 @@ export const SideBar = () => {
             open={open}
           />
         </Link>
+        <Link to="/reports">
+          <Option
+            Icon={RiCalendarEventLine}
+            title="Reports"
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+          />
+        </Link>
       </div>
 
       <ToggleClose open={open} setOpen={setOpen} />
@@ -78,8 +88,8 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
       layout
       onClick={() => setSelected(title)}
       className={`relative flex h-10 w-full items-center rounded-2xl transition-colors ${selected === title
-          ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
-          : "text-white hover:bg-gray-300 hover:text-black"
+        ? "shadow bg-[#71f1cb11] text-white border border-slate-300"
+        : "text-white hover:bg-gray-300 hover:text-black"
         }`}
       style={{
         padding: open ? "1.5rem" : "1.5rem 1rem",
@@ -109,24 +119,27 @@ const Option = ({ Icon, title, selected, setSelected, open }) => {
 const TitleSection = ({ open }) => {
   return (
     <div className="mb-10 mt-4 pb-3  ">
-      <div
-        className={
-          open
-            ? "flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg"
-            : "hidden"
-        }
-      >
-        <div className="flex px-8 py-2 items-center gap-2">
-          {open && (
-            <motion.div
-              layout
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.125 }}
-            >
+      <div className="flex cursor-pointer bg-white items-center justify-between shadow-md rounded-2xl transition-all hover:scale-103 hover:shadow-lg">
+        <div
+          className={"flex py-2 items-center gap-2" + open ? " px-8" : "px-4"}
+        >
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.125 }}
+          >
+            {open ? (
               <img src={logo} alt="" />
-            </motion.div>
-          )}
+            ) : (
+              <img
+                src={smallLogo}
+                className="h-9 w-5 
+              "
+                alt=""
+              />
+            )}
+          </motion.div>
         </div>
         {open && <FiChevronDown className="mr-2" />}
       </div>

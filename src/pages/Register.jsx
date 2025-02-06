@@ -76,7 +76,7 @@ const Register = () => {
               <img src={logo} alt="logo" />
             </div>
 
-            <div className="flex justify-center sm:text-4xl mb-20 text-3xl font-semibold text-teal-700">
+            <div className="flex justify-center sm:text-4xl mb-20 text-3xl font-bold text-[#009688] font-serif">
               Create Your Free Account
             </div>
             {current === 0 && (

@@ -68,8 +68,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-7xl font-bold text-gray-800 leading-tight z-10">
-
+      <h2 className="hover-text text-center text-4xl md:text-6xl xl:text-7xl font-semibold text-gray-800 leading-tight z-10">
         <Text>Think, plan, and track</Text>
       </h2>
     );
@@ -94,7 +93,7 @@ const LandingPage = () => {
 
   const BlockInTextCard = ({ examples }) => {
     return (
-      <div className="w-full max-w-5xl mt-10 space-y-6">
+      <div className="w-full max-w-5xl mt-10 font-serif space-y-6">
         <Typewrite examples={examples} />
       </div>
     );
@@ -175,12 +174,15 @@ const LandingPage = () => {
     );
   };
   return (
-    <div className="min-h-screen flex flex-col h-screen overflow-y-scroll  ">
+    <div className="min-h-screen flex flex-col h-screen overflow-y-scroll">
       <Nav />
-      <div
-        className="m-4 mt-0 border-2  border-slate-200 flex-1 bg-teal-500 rounded-4xl  flex flex-col items-center justify-center heading-primary relative"
-      >
-        <img src={Brush} className="w-[8rem] absolute top-20 left-60 z-5" alt="" />
+
+      <div className="m-4 mt-0 mb-5 border-2 border-slate-200 flex-1 bg-teal-500 rounded-4xl flex flex-col items-center justify-center heading-primary relative">
+        <img
+          src={Brush}
+          className="w-[8rem] absolute top-20 left-60 z-5"
+          alt=""
+        />
         <img
           src={Camera}
           className="w-[8rem] absolute top-20 right-60 z-5"
@@ -194,8 +196,7 @@ const LandingPage = () => {
             examples={["all in one place", "all in one place"]}
           />
 
-
-          <p className="text-lg sm:text-xl md:text-2xl mt-2 text-white mb-8 text-center max-w-2xl z-10">
+          <p className="text-lg sm:text-xl md:text-2xl font-serif mt-2 text-white mb-8 text-center max-w-2xl z-10">
             Efficiently manage your events and boost productivity with our
             intuitive event planning platform.
           </p>
@@ -203,17 +204,15 @@ const LandingPage = () => {
         {/* <FeatureCards /> */}
       </div>
 
-
-      <section className="mx-auto max-w-7xl px-8 py-1 text-slate-800  relative ">
+      <section className="mx-auto max-w-7xl px-8 text-slate-800 relative">
         <img
           src={Trophy}
-          className="w-[8rem] absolute top-0 left-0 zindex hidden md:block "
+          className="w-[8rem] absolute top-0 left-0 zindex hidden md:block"
           alt=""
         />
 
-
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
-          <h2 className="max-w-lg  pl-8 mt-5 text-4xl font-bold md:text-5xl">
+        <div className="mb-8 mt-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8 ">
+          <h2 className="max-w-lg pl-8 mt-5 text-4xl font-bold md:text-5xl">
             Grow faster with our
             <span className="text-indigo-400"> all in one solution</span>
           </h2>
@@ -221,7 +220,7 @@ const LandingPage = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="whitespace-nowrap rounded-lg bg-indigo-400 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-gray-800"
+            className="whitespace-nowrap rounded-lg bg-indigo-400 px-4 py-2 font-medium text-white shadow-lg hover:bg-gray-800"
           >
             Get Started
           </motion.button>

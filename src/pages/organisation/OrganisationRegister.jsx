@@ -51,8 +51,8 @@ const OrganisationRegister = () => {
               Steps: {
                 colorPrimary: "#009688",
                 colorText: "#009688",
-                fontSize: 20,
-                lineHeight: 6,
+                fontSize: 15,
+                lineHeight: 4,
               },
               Select: {
                 activeBorderColor: "#009688",
@@ -65,7 +65,7 @@ const OrganisationRegister = () => {
             },
           }}
         >
-          <div className="absolute  flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10  items-end z-10 bg-themeColor/10 h-full w-1/3  ">
+          <div className="absolute  flex-col lg:flex hidden justify-center inset-y-0 left-0 backdrop-invert backdrop-opacity-10  items-end z-10 bg-themeColor/10   w-1/3  ">
             <div className="w-4/5 px-4">
               <StepwiseProcess
                 logo={logo}

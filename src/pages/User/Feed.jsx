@@ -8,7 +8,7 @@ import Card2 from "../../components/Cards/Card2";
 import Cards from "../../components/Cards/Cards";
 import DropDownSelect from "../../components/Dropdown/DropDownSelect";
 import data from "../../utils/data.json";
-
+import smallLogo from './../../assets/favicon.png';
 
 function Feed() {
 
@@ -157,13 +157,15 @@ function Feed() {
 
   }, [])
 
+
+  //InfiniteScroll
   const listInnerRef = useRef();
 
   const onScroll = () => {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
       if (scrollTop + clientHeight === scrollHeight) {
-        console.log("ScrollTop+", scrollTop + clientHeight, clientHeight)
+        console.log("ScrollTop+", scrollTop, clientHeight, scrollHeight)
       }
     }
   }
@@ -174,9 +176,10 @@ function Feed() {
 
   return (
     <>
-      <div className=" flex-1 overflow-scroll p-8 no-scrollbar ms-24 xl:ms-0  " onScroll={onScroll} ref={listInnerRef}>
+      <div className=" flex-1 overflow-scroll px-8 no-scrollbar ms-24 xl:ms-0  " onScroll={onScroll} ref={listInnerRef}>
+
         <div className="flex items-center justify-between lg:hidden">
-          <h1 className="text-3xl font-bold text-neutral-800 ">Suggestions</h1>
+          <h1 className="text-3xl font-bold text-teal-800 heading-primary  ">Suggestions</h1>
           <Space direction="vertical">
             <Space wrap>
               <Dropdown
@@ -201,44 +204,46 @@ function Feed() {
           </Space>
         </div>
 
-        <div className="flex gap-4 overflow-scroll no-scrollbar mb-10 lg:hidden">
-          {data.map((value) => {
-            return <Card2 key={value.id} data={value} />;
+        <div className="flex gap-4 overflow-scroll no-scrollbar box mb-10 lg:hidden">
+          {data.map((value, index) => {
+            return <Card2 index={index} key={value.id} data={value} />;
           })}
         </div>
-        <div className="flex flex-col gap-5 mb-8">
+        <div className="flex flex-col gap-5 mb-8 ">
 
-          <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-bold text-primary heading-primary " >Events</h1>
+          <div className="flex items-center justify-between relative">
 
-            <div className="flex items-center justify-center">
+            <img src={smallLogo} className="h-10 absolute top-1 left-0 rotate" alt="" />
+
+            <h1 className="text-4xl font-bold text-primary heading-primary pl-7  px-5" >Events</h1>
+
+            <div className=" items-center justify-center hidden lg:flex ">
               <motion.div animate={open ? "open" : "closed"} className="relative">
-                <button
-                  onClick={() => setOpen((pv) => !pv)}
-                  className="flex rounded-md transition-colors"
-                >
 
+                <Space direction="vertical">
+                  <Space wrap>
+                    <Dropdown
+                      menu={{
+                        items,
+                      }}
+                      placement="bottomRight"
+                    >
+                      <div className=" flex items-center justify-between py-2 px-4 rounded-2xl m-2 transition-all ">
+                        <p className="text-neutral-700  font-semibold px-3"> prince121kk@gmail.com</p>
 
-                  <div className=" w-[18rem] flex  py-3 rounded-2xl  items-center justify-between transition-all">
-                    <p className="text-neutral-700  font-semibold"> prince121kk@gmail.com</p>
+                        <div className="flex items-center gap-1">
+                          <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
+                            className="w-12 h-12 border rounded-full"
+                            alt=""
+                          />
 
-
-                    <div className="flex items-center gap-1 ">
-                      <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppOfn_ZHQ1-R7tn68a-WXKQ7nS6a8MD5PGA&s"
-                        className="w-10 h-10 border rounded-full"
-                        alt=""
-                      />
-                      <motion.span variants={iconVariants}>
-                        <MdOutlineKeyboardArrowDown />
-                      </motion.span>
-                    </div>
-
-                    {/* <h1 className="text-xl font-bold">Prince Kushwaha</h1> */}
-
-
-                  </div>
-                </button>
+                          <MdOutlineKeyboardArrowDown className="text-3xl" />
+                        </div>
+                      </div>
+                    </Dropdown>
+                  </Space>
+                </Space>
 
                 <motion.ul
                   initial={wrapperVariants.closed}
@@ -253,12 +258,12 @@ function Feed() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
+          <div className="flex flex-col sm:flex-row gap-4 px-5">
+            <div className="relative flex-1 ">
               <input
                 type="text"
                 placeholder="Search events..."
-                className="w-full pl-10 pr-4 py-2.5 bg-white/50 backdrop-blur-sm 
+                className="w-full pl-6 py-2.5 bg-white/50 backdrop-blur-sm 
                          border border-gray-200 rounded-xl focus:outline-none 
                          focus:ring-2 focus:ring-blue-50 focus:border-transparent
                          transition-all duration-300 hover:bg-white/80 hover:shadow-md"
@@ -270,17 +275,17 @@ function Feed() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 p-9">
-          {data.map((value) => {
-            return <Cards key={value.id} data={value} />;
+        <div className="flex justify-center ml-3 flex-wrap gap-7">
+          {data.map((value, index) => {
+            return <Cards index={index} key={value.id} data={value} />;
           })}
         </div>
       </div>
 
-      <div className="w-[21rem] shadow bg-teal-700  border-l border-slate-300 hidden lg:flex flex-col">
+      <div className="w-[21rem] shadow bg-teal-600  border-l border-slate-300 hidden lg:flex flex-col">
 
 
-        <h1 className="text-2xl heading-primary mt-7 font-bold text-white mb-8 px-5">
+        <h1 className="text-2xl heading-primary mt-5 font-bold text-white mb-8 px-5">
           Suggestions
         </h1>
         <div className="flex flex-col items-center gap-4 overflow-y-scroll p-4 flex-1 no-scrollbar">

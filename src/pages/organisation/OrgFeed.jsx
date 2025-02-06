@@ -1,4 +1,3 @@
-import { DatePicker, Form, Input, Modal, Steps } from "antd";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
@@ -8,16 +7,7 @@ import Bar from "../../components/Charts/Bar";
 import Donut from "../../components/Charts/Donut";
 import LineBar from "../../components/Charts/LineBar";
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 6 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 14 },
-  },
-};
+
 const OrgFeed = () => {
   const [open, setOpen] = useState(false);
 
@@ -132,23 +122,10 @@ const OrgFeed = () => {
     },
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const description = "This is a description.";
 
-  const [form] = Form.useForm();
-  const variant = Form.useWatch("variant", form);
 
   return (
-    <div className="flex flex-col justify-between w-full h-screen p-3 heading-secondary">
+    <div className="flex flex-col justify-between w-screen md:h-screen overflow-y-scroll  p-2 heading-secondary ms-22 xl:ms-0">
       <div className="flex justify-between items-center px-3 rounded-xl  font-bold  py-3">
         <span className="text-4xl text-primary heading-primary ">Overview</span>
         <div className="flex items-center justify-center ">
@@ -157,7 +134,7 @@ const OrgFeed = () => {
               onClick={() => setOpen((pv) => !pv)}
               className="flex px-3 rounded-md transition-colors "
             >
-              <div className=" flex justify-between py-2 px-4 rounded-2xl bg-teal-50 border-teal-600 border text-gray-700 transition-all">
+              <div className=" md:flex hidden justify-between py-2 px-4 rounded-2xl bg-teal-50 border-teal-600 border text-gray-700 transition-all">
                 <div className=" flex flex-col items-start px-3 ">
                   <h1 className="text-lg font-bold">
                     Krishna institute of Engineering
@@ -192,25 +169,24 @@ const OrgFeed = () => {
         </div>
       </div>
 
-      <div className="flex gap-6 px-4">
-        <div className="flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700  rounded-2xl w-1/4 ">
+      <div className="flex gap-6 px-4 justify-center flex-wrap sm:flex-nowrap">
+        <div className="flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700  rounded-2xl w-full md:w-1/4  ">
           <div className="px-3 text-xl font-bold">Total Events</div>
           <div className=" px-3 text-xl font-semibold">67</div>
         </div>
 
-        <div className="flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-1/4 ">
+        <div className="flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-full md:w-1/4 ">
           <div className="px-3 text-xl  font-bold">Live Events</div>
           <div className=" px-3 text-xl font-semibold">6</div>
         </div>
 
-        <div className="flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-1/4 ">
+        <div className="flex flex-col gap-5 py-4 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-full md:w-1/4 ">
           <div className="px-3 text-xl  font-bold">Ended Events</div>
           <div className=" px-3 text-xl font-semibold">60</div>
         </div>
 
         <div
-          className="flex flex-col justify-center items-center gap-5 py-6 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-1/4 "
-          onClick={showModal}
+          className="flex flex-col justify-center items-center gap-5 py-6 bg-teal-50 border-teal-600  border text-gray-700 rounded-2xl w-full md:w-1/4 "
         >
           <div className="px-3 text-xl font-bold">Add Event</div>
           <div className=" px-3 text-xl font-semibold">
@@ -218,93 +194,29 @@ const OrgFeed = () => {
           </div>
         </div>
 
-        <Modal
-          title="Add New Event"
-          open={isModalOpen}
-          width={1000}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          <div>
-            <Steps
-              current={1}
-              items={[
-                {
-                  title: "Finished",
-                  description,
-                },
-                {
-                  title: "In Progress",
-                  description,
-                  subTitle: "Left 00:00:08",
-                },
-                {
-                  title: "Waiting",
-                  description,
-                },
-              ]}
-            />
-          </div>
-          <div className="p-2 mt-6">
-            <Form
-              {...formItemLayout}
-              form={form}
-              variant={variant || "filled"}
-              initialValues={{ variant: "filled" }}
-            >
-              <div className="flex w-full justify-between">
-                <Form.Item
-                  className="w-1/2"
-                  label="Event Name"
-                  name="Input"
-                  rules={[{ required: true, message: "Please input!" }]}
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  className="w-1/2"
-                  label="Event Name"
-                  name="Input"
-                  rules={[{ required: true, message: "Please input!" }]}
-                >
-                  <Input />
-                </Form.Item>
-              </div>
-              <div className="flex w-full justify-between">
-                <Form.Item
-                  className="w-1/2"
-                  label="DatePicker"
-                  name="DatePicker"
-                  rules={[{ required: true, message: "Please input!" }]}
-                >
-                  <DatePicker />
-                </Form.Item>
-              </div>
-            </Form>
-          </div>
-        </Modal>
+
       </div>
 
-      <div className="flex gap-4   w-full p-4">
-        <div className="bg-teal-50 border-teal-600 border text-gray-700  rounded-2xl px-5 w-2/5 py-8">
+      <div className="flex gap-4 justify-center flex-wrap xl:flex-nowrap w-full p-4 ">
+        <div className="bg-teal-50 border-teal-600 border text-gray-700  rounded-2xl px-5 xl:w-2/5 w-full py-8">
           <Bar />
         </div>
 
-        <div className="bg-teal-50 border-teal-600 border text-gray-700 gap-4  rounded-2xl px-3 w-2/5 py-3 flex flex-col justify-center items-center">
+        <div className="bg-teal-50 border-teal-600 border text-gray-700 gap-4  rounded-2xl px-3 xl:w-2/5 w-full py-3 flex flex-col justify-center items-center">
           <Donut />
         </div>
-        <div className="bg-teal-50 border-teal-600 border text-gray-700 rounded-2xl px-5 w-2/5 py-8">
+        <div className="bg-teal-50 border-teal-600 border text-gray-700 rounded-2xl px-5 xl:w-2/5 w-full  py-8">
           <LineBar />
         </div>
       </div>
 
-      <div className=" flex  h-[18rem] gap-4 px-5">
-        <div className=" flex gap-4 flex-col bg-teal-50 border-teal-600 border text-gray-700 w-1/3 rounded-2xl p-3 ">
+      <div className=" flex    h-[17rem]  gap-4 px-5  justify-center flex-wrap md:flex-nowrap">
+        <div className=" flex gap-4 flex-col bg-teal-50 border-teal-600 border w-full md:w-1/3 rounded-2xl p-3 ">
           <div className="text-xl px-2 font-Bold  font-bold ">
             Events Coordintors
           </div>
           <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border  hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border  hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <div className="flex items-center gap-3">
                   <h1 className="text-lg font-semibold ">Shivanshu Gupta</h1>
@@ -322,7 +234,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <div className="flex items-center gap-3">
                   <h1 className="text-lg font-bold">Suhani Singh</h1>
@@ -339,7 +251,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <div className="flex items-center gap-3">
                   <h1 className="text-lg font-bold">Prince Kumar Kushwaha</h1>
@@ -358,7 +270,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <div className="flex items-center gap-3">
                   <h1 className="text-lg font-bold">Prince Kumar Kushwaha</h1>
@@ -379,10 +291,10 @@ const OrgFeed = () => {
             </div>
           </div>
         </div>
-        <div className="border flex gap-4 flex-col bg-teal-50 border-teal-600  w-1/3 rounded-2xl p-3 ">
+        <div className="border flex gap-4 flex-col bg-teal-50 border-teal-600 w-full  md:w-1/3 rounded-2xl p-3 ">
           <div className="text-xl px-2 font-semibold">Events</div>
           <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <h1 className="text-lg font-bold">Rann</h1>
                 <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
@@ -396,7 +308,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <h1 className="text-lg font-bold">Rann</h1>
                 <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
@@ -410,7 +322,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <h1 className="text-lg font-bold">Rann</h1>
                 <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
@@ -424,7 +336,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-3 ">
                 <h1 className="text-lg font-bold">Rann</h1>
                 <p className="text-neutral-700 text-sm  ">30 Jan 2024</p>
@@ -440,11 +352,11 @@ const OrgFeed = () => {
             </div>
           </div>
         </div>
-        <div className="border flex gap-4 flex-col bg-teal-50 border-teal-600  w-1/3 rounded-2xl p-3 ">
+        <div className="border flex gap-4 flex-col bg-teal-50 border-teal-600  w-full  md:w-1/3 rounded-2xl p-3 ">
           <div className="text-xl px-2 font-semibold">Payments</div>
 
           <div className="flex gap-3 overflow-y-scroll no-scrollbar flex-col">
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-2 py-1 ">
                 <h1 className="text-md ">
                   &#8377;99 credited to your bank through Razorpay.
@@ -460,7 +372,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-2 py-1 ">
                 <h1 className="text-md ">
                   &#8377;10 credited to your bank through Razorpay.
@@ -476,7 +388,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-2 py-1 ">
                 <h1 className="text-md ">
                   &#8377;919 credited to your bank through Razorpay.
@@ -492,7 +404,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-2 py-1 ">
                 <h1 className="text-md ">
                   &#8377;992 credited to your bank through Razorpay.
@@ -508,7 +420,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary   transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary   transition-all">
               <div className=" flex flex-col items-start px-2 py-1 ">
                 <h1 className="text-md ">
                   &#8377;992 credited to your bank through Razorpay.
@@ -524,7 +436,7 @@ const OrgFeed = () => {
                 />
               </div>
             </div>
-            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-tertiary  transition-all">
+            <div className=" flex justify-between py-2 px-4 rounded-2xl border hover:bg-[#deeff57e] border-primary  transition-all">
               <div className=" flex flex-col items-start px-2 py-1 ">
                 <h1 className="text-md ">
                   &#8377;99 credited to your bank through Razorpay.

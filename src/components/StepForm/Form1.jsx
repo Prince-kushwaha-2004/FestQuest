@@ -1,6 +1,7 @@
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Select, Upload } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Axios from "../../axios/Axios";
 import { Regex } from "../../utils/Constants";
 
 const validImageTypes = ["image/jpg", "image/jpeg", "image/png"];
@@ -96,6 +97,7 @@ export const Basic = ({ formData, setFormData, current, setCurrent }) => {
 };
 
 export const Details = ({ formData, setFormData, current, setCurrent }) => {
+  const [modeDropdown, setModeDropdown] = useState([])
   const onFinish = (value) => {
     setFormData({ ...formData, eventDetails: value });
     console.log(formData);
@@ -106,6 +108,22 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
     setMode(mode);
     setFormData({ ...formData, mode: mode });
   };
+  const req = {
+    apiName: "list/",
+    method: "get",
+    params: { "type": 1 }
+  }
+  useEffect(() => {
+    Axios(req)
+      .then((response) => {
+        console.log(response.data.details)
+        setModeDropdown(response.data.details)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
+
   return (
     <div className="md:mx-20">
       <Form
@@ -123,13 +141,13 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
           ]}
         >
           <Select placeholder="Select mode" onChange={changeMode} size="large">
-            <Select.Option value="online">Online</Select.Option>
-            <Select.Option value="offline">Offline</Select.Option>
+            {modeDropdown.map((value) => <Select.Option key={value.id} value={value.id}>{value.value}</Select.Option>)}
+
           </Select>
         </Form.Item>
         {mode == "online" && (
           <Form.Item
-            name="websiteUrl"
+            name="url"
             label="EVENT WEBSITE URL"
             rules={[
               {
@@ -200,10 +218,10 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
           </>
         )}
 
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row  gap-2 justify-between">
           <Form.Item
-            name="minTeam"
-            label="MIN. TEAM SIZE ALLOWED"
+            name="min_participants_per_team"
+            label="MIN. TEAM SIZE"
             rules={[
               {
                 required: true,
@@ -215,8 +233,8 @@ export const Details = ({ formData, setFormData, current, setCurrent }) => {
           </Form.Item>
 
           <Form.Item
-            name="maxTeam"
-            label="MAX. TEAM SIZE ALLOWED"
+            name="max_participants_per_team"
+            label="MAX. TEAM SIZE"
             rules={[
               {
                 required: true,
